@@ -1,0 +1,28 @@
+{% extends 'components/layout.html' %}
+
+{% set pageHeading = "Interruption Card" %}
+{% set backlogID = "19" %}
+
+{% block innerContent %}
+
+  <h2>Example</h2>
+
+  {{ interruptionCard({
+    title: "Title",
+    description: "Description text",
+    URL: "#",
+    linkText: "Link text"
+  })}}
+
+  <h2>Examples in context</h2>
+
+  <ul clas="nhsuk-list">
+    <li>
+      <a href="/pages/home-p5">Homepage - P5</a>
+    </li>
+    <li>
+      <a href="/pages/messages-p5">Messages - P5</a>
+    </li>
+  </ul>
+
+{% endblock %}

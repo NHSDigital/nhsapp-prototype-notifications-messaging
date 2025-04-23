@@ -1,0 +1,38 @@
+{% extends 'layout-app.html' %}
+
+{% set mainClasses = "nhsuk-main-wrapper" %}
+
+{% block pageTitle %}
+  {{ pageHeading }} - NHS App prototype
+{% endblock %}
+
+{% block head %}
+  {% if overlay === true %}
+    <meta name="theme-color" content="#004B93">
+  {% else %}
+    <meta name="theme-color" content="#005eb8">
+  {% endif %}
+{% endblock %}
+
+<!-- HEADER -->
+{% block header %}
+{% endblock %}
+
+{% block main %}
+{% if overlay === true %}
+  <div class="app-login-wrapper app-login-wrapper--overlay">
+{% else %}
+  <div class="app-login-wrapper">
+{% endif %}
+  <div class="nhsuk-width-container">
+    {% block beforeContent %}{% endblock %}
+    <main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent" role="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+{% endblock %}
+
+<!-- FOOTER -->
+{% block footer %}
+{% endblock %}

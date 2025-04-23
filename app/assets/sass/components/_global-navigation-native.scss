@@ -1,0 +1,46 @@
+// ==========================================================================
+// COMPONENTS / #GLOBAL NAVIGATION NATIVE
+// ==========================================================================
+
+.app-global-navigation-native {
+  background-color: $color_nhsuk-grey-5;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.app-global-navigation-native__nav {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-global-navigation-native__nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0 -12px 0 0;
+  padding: 0;
+}
+
+.app-global-navigation-native__nav-item {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.app-global-navigation-native__nav-link {
+  display: block;
+  padding: 12px;
+
+  &:focus {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.app-global-navigation-native__nav-icon {
+  fill: $nhsuk-focus-text-color;
+  flex-shrink: 0;
+  height: 32px;
+  width: 32px;
+}

@@ -1,0 +1,40 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Account and settings" %}
+
+{% set pageHeading = "Account and settings" %}
+{% set pageDescription = "Change your NHS App settings and personal details" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Change your contact or login details",
+            href: "#"
+          },
+          {
+            title: "Manage cookies and read legal information",
+            href: "pages/account-and-settings/cookies-and-legal-agreement"
+          }
+        ]
+      })}}
+
+      <!-- LOGOUT LINK WITH VERSION -->
+      {% include "components/logout-link-with-version/include.html" %}
+
+    </div>
+  </div>
+
+{% endblock %}

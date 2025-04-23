@@ -1,0 +1,67 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/services/gp-appointment-location" %}
+
+{% set pageHeading = "Select a clinician" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form id="form" method="post" action="/pages/services/gp-appointment-select-date" novalidate="novalidate">
+
+        {{ checkboxes({
+          idPrefix: "gp-appointment-clinician",
+          name: "gp-appointment-clinician",
+          fieldset: {
+            legend: {
+              text: pageHeading,
+              classes: "nhsuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose all that apply"
+          },
+          "items": [
+            {
+              value: "Dr Max Smith",
+              text: "Dr Max Smith",
+              checked: checked("gp-appointment-clinician", "Dr Max Smith"),
+              exclusiveGroup: "clinician-list"
+            },
+            {
+              value: "Dr Emily Taylor",
+              text: "Dr Emily Taylor",
+              checked: checked("gp-appointment-clinician", "Dr Emily Taylor"),
+              exclusiveGroup: "clinician-list"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "I have no preference",
+              checked: checked("gp-appointment-clinician", "none"),
+              exclusive: true,
+              exclusiveGroup: "clinician-list"
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsapp-button"
+        }) }}
+        
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}
+

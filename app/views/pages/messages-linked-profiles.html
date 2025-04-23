@@ -1,0 +1,68 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set linkedProfile = true %}
+
+{% set pageHeading = "Messages" %}
+{% set pageDescription = "It's not possible to access this section while acting on " + data['linkedProfileFirstName'] + "'s behalf." %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <p>Switch to your profile to access this section.</p>
+
+      {% if data['web'] === "yes" %}
+
+      <form action="/pages/messages-p9" method="post" novalidate>
+
+        <input type="hidden" name="accountType" value="p9">
+
+        {{ button({
+          text: "Switch to my profile",
+          classes: "nhsapp-button"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block afterContent %}
+
+  {% if data['web'] === "no" %}
+
+    <div class="app-sticky-footer">
+      <div class="nhsuk-width-container">
+        <div class="nhsuk-grid-row">
+
+          <form action="/pages/messages-p9" method="post" novalidate>
+
+            <input type="hidden" name="accountType" value="p9">
+    
+            {{ button({
+              text: "Switch to my profile",
+              classes: "nhsapp-button nhsuk-u-margin-bottom-0"
+            }) }}
+    
+          </form>
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+{% endblock %}

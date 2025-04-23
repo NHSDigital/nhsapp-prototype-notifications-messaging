@@ -1,0 +1,26 @@
+{% extends 'components/layout.html' %}
+
+{% set pageHeading = "Related content card" %}
+{% set backlogID = "23" %}
+
+{% block innerContent %}
+
+  <h2>Example</h2>
+
+  {{ relatedContentCard({
+    icon: "cross",
+    title: "Title text",
+    description: "Description text",
+    URL: "#",
+    linkText: "Link text"
+  })}}
+
+  <h2>Examples in context</h2>
+
+  <ul clas="nhsuk-list">
+    <li>
+      <a href="/pages/your-health/prescriptions-p9">Prescriptions - P9</a>
+    </li>
+  </ul>
+
+{% endblock %}

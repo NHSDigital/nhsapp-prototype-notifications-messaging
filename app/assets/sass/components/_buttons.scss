@@ -1,0 +1,42 @@
+// ==========================================================================
+// COMPONENTS / #BUTTONS
+// ==========================================================================
+
+// Button styled as a link
+.app-button--link {
+  @include nhsuk-link-style-default;
+  @include nhsuk-typography-responsive(19);
+
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none; 
+  cursor: pointer;
+  font-weight: normal;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+    top: 0;
+  }
+
+  &:focus {
+    background-color: #ffeb3b;
+  }
+}
+
+// Add spacing between button and heading
+.nhsuk-button + %nhsuk-heading-l {
+  @include nhsuk-responsive-padding(4, "top");
+}
+
+.nhsuk-button + %nhsuk-heading-m,
+.nhsuk-button + %nhsuk-heading-s {
+  padding-top: nhsuk-spacing(1);
+
+  @include mq($from: tablet) {
+    padding-top: nhsuk-spacing(2);
+  }
+}

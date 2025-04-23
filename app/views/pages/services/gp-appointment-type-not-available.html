@@ -1,0 +1,52 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% if data['gp-appointment-invite'] == "No"  %}
+  {% set backLinkURL = "/pages/services/gp-appointment-invite" %}
+{% else %}
+  {% set backLinkURL = "/pages/services/gp-appointment-type" %}
+{% endif %}
+
+{% set pageHeading = "You have not been asked to book this appointment by your GP surgery" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        titleSmall: true
+      })}}
+
+      <p>This appointment may not be relevant for your health problem.</p>
+
+      {{ nhsappSectionHeading({
+        headingText: "What you can do next"
+      })}}
+
+      <!-- PANEL LINK CARD - Your health -->
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Select an appointment type",
+            href: "/pages/services/gp-appointment-type"
+          },
+          {
+            title: "Contact GP about a health problem",
+            href: "#"
+          }
+          
+        ]
+      })}}
+
+    </div>
+  </div>
+
+  {% endblock %}

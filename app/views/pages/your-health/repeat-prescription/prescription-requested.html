@@ -1,0 +1,79 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Your prescription has been requested" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true
+      })}}
+
+      <h2>Medicines</h2>
+
+      <ul class="nhsuk-list nhsuk-list--border">
+        <li>
+          <span class="nhsuk-u-font-weight-bold nhsuk-u-display-block">Atorvastatin 500mg capsules</span>
+          Quantity: 10 capsules
+        </li>
+        <li>
+          <span class="nhsuk-u-font-weight-bold nhsuk-u-display-block">Codeine phosphate 30mg tablets</span>
+          Quantity: 10 capsules
+        </li>
+      </ul>
+
+      <h2>Your nominated pharmacy</h2>
+
+      <p>
+        <span class="nhsuk-u-font-weight-bold">Menston Pharmacy</span><br />
+        88 Main Street<br />
+        Menston<br />
+        Ilkley<br />
+        West Yorkshire<br />
+        LS29 6HY<br />
+        01943873862
+      </p>
+
+      <hr>
+
+      <h2>What you can do next</h2>
+
+      {{ nhsappTimeline({
+        items: [
+          {
+            headingText: "Wait for approval",
+            text: "The medicines you have requested will need to be approved by your GP. If your request is rejected, contact your GP surgery.",
+            active: true
+          },
+          {
+            headingText: "Collect prescription",
+            text: "Once your medicines are approved, it can take 3 to 5 working days for your chosen pharmacy to prepare your prescription."
+          }
+        ]
+      }) }}
+
+      <div class="nhsapp-card">
+        <div class="nhsapp-card__container">
+          <div class="nhsapp-card__content">
+            <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/your-health/requested-medicines">
+              Requested medicines
+            </a>
+            <div class="nhsapp-card__below">
+              <p class="nhsuk-u-margin-top-1">Check if your GP surgery has reviewed medicines requested in the app</p>
+            </div>
+          </div>
+          {{ nhsappIcon('chevronRight') }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% set pageHeading = "How to make your prototype feel more app-like" %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1 class="nhsuk-heading-xl">
+        {{ pageHeading }}
+      </h1>
+
+      <script>
+        // Check if the app is running in standalone mode (added to home screen)
+        if (window.navigator.standalone) {
+          // Check if we're not already on the desired start page
+          if (window.location.pathname !== '/pages/login') {
+            // Redirect to the desired start page
+            window.location.replace('/pages/login');
+          }
+        }
+      </script>
+
+      <p>You can add the prototype to your home screen to make it feel like a native app on your phone. This will provide a more realistic app-like experience compared to using it in your browser.</p>
+
+      <h3>To install it on your home screen:</h3>
+
+      <ol>
+        <li>Tap the share icon in your browser</li>
+        <li>Select "Add to Home Screen"</li>
+      </ol>
+
+      <img class="app-img" alt="" src="/images/app-like-add.png">
+
+      <p>Once added, tap the new icon on your home screen to launch.</p>
+
+      <img class="app-img" alt="" src="/images/app-like-open.png">
+
+      <p>After installation, the prototype will open in full-screen mode without browser navigation elements.</p>  
+
+    </div>
+  </div>
+
+{% endblock %}

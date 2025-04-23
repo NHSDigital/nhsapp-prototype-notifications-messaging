@@ -1,0 +1,36 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "No appointments available to book online at this time" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-u-margin-bottom-5">{{ pageHeading }}</h1>
+
+      <p>You'll need to contact your GP surgery to book an appointment.</p>
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        classes: "app-cards--secondary",
+        cards: [
+          {
+            title: "Find GP surgery contact details",
+            href: "#"
+          }
+        ]
+      })}}
+
+      {% include "pages/error-pages/medical-note.html" %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

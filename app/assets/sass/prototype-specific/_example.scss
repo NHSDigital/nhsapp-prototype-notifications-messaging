@@ -1,0 +1,68 @@
+.example {
+  border: 1px solid $color_nhsuk-grey-3;
+  margin-bottom: nhsuk-spacing(6);
+  padding: nhsuk-spacing(7) nhsuk-spacing(4) nhsuk-spacing(4);
+  position: relative;
+
+  &:before {
+    @include nhsuk-font($size: 16, $weight: normal, $line-height: 1);
+    background-color: white;
+    border: 1px solid $color_nhsuk-grey-3;
+    color: #354550;
+    content: "Example";
+    font-kerning: 1;
+    left: -1px;
+    padding: 4px 10px;
+    position: absolute;
+    top: -1px;
+  }
+
+  .app-bottom-navigation,
+  .app-global-navigation-native {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .component-image {
+    width: 100%;
+  }
+
+  .nhsuk-table {
+    margin-bottom: 16px;
+  }
+
+}
+
+.example--no-tag {
+  padding: nhsuk-spacing(4);
+
+  &:before {
+    display: none;
+  }
+}
+
+.example--tall {
+  min-height: 140px;
+}
+
+.example--white-background {
+  background-color: $color_nhsuk-white;
+}
+
+#hiddenDiv,
+#messageSent {
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+#hc_extension_bkgnd {
+  background-color: #d8dde0 !important;
+}
+
+.app-img {
+  border: 4px solid white;
+  margin-bottom: nhsuk-spacing(4);
+  max-width: 100%;
+}

@@ -1,0 +1,31 @@
+// ==========================================================================
+// COMPONENTS / #DYNAMIC HEADING
+// ==========================================================================
+
+.app-dynamic-page-title {
+  @include nhsuk-responsive-margin(7, "bottom");
+
+  .nhsuk-logo{
+    @include nhsuk-responsive-margin(3, "bottom");
+
+    @include mq($from: tablet) {
+      height: nhsuk-spacing(5);
+      width: 80px; // do we need to increase nhsuk spacing scale?
+    }
+  }
+}
+
+.app-dynamic-page-title__heading {
+  @include nhsuk-responsive-margin(3, "bottom");
+}
+
+.app-dynamic-page-title__name {
+  display: block;
+  text-transform: capitalize;
+  word-wrap: break-word;
+}
+
+.app-dynamic-page-title__nhs-number {
+  color: $nhsuk-link-color;
+}
+

@@ -1,0 +1,25 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "We could not connect to your GP" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-u-margin-bottom-5">{{ pageHeading }}</h1>
+
+      <p>Try again in a few hours, or contact the GP surgery of the person you were trying to access health services for.</p>
+
+      {% include "pages/error-pages/error-code.html" %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

@@ -1,0 +1,33 @@
+{% extends 'components/layout.html' %}
+
+{% set pageHeading = "Campaign card" %}
+{% set backlogID = "13" %}
+
+{% block innerContent %}
+
+<div class="nhsapp-card app-card-link--dark-blue app-card-link--full-width">
+  <div class="app-card-link__media">
+    <img class="app-card-link__img" src="/images/campaigns/campaign-card-image-2.jpg" alt="">
+  </div>
+  <div class="nhsapp-card__container">   
+    <div class="nhsapp-card__content">
+      <a href="#" class="nhsapp-card__link nhsuk-u-font-size-32">
+        Research changes lives
+      </a>
+      <div class="nhsapp-card__below">
+        <p class="nhsuk-u-margin-top-2">Register with Be Part of Research to find and join health studies</p>
+      </div>
+    </div>
+    {{ nhsappIcon('chevronRight') }}
+  </div>
+</div>
+
+<h2 class="nhsuk-heading-l">Examples in context</h2>
+
+  <ul clas="nhsuk-list">
+    <li>
+      <a href="/pages/home-p9">Homepage - P9</a>
+    </li>
+  </ul>
+
+{% endblock %}

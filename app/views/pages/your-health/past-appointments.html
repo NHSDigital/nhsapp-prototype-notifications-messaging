@@ -1,0 +1,143 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Past appointments" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true
+      })}}
+
+      <!-- SECTION -->
+      {{ nhsappSectionHeading({
+        headingText:"2024",
+        subheadingText: "2 records"
+      })}}
+
+      <!-- CARDS -->
+      <ul class="nhsapp-cards">
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Rheumatology appointment on Tuesday 18 February 2024 at 3:20pm">
+                Rheumatology appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p aria-hidden="true" class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-3">Tuesday 18 February 2024 <br> 3:20pm</p>
+                <p class="nhsuk-u-margin-bottom-3">The Willows, Croydon University Hospital</p>
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Document(s) and questionnaire(s) attached
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Orthopaedic appointment on Thursday 12 January 2024 at 10:30am">
+                Orthopaedic appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p aria-hidden="true" class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-3">Thursday 12 January 2024 <br> 10:30am</p>
+                <p class="nhsuk-u-margin-bottom-3">The Willows, Croydon University Hospital</p>
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Document(s) and questionnaire(s) attached
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+      </ul>
+
+      <hr>
+
+      <!-- SECTION -->
+      {{ nhsappSectionHeading({
+        headingText: "2023",
+        subheadingText: "3 records"
+      })}}
+
+      <!-- CARDS -->
+      <ul class="nhsapp-cards">
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Orthopaedic appointment on Monday 21 December 2023 at 2:15pm">
+                Orthopaedic appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p aria-hidden="true" class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-3">Monday 21 December 2023 <br> 2:15pm</p>
+                <p class="nhsuk-u-margin-bottom-3">The Willows, Croydon University Hospital</p>
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Document(s) and questionnaire(s) attached
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <strong class="nhsapp-tag nhsapp-tag--grey nhsuk-u-display-inline-block nhsuk-u-static-margin-bottom-3">Cancelled</strong>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Rheumatology appointment on Tuesday 21 August 2023 at 3:20pm">
+                Rheumatology appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p aria-hidden="true" class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-3">Tuesday 21 August 2023 <br> 3:20pm</p>
+                <p class="nhsuk-u-margin-bottom-3">The Willows, Croydon University Hospital</p>
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Document(s) attached
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Rheumatology appointment on Friday 26 May 2023 at 11:30am">
+                Rheumatology appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p aria-hidden="true" class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-3">Friday 26 May 2023 <br> 11:30am</p>
+                <p class="nhsuk-u-margin-bottom-3">The Willows, Croydon University Hospital</p>
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Document(s) and questionnaire(s) attached
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+      </ul>
+
+      <hr>
+
+      <div class="nhsuk-u-reading-width">
+        <!-- SECTION -->
+        {{ nhsappSectionHeading({
+          headingText: "No more past appointments available",
+          subheadingText: "Only past appointments from the last 2 years are shown in the NHS app."
+        })}}
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

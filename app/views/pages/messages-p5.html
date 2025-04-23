@@ -1,0 +1,43 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set pageHeading = "Messages" %}
+{% set pageDescription = "You have 1 inbox" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      {{ nhsappCardGroup({
+        cards: [
+          {
+            title: "Your NHS healthcare services",
+            href: "/pages/messages/your-messages",
+            html: "<p class='nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3'>You may receive messages:</p>
+            <ul><li>from your GP surgery</li><li>about hospital and specialist care appointments</li><li>about invitations and reminders</li></ul>"
+          }
+        ]
+      })}}
+
+      <!-- INTERRUPTION CARD -->
+      {{ interruptionCard({
+        title: "Prove who you are to access other messaging services",
+        description: "There may be other messaging services available to you in the NHS App. You'll need to prove who you are before you can access those services.",
+        URL: "#",
+        linkText: "Continue",
+        hiddenText: "to access other messaging services"
+      })}}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'components/layout.html' %}
+
+{% set pageHeading = "Link with icon" %}
+{% set backlogID = "30" %}
+
+{% block innerContent %}
+
+  <h2>Examples</h2>
+
+  <h3>Single link</h3>
+
+  <div class="example">
+    <p>
+      <a href="#" class="app-link--with-icon nhsuk-link--no-visited-state">
+        {{ nhsappIcon('help') }}
+        Link text
+      </a>
+    </p>
+  </div>
+
+  <h3>Multiple links</h3>
+
+  <div class="example">
+    <ul class="nhsuk-list">
+      <li>
+        <a href="#" class="app-link--with-icon nhsuk-link--no-visited-state">
+          {{ nhsappIcon('help') }}
+          Link text
+        </a>
+      </li>
+      <li>
+        <a href="#" class="app-link--with-icon nhsuk-link--no-visited-state">
+          {{ nhsappIcon('help') }}
+          Link text
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <h2>Code on GitHub</h2>
+  <ul>
+    <li><a href="https://github.com/nhsuk/nhs-app-design-styles-components-patterns/blob/main/app/assets/sass/components/_link-with-icon.scss">Sass (CSS) - Link with an icon</a></li>
+    <li><a href="https://github.com/nhsuk/nhs-app-design-styles-components-patterns/blob/main/app/views/components/link-with-icon/index.html">HTML - Link with an icon</a></li>
+  </ul>
+
+{% endblock %}

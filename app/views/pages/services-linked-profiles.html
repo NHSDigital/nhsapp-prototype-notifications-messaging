@@ -1,0 +1,61 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set linkedProfile = true %}
+
+{% set pageHeading = "Services" %}
+{% set pageDescription = "Get care and support to help you stay well" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <!-- SECTION - Your GP services -->
+      {{ nhsappSectionHeading({
+        headingText: "Your GP services"
+      })}}
+
+      <!-- PANEL LINK CARD - Your GP services -->
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Request repeat prescriptions",
+            href: "#"
+          },
+          {
+            title: "Check for available GP appointments",
+            href: "#"
+          }
+        ]
+      })}}
+
+      <!-- SECTION - Other NHS services -->
+      {{ nhsappSectionHeading({
+        headingText: "Other NHS services"
+      })}}
+      
+      <!-- PANEL LINK CARD - Other NHS services -->
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Find NHS services near you",
+            href: "#"
+          }
+        ]
+      })}}
+
+    </div>
+  </div>
+
+{% endblock %}

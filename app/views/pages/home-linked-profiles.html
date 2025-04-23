@@ -1,0 +1,43 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set linkedProfile = true %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        logo: data['web'] !== "yes",
+        linkedProfile: {
+          name: data['linkedProfileFirstName'] + " " + data['linkedProfileLastName'],
+          age: data['linkedProfileAge']
+        }
+      })}}
+
+      {{ nhsappSectionHeading({
+        headingText: "Services",
+        linkText: "View all",
+        linkUrl: "#",
+        linkAriaLabel: "View all services"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Find NHS services near you",
+            href: "/pages/services-linked-profiles"
+          }
+        ]
+      })}}
+
+    </div>
+  </div>
+
+{% endblock %}

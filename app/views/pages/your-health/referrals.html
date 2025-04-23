@@ -1,0 +1,39 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Referrals" %}
+{% set pageDescription = "View and manage your referrals" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <!-- SECTION - SERVICES -->
+      {{ nhsappSectionHeading({
+        headingText: "Referrals to action",
+        subheadingText: "0 referrals to action"
+      })}}
+
+      <hr>
+
+      <!-- SECTION - SERVICES -->
+      {{ nhsappSectionHeading({
+        headingText: "Pending referrals",
+        subheadingText: "0 pending referral"
+      })}}
+
+    </div>
+  </div>
+
+  {% endblock %}

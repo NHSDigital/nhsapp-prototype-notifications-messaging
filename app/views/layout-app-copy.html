@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+<!-- ADDS CUSTOM CLASSES ON MAIN TO GIVE CORRECT SPACING FOR NATIVE PAGES -->
+{% if data['web'] === "yes" %}
+
+  {% set bodyClasses = "nhs-app-web" %}
+
+  {% if linkedProfile === true or backLink === true %}
+    {% set mainClasses = "app-main-wrapper--no-top-padding" %}
+  {% else %}
+  {% endif %}
+
+  {% if containerFullWidth === true %}
+    {% set containerClasses = "app-width-container--full" %}
+  {% endif %}
+
+{% else %}
+
+  {% set bodyClasses = "nhs-app-native" %}
+
+  {% if containerFullWidth === true %}
+    {% set containerClasses = "app-width-container app-width-container--full" %}
+    {% set mainClasses = "app-main-wrapper app-main-wrapper--no-bottom-padding" %}
+  {% else %}
+    {% set containerClasses = "app-width-container" %}
+    {% set mainClasses = "app-main-wrapper" %}
+  {% endif %}
+
+{% endif %}
+
+{% block pageTitle %}
+  {{ pageHeading }} - NHS App prototype
+{% endblock %}
+
+<!-- CHANGES HTML BACKGROUND COLOUR IF VARIABLE 'WEB' ON PAGE IS TRUE -->
+{% block head %}
+  {% if data['web'] === "yes" %}
+
+  <style>
+    #hc_extension_bkgnd {
+      background-color: #d8dde0 !important;
+    }
+  </style>
+
+  {% else %}
+    <style>
+      html {
+        background-color: #f0f4f5;
+      }
+
+      #hc_extension_bkgnd {
+        background-color: #f0f4f5 !important;
+      }
+    </style>
+  {% endif %}
+{% endblock %}
+
+<!-- HEADER -->
+{% block header %}
+
+  <!-- WEB AND NATIVE - VARIABLE 'WEB' ON PAGE DECLARES WHAT TO DISPLAY -->
+  {% if data['web'] === "yes" %}
+    {% include "components/global-navigation-web/include-updated.html" %}
+  {% else %}
+    {% include "components/global-navigation-native/include.html" %}
+  {% endif %}
+
+{% endblock %}
+
+
+{% block outerContent %}
+  <!-- SWITCH PROFILE BANNER -->
+  {% if linkedProfile === true %}
+    {% include "components/switch-profile-banner/include.html" %}
+  {% endif %}
+  <!-- BACK LINK -->
+  {% if backLink === true %}
+    {% if containerFullWidth === true %}
+      <div class="nhsuk-width-container">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            {% include "components/back-link/include.html" %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% include "components/back-link/include.html" %}
+    {% endif %}
+  {% endif %}
+  
+{% endblock %}
+
+<!-- FOOTER -->
+{% block footer %}
+
+  <!-- WEB AND NATIVE - VARIABLE 'WEB' ON PAGE DECLARES WHAT TO DISPLAY -->
+  {% if data['web'] === "yes" %}
+    {% include "components/footer-web/include.html" %}
+  {% else %}
+    {% include "components/app-bottom-navigation/include-copy.html" %}
+  {% endif %}
+
+{% endblock %}

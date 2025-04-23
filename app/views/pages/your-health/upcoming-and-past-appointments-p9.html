@@ -1,0 +1,84 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Upcoming and past appointments" %}
+{% set pageDescription = "View or manage upcoming and past appointments, referrals and waiting lists" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <ul class="nhsapp-cards nhsapp-cards--stacked">
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#">
+                GP surgery appointments
+              </a>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/your-health/referrals">
+                Referrals
+              </a>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/your-health/hospital-appointments">
+                Hospital appointments
+              </a>
+            </div>
+            {% if data['appointment-letter'] != "read" %}
+            <p class="nhsapp-badge" aria-hidden="true">
+              <span class="nhsuk-u-visually-hidden">You have</span>
+              1
+              <span class="nhsuk-u-visually-hidden">notifications</span> 
+            </p>
+            {% endif %}
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#">
+                Waiting lists
+              </a>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+      </ul>
+
+      <!-- RELATED CONTENT CARD -->
+      {{ relatedContentCard({
+        icon: "cross",
+        title: "Access services",
+        description: "Find available GP appointments and other available services",
+        URL: "#",
+        linkText: "Explore services"
+      })}}
+
+    </div>
+  </div>
+
+  {% endblock %}

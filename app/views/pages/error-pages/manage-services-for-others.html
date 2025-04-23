@@ -1,0 +1,31 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Cannot manage services for others" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-u-margin-bottom-5">{{ pageHeading }}</h1>
+
+      <p>We could not connect to your GP system.</p>
+
+      <h2 class="nhsuk-heading-m">What you can do</h2>
+
+      <p>If you need to use health services on behalf of someone else, contact their GP surgery or try again later.</p>
+
+      {% include "pages/error-pages/error-code.html" %}
+
+      {% include "pages/error-pages/medical-note.html" %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

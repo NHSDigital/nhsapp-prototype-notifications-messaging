@@ -1,0 +1,73 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/services/gp-appointment-type" %}
+
+{% set pageHeading = "Select a location" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form id="form" method="post" action="/pages/services/gp-appointment-clinician" novalidate="novalidate">
+
+        {{ checkboxes({
+          idPrefix: "gp-appointment-location",
+          name: "gp-appointment-location",
+          fieldset: {
+            legend: {
+              text: pageHeading,
+              classes: "nhsuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose all that apply"
+          },
+          "items": [
+            {
+              value: "York Road Practice",
+              text: "York Road Practice",
+              checked: checked("gp-appointment-location", "York Road Practice"),
+              hint: {
+                text: "20 York Rd, London, SE1 7ND"
+              },
+              exclusiveGroup: "location-list"
+            },
+            {
+              value: "Southbank Practice",
+              text: "Southbank Practice",
+              checked: checked("gp-appointment-location", "Southbank Practice"),
+              hint: {
+                text: "76 Upper Ground, London, SE1 7ND"
+              },
+              exclusiveGroup: "location-list"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "I have no preference",
+              checked: checked("gp-appointment-location", "none"),
+              exclusive: true,
+              exclusiveGroup: "location-list"
+            }
+
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsapp-button"
+        }) }}
+        
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,32 @@
+// App container
+.nhsuk-width-container {  
+  @include mq($from: tablet, $until: desktop) {
+    margin: 0 32px; // to override container margin on tablet
+  }
+}
+
+// App main container
+.app-width-container {
+  padding-top: 60px; // to give correct spacing for sticky header
+}
+
+// App main wrapper
+.app-main-wrapper {
+  padding: 0 0 110px; // to give correct spacing for sticky footer
+}
+
+// Web main wrapper if linked profile
+.app-main-wrapper--no-top-padding {
+  padding-top: 0;
+}
+
+// Web main wrapper if linked profile
+.app-main-wrapper--no-bottom-padding {
+  padding-bottom: 80px; // Needs 80px padding for global nav
+}
+
+// Make the container full width
+.app-width-container--full {
+  margin: 0;
+  max-width: none;
+}

@@ -1,0 +1,324 @@
+{% extends 'layout.html' %}
+
+{% set pageHeading = "Data settings" %}
+{% set pageDescription = "Change and save the dynamic content used in the prototype." %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>{{ pageHeading }}</h1>
+
+      <p class="nhsuk-lede-text">
+        {{ pageDescription }}
+      </p>
+
+      <hr>
+
+      <form method="post" action="/pages/" novalidate="novalidate">
+
+        {{ radios({
+          "idPrefix": "web",
+          "name": "web",
+          "fieldset": {
+            "legend": {
+              "text": "Web or native?",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "hint": {
+            "text": "This displays the web or native header and footer"
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Web",
+              checked: checked("web", "yes")
+            },
+            {
+              "value": "no",
+              "text": "Native",
+              checked: checked("web", "no")
+            }
+          ]
+        }) }}
+
+        <hr>
+
+        {{ radios({
+          "idPrefix": "accountType",
+          "name": "accountType",
+          "fieldset": {
+            "legend": {
+              "text": "Account type",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "hint": {
+            "text": "This changes the page URLs in the main nav"
+          },
+          "items": [
+            {
+              "value": "p9",
+              "text": "P9",
+              checked: checked("accountType", "p9")
+            },
+            {
+              "value": "p5",
+              "text": "P5",
+              checked: checked("accountType", "p5")
+            },
+            {
+              "value": "linked-profiles",
+              "text": "Linked profile",
+              checked: checked("accountType", "linked-profiles")
+            }
+          ]
+        }) }}
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Errors</h2>
+
+        {{ radios({
+          "idPrefix": "loginError",
+          "name": "loginError",
+          "fieldset": {
+            "legend": {
+              "text": "Login error",
+              "classes": "nhsuk-label"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes",
+              checked: checked("loginError", "yes")
+            },
+            {
+              "value": "no",
+              "text": "No",
+              checked: checked("loginError", "no")
+            }
+          ]
+        }) }}
+
+        {{ radios({
+          "idPrefix": "gpAppointmentError",
+          "name": "gpAppointmentError",
+          "fieldset": {
+            "legend": {
+              "text": "Book a GP appointment error",
+              "classes": "nhsuk-label"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes",
+              checked: checked("gpAppointmentError", "yes")
+            },
+            {
+              "value": "no",
+              "text": "No",
+              checked: checked("gpAppointmentError", "no")
+            }
+          ]
+        }) }}
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Messages</h2>
+
+        {{ radios({
+          "idPrefix": "message1read",
+          "name": "message1read",
+          "fieldset": {
+            "legend": {
+              "text": "Message 1 read",
+              "classes": "nhsuk-label"
+            }
+          },
+          "items": [
+            {
+              "value": "true",
+              "text": "Yes",
+              checked: checked("message1read", "true")
+            },
+            {
+              "value": "false",
+              "text": "No",
+              checked: checked("message1read", "false")
+            }
+          ]
+        }) }}
+
+        {{ radios({
+          "idPrefix": "message2read",
+          "name": "message2read",
+          "fieldset": {
+            "legend": {
+              "text": "Message 2 read",
+              "classes": "nhsuk-label"
+            }
+          },
+          "items": [
+            {
+              "value": "true",
+              "text": "Yes",
+              checked: checked("message2read", "true")
+            },
+            {
+              "value": "false",
+              "text": "No",
+              checked: checked("message2read", "false")
+            }
+          ]
+        }) }}
+
+        {{ input({
+          "label": {
+          "text": "Number of messages",
+          "classes": "nhsuk-label"
+          },
+          "id": "messages",
+          "name": "messages",
+          "classes": "nhsuk-input--width-2",
+          "value": data['messages']
+        }) }}
+
+        {{ radios({
+          "idPrefix": "messageSendingError",
+          "name": "messageSendingError",
+          "fieldset": {
+            "legend": {
+              "text": "Message sending error",
+              "classes": "nhsuk-label"
+            }
+          },
+          "hint": {
+            "text": "This shows the 'Cannot send your reply' page when replying to message 2"
+          },
+          "items": [
+            {
+              "value": "true",
+              "text": "Yes",
+              checked: checked("messageSendingError", "true")
+            },
+            {
+              "value": "false",
+              "text": "No",
+              checked: checked("messageSendingError", "false")
+            }
+          ]
+        }) }}
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">User account</h2>
+
+        {{ input({
+          "label": {
+          "text": "First name"
+          },
+          "id": "userFirstName",
+          "name": "userFirstName",
+          "classes": "",
+          "value": data['userFirstName']
+        }) }}
+
+        {{ input({
+          "label": {
+          "text": "Last name"
+          },
+          "id": "userLastName",
+          "name": "userLastName",
+          "classes": "",
+          "value": data['userLastName']
+        }) }}
+
+        {{ input({
+          "label": {
+          "text": "NHS number"
+          },
+          "id": "nhsNumber",
+          "name": "nhsNumber",
+          "classes": "nhsuk-input--width-10",
+          "value": data['nhsNumber']
+        }) }}
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">Linked profile account</h2>
+
+        {{ input({
+          "label": {
+          "text": "First name"
+          },
+          "id": "linkedProfileFirstName",
+          "name": "linkedProfileFirstName",
+          "classes": "",
+          "value": data['linkedProfileFirstName']
+        }) }}
+
+        {{ input({
+          "label": {
+          "text": "Last name"
+          },
+          "id": "linkedProfileLastName",
+          "name": "linkedProfileLastName",
+          "classes": "",
+          "value": data['linkedProfileLastName']
+        }) }}
+
+        {{ input({
+          "label": {
+          "text": "Age"
+          },
+          "id": "linkedProfileAge",
+          "name": "linkedProfileAge",
+          "classes": "nhsuk-input--width-2",
+          "value": data['linkedProfileAge']
+        }) }}
+
+        <hr>
+
+        {{ input({
+          "label": {
+          "text": "Version",
+          "classes": "nhsuk-label--m nhsuk-u-margin-bottom-3"
+          },
+          "id": "version",
+          "name": "version",
+          "classes": "",
+          "value": data['version']
+        }) }}
+
+        <hr>
+
+        {{ button({
+          text: "Save settings",
+          classes: "nhsapp-button"
+        }) }}
+
+        <p><a href="/clear-data">Reset data settings</a></p>
+
+      </form>
+
+      <div class="nhsuk-inset-text">
+        <p>The default data is set in the <a href="https://github.com/nhsuk/nhs-app-redesign-prototype/blob/main/app/data/session-data-defaults.js">/data/session-data-default.js</a> file.</p>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

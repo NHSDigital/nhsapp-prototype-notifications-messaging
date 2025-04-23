@@ -1,0 +1,59 @@
+// Makes all navigation items from this one on right-aligned
+//
+// A bit of a hack - possibly they should be in 2 separate lists?
+.app-header__navigation-item--right-aligned {
+  margin-left: auto;
+}
+
+// Bump the border-bottom size up from 4px to 6px
+// - this gives the 'current' item more visual weight
+.nhsuk-header__navigation-link,
+.nhsuk-header__navigation-link:active,
+.nhsuk-header__navigation-link:focus {
+  border-bottom-width: 6px;
+}
+
+// A style to highlight the current section the user is in
+.app-header__navigation-link--current {
+  text-decoration: none;
+  border-bottom-color: $nhsuk-border-color;
+}
+
+// Fixes header logo width issue
+.nhsuk-header__link {
+  display: inline-block;
+}
+
+.app-header--native {
+  .nhsuk-header__container {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+  }
+  .nhsuk-logo {
+    display: block;
+    height: 32px;
+    width: 80px;
+    border: 0;
+
+    .nhsuk-logo__background {
+      fill: white;
+    }
+    .nhsuk-logo__text {
+      fill: $color_nhsuk-blue;
+    }
+  }
+}
+
+// Header - onboarding
+.app-header_logo--onboarding {
+  float: none;
+  margin: 0 auto;
+  max-width: 83px;
+
+  .nhsuk-header__link,
+  .nhsuk-logo {
+    height: 32px;
+    width: 83px;
+  }
+}

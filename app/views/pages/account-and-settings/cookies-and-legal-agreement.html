@@ -1,0 +1,57 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Account and settings" %}
+
+{% set backLink = true %}
+{% set backLinkText = "Back to Account and settings" %}
+
+{% set pageHeading = "Manage cookies and read legal information" %}
+{% set pageDescription = "Choose about cookies and check our privacy, accessibility and other policies" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <!-- PANEL LINK CARD -->
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Manage cookies",
+            href: "#"
+          },
+          {
+            title: "Terms of use",
+            href: "#"
+          },
+          {
+            title: "Privacy policy",
+            href: "#"
+          },
+          {
+            title: "Manage your notifications",
+            href: "#"
+          },
+          {
+            title: "Accessibility statement",
+            href: "#"
+          },
+          {
+            title: "Open source licences",
+            href: "#"
+          }
+        ]
+      })}}
+
+    </div>
+  </div>
+
+  {% endblock %}

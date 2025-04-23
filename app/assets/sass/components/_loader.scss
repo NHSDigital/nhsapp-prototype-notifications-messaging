@@ -1,0 +1,58 @@
+/* ==========================================================================
+   COMPONENTS / #LOADER
+   ========================================================================== */
+
+   .app-loader {
+    @include nhsuk-responsive-margin(4, bottom);
+    @include nhsuk-responsive-margin(4, top);
+    
+    position: relative;
+    text-align: center;
+  }
+  
+  .app-loader__spinner {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .app-loader--middle {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: calc(50% - 32px);
+  }
+
+  .nhsuk-loader {
+    @include nhsuk-responsive-margin(4, bottom);
+    @include nhsuk-responsive-margin(4, top);
+    
+    position: relative;
+    text-align: center;
+  }
+  
+  .nhsuk-loader__spinner {
+    animation: spin 2s linear infinite;
+    border: nhsuk-spacing(2) solid darken(#f0f4f5, 10%);
+    border-radius: 50%;
+    border-top: nhsuk-spacing(2) solid tint($color_nhsuk-blue, 15%);
+    display: inline-block;
+    height: 56px;
+    margin: auto;
+    width: 56px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .nhsuk-loader__spinner--btn {
+    border-width: nhsuk-spacing(1);
+    height: 20px;
+    margin: 0;
+    width: 20px;
+  }

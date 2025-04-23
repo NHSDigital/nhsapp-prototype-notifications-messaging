@@ -1,0 +1,149 @@
+// ==========================================================================
+// COMPONENTS / #DATE PICKER
+// ==========================================================================
+
+.app-date-picker {
+  padding: 0 32px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-date-picker__container {
+  overflow-x: auto;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.app-date-picker__item {
+  background: $color_nhsuk-grey-4;
+  color: $color_nhsuk-grey-1;
+  display: inline-block;
+  margin: 2px;
+  min-height: 68px;
+  min-width: 68px;
+  text-align: center;
+
+  &:last-child {
+    margin: 2px;
+  }
+}
+
+.app-date-picker__link {
+  background: $color_nhsuk-white;
+  display: inline-block;
+  color: $color_nhsuk-blue;
+  min-height: 68px;
+  text-decoration: none;
+  width: 68px;
+
+  &:visited {
+    color: $color_nhsuk-blue;
+  }
+
+}
+
+.app-date-picker__link--active {
+  background: $color_nhsuk-blue;
+  color: $color_nhsuk-white;
+
+  &:visited {
+    color: $color_nhsuk-white;
+  }
+
+  &:focus {
+    background-color: #ffeb3b;;
+    color: #212b32;
+  }
+}
+
+.date-picker__day {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
+.date-picker__number {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.app-date-picker__button {
+  background: transparent;
+  border: 0;
+  height: 68px;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 24px;
+
+  &:focus {
+    background-color: #ffeb3b;
+    box-shadow: 0 -2px #ffeb3b, 0 4px #212b32;
+    color: #212b32;
+    outline: 4px solid transparent;
+    text-decoration: none;
+  }
+}
+
+.app-date-picker__button--left {
+  left: 0;
+}
+
+.app-date-picker__button--right {
+  right: 0;
+}
+
+#appointmentWrapper {
+
+  &:focus-visible {
+    outline: none;
+  }
+
+}
+
+.app-date-picker--v2 {
+  .app-date-picker__link {
+    border: 1px solid $color_nhsuk-blue;
+  }
+}
+
+// Custom CSS for appointment labels
+.app-label--flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 80px;
+
+  @include mq($until: tablet) {
+    gap: 8px;
+  }
+}
+
+.app-label--full-width {
+  width: 100%;
+}
+
+// Pagination
+// nhsuk-list is overriding style and adding margin bottom 8px to li
+.nhsuk-pagination-item--previous,
+.nhsuk-pagination-item--next {
+  margin-bottom: 0 !important;
+}
+
+.app-pagination__title--small {
+  @include mq($until: tablet) {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}

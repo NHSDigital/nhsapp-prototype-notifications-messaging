@@ -1,0 +1,26 @@
+{% extends 'layout-app-not-signed-in.html' %}
+
+{% set pageHeading = "You need to update the NHS App" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-u-margin-bottom-5">{{ pageHeading }}</h1>
+
+      <p>You will not be able to use it until you do.</p>
+
+      {{ button({
+        text: "Update the NHS App",
+        classes: "nhsapp-button nhsapp-button--secondary"
+      }) }}
+
+      {% include "pages/error-pages/medical-note.html" %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

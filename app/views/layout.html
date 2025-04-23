@@ -1,0 +1,82 @@
+<!-- CUSTOM NHS APP PROTOTYPE COMPONENTS -->
+{% from 'components/dynamic-page-title/macro.njk' import dynamicPageTitle %}
+{% from 'components/interruption-card/macro.njk' import interruptionCard %}
+{% from 'components/related-content-card/macro.njk' import relatedContentCard %}
+
+<!-- NHS APP FRONTEND COMPONENTS -->
+{% from "nhsapp/components/badge/small/macro.njk" import nhsappBadgeSmall %}
+{% from "nhsapp/components/badge/large/macro.njk" import nhsappBadgeLarge %}
+{% from "nhsapp/components/card/macro.njk" import nhsappCardGroup %}
+{% from "nhsapp/components/card/macro.njk" import nhsappCard %}
+{% from "nhsapp/styles/section-heading/macro.njk" import nhsappSectionHeading %}
+{% from "nhsapp/styles/icon/macro.njk" import nhsappIcon %}
+{% from "nhsapp/components/tag/macro.njk" import nhsappTag %}
+{% from "nhsapp/components/timeline/macro.njk" import nhsappTimeline %}
+{% from "nhsapp/components/panel/macro.njk" import nhsappPanel %}
+
+<!-- 
+  This is the main layout where you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+{% block head %}
+  <link rel="manifest" href="/manifest.json">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS App prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "App prototype",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/",
+        "label": "Home"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhs-app-redesign-prototype",
+        "label": "GitHub repo"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

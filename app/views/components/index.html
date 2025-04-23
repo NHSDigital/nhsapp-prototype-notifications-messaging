@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% set pageHeading = "Components" %}
+{% set pageDescription = "Components available to use in the NHS App prototype." %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>{{ pageHeading }}</h1>
+
+      <p>In the NHS App prototype you can use all components from the:</p>
+      <ul clas="nhsuk-list">
+        <li>
+          <a href="https://service-manual.nhs.uk/design-system">NHS design system</a>
+        </li>
+        <li>
+          <a href="https://design-system.nhsapp.service.nhs.uk/components/">NHS App design system</a>
+        </li>
+      </ul>
+
+      <h2>V0 components</h2>
+
+      <p>You can also use components that exist in the old component library but will be either updated or deprecated soon.</p>
+
+      <ul clas="nhsuk-list">
+        <li>
+          <a href="/components/campaign-card/">Campaign card</a>
+        </li>
+        <li>
+          <a href="/components/dynamic-page-title/">Dynamic page title</a>
+        </li>
+        <li>
+          <a href="/components/interruption-card/">Interruption card</a>
+        </li>
+        <li>
+          <a href="/components/link-with-icon/">Link with an icon</a>
+        </li>
+        <li>
+          <a href="/components/provider-banner/">Provider Banner</a>
+        </li>
+        <li>
+          <a href="/components/related-content-card/">Related content card</a>
+        </li>
+        <li>
+          <a href="/components/switch-profile-banner/">Switch profile banner</a>
+        </li>
+      </ul>
+
+      <h2>Experimental components</h2>
+
+      <p>These are components not in the design system but you can experiment with for usability testing.</p>
+
+      <ul clas="nhsuk-list">
+        <li>
+          <a href="/components/account-card/">Account card</a>
+        </li>
+        <li>
+          <a href="/components/section-breaks/">Section break (divider line)</a>
+        </li>
+      </ul>
+
+      <h2>Native components</h2>
+
+      <p>These are native components that have been built in HTML for testing purposes.</p>
+
+      <ul clas="nhsuk-list">
+        <li>
+          <a href="/components/global-navigation-native/">Top navigation (native)</a>
+        </li>
+        <li>
+          <a href="/components/app-bottom-navigation/">Bottom nav (native)</a>
+        </li>
+      </ul>
+
+      <h2>Component backlog</h2>
+
+      <p>A place for discussing design components and patterns in the NHS App design system, and possible future additions.</p>
+
+      <p><a href="https://github.com/orgs/nhsuk/projects/8">View component backlog (on GitHub)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

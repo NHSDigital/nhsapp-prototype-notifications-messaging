@@ -1,0 +1,19 @@
+// Link
+.app-link {
+  @include nhsuk-typography-responsive(19);
+}
+
+.nhsuk-link--no-visited-state {
+  .nhsuk-icon {
+    fill: currentColor !important;
+  }
+}
+
+.app-link--with-icon-bold {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

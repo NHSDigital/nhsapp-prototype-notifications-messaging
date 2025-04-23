@@ -1,0 +1,34 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/message-sending" %}
+
+{% set pageHeading = "Cannot send your reply" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        classes: "nhsuk-u-margin-bottom-5"
+      })}}
+
+      <p>There was a technical problem. This might be temporary.</p>
+
+      <form method="post" action="/pages/messages/message-sending">
+        <input type="hidden" name="messageSendingError" value="false">
+        {{ button({
+          text: "Try again",
+          classes: "nhsapp-button--secondary nhsapp-button"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}
