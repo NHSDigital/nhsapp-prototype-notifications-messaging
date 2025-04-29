@@ -61,28 +61,32 @@ console.log(request.session.data);
 
       <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 
-      {% if is3Flagged %}
-      <form id="unflag-form3" action="/unflag3" method="POST" style="display: none;"></form>
+      {% if is3Flagged and is3Removed %}
+        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+          Restore message
+        </a>
+      {% elif is3Flagged %}
+        <form id="unflag-form3" action="/unflag3" method="POST" style="display: none;"></form>
         <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form3').submit(); return false;">
           Unflag message
         </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+          Remove message
+        </a>
+      {% elif is3Removed %}
+        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+          Restore message
+        </a>
       {% else %}
-      <form id="flag-form3" action="/flag3" method="POST" style="display: none;"></form>
+        <form id="flag-form3" action="/flag3" method="POST" style="display: none;"></form>
         <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form3').submit(); return false;">
           Flag message
         </a>
-      {% endif %}
-  
-      <div class="nhsuk-u-padding-bottom-5"></div>
-
-      {% if is3Removed %}
-      <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
-        Restore message
-      </a>
-      {% else %}
-      <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
-        Remove message
-      </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+          Remove message
+        </a>
       {% endif %}
 
     </div>
