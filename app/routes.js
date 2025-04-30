@@ -26,6 +26,8 @@ router.use('/', (req, res, next) => {
 });
 
 
+// For Accessibility testing, copy from here
+
 // Flagging a message
 router.post('/flag1', function(request, response) {
     request.session.data['message1-flagged'] = true;
@@ -170,6 +172,8 @@ router.get('/pages/messages/removed-messages', function(req, res) {
         query: req.query
     });
 });
+
+// For accessibility testing, copy to here
 
 // GP Appointments - Appointment type
 router.post('/pages/services/gp-appointment-type-answer', function (req, res) {

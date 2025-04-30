@@ -132,7 +132,7 @@ console.log(request.session.data);
                   </span>
                 {% endif %}
                 <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  29 Apr 2025
+                  1:02pm
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -144,14 +144,14 @@ console.log(request.session.data);
                 <a href="#1" onclick="document.getElementById('message1').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
                   {% if data['message1read'] === "true" %}
                   <span class="nhsuk-u-visually-hidden">Read message from </span>
-                  Portland Street Great Westood Surgery
+                    Portland Street Great Westood Surgery
                   {% else %}
                     <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
                       <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
                       <span class="nhsuk-u-visually-hidden">Unread message from </span>
                     </span>Portland Street Great Westood Surgery
                   {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> Sent 29 April 2025 at 11:22am </span> 
+                  <span class="nhsuk-u-visually-hidden"> received today at 1:02pm</span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
@@ -183,7 +183,7 @@ console.log(request.session.data);
                   </span>
                 {% endif %}
                 <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  28 Apr 2025
+                  Thursday
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -198,20 +198,20 @@ console.log(request.session.data);
                 <a href="#2" onclick="document.getElementById('message2').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
                   {% if data['message2read'] === "true" %}
                   <span class="nhsuk-u-visually-hidden">Read message from </span>
-                  Wilburton Surgery
+                    Range surgery
                   {% else %}
                     <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
                       <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
                       <span class="nhsuk-u-visually-hidden">Unread message from </span>
-                    </span>Wilburton Surgery
+                    </span>Portland Street Great Westood Surgery
                   {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> Sent 28 April 2025 at 09:41am </span> 
+                  <span class="nhsuk-u-visually-hidden"> received on Thursday at 2:45pm </span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  This is a reminder about your upcoming blood test appointment.
+                  Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we would like to ask you a few questions about smoking. 
                 </p>
               </div>
             </div>
