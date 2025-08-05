@@ -1,11 +1,11 @@
-{% extends 'layout-app.html' %}
+{% extends 'layout-app-rnib.html' %}
 
 console.log(request.session.data);
 
 {% set hub = "Messages" %}
 
 {% set backLink = true %}
-{% set backLinkURL = "/pages-u/messages/your-messages" %}
+{% set backLinkURL = "/pages-rnib/messages/your-messages" %}
 
 {% set pageHeading = "Portland Street Great Westood Surgery" %}
 {% set pageDescription = "Sent 29 April 2025 at 11:22am" %}
@@ -35,7 +35,7 @@ console.log(request.session.data);
   <td class="nhsuk-table__cell"></td>
   <td class="nhsuk-table__cell">
     {% if tagToUse.nhsappTag %}
-      <span class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
+      <span role="tooltip" class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
         {{ tagToUse.nhsappTag.text }}
       </span> 
     {% endif %}
@@ -61,29 +61,29 @@ console.log(request.session.data);
     <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 
     {% if is1Flagged and is1Removed %}
-      <a href="/pages/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
+      <a role="button" href="/pages-rnib/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
         Restore message
       </a>
     {% elif is1Flagged %}
       <form id="unflag-form" action="/unflag1" method="POST" style="display: none;"></form>
-      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form').submit(); return false;">
+      <a role="button" href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form').submit(); return false;">
         Unflag message
       </a>
       <div class="nhsuk-u-padding-bottom-5"></div>
-      <a href="/pages/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
+      <a role="button" href="/pages-rnib/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
         Remove message
       </a>
     {% elif is1Removed %}
-      <a href="/pages/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
+      <a role="button" href="/pages-rnib/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
         Restore message
       </a>
     {% else %}
       <form id="flag-form" action="/flag1" method="POST" style="display: none;"></form>
-      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form').submit(); return false;">
+      <a role="button" href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form').submit(); return false;">
         Flag message
       </a>
       <div class="nhsuk-u-padding-bottom-5"></div>
-      <a href="/pages/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
+      <a role="button" href="/pages-rnib/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
         Remove message
       </a>
     {% endif %}

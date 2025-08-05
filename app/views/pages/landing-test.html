@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% set hub = "Messages" %}
+
+{% block content %}
+
+<h1 class="nhsuk-heading-xl">Log in to view your NHS App message</h1>
+<p class="nhsuk-body">Use this service to read messages from the NHS about your healthcare.</p>
+
+{{ insetText({
+  html: "<p>We may need to send you a security code on your mobile phone, so you can log in.</p>"
+}) }}
+
+{{ button({
+  text: "Save and continue"
+}) }}
+
+<h2 class="nhsuk-heading-l">Download the NHS App</h2>
+<p class="nhsuk-body">You can also download the NHS App on your smartphone or tablet.</p>
+
+{{ button({
+  text: "Save and continue"
+}) }}
+
+{{ button({
+  text: "Save and continue"
+}) }}
+
+<h2 class="nhsuk-heading-l">For health information</h2>
+<p class="nhsuk-body">To find out more about conditions, symptoms, treatments and how to get help, without logging in:</p>
+{{ actionLink({
+  text: "Find your nearest A&E",
+  href: "#"
+}) }}
+
+{% endblock %}

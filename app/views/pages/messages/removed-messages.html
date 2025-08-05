@@ -24,6 +24,10 @@ console.log(request.session.data);
     <ul class="nhsapp-cards nhsapp-cards--stacked">
       {% if "Unread" in data['message-status'] and data['message1read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message1read'] === "true" %}
       {% if "Portland Street Great Westood Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+
+      {% if not is1Removed and not is2Removed and not is3Removed and not is4Removed %}
+      <p>You have no removed messages</p>
+      {% endif %}
       
       {% if is1Removed %}
       <!-- MESSAGE 1 -->

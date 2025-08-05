@@ -61,7 +61,7 @@ console.log(request.session.data);
     <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 
     {% if is1Flagged and is1Removed %}
-      <a href="/pages/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
+      <a href="/pages-u/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
         Restore message
       </a>
     {% elif is1Flagged %}
@@ -70,11 +70,11 @@ console.log(request.session.data);
         Unflag message
       </a>
       <div class="nhsuk-u-padding-bottom-5"></div>
-      <a href="/pages/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
+      <a href="/pages-u/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
         Remove message
       </a>
     {% elif is1Removed %}
-      <a href="/pages/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
+      <a href="/pages-u/messages/message-1-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message').submit(); return false;">
         Restore message
       </a>
     {% else %}
@@ -83,7 +83,7 @@ console.log(request.session.data);
         Flag message
       </a>
       <div class="nhsuk-u-padding-bottom-5"></div>
-      <a href="/pages/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
+      <a href="/pages-u/messages/message-1-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message').submit(); return false;">
         Remove message
       </a>
     {% endif %}

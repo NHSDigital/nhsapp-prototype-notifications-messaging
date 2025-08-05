@@ -5,7 +5,7 @@ console.log(request.session.data);
 {% set hub = "Messages" %}
 
 {% set backLink = true %}
-{% set backLinkURL = "/pages/messages-" + data['accountType'] %}
+{% set backLinkURL = "/pages-u/messages-" + data['accountType'] %}
 
 {% set pageHeading = "Your messages" %}
 
@@ -66,7 +66,7 @@ console.log(request.session.data);
       })}}
 
       <div class="nhsapp-section-heading nhsuk-u-margin-bottom-5" style="align-items: center;">
-        <a href="/pages/messages/message-filters" class="app-link app-link--with-icon nhsuk-link--no-visited-state nhsuk-u-margin-bottom-0">
+        <a href="/pages-u/messages/message-filters" class="app-link app-link--with-icon nhsuk-link--no-visited-state nhsuk-u-margin-bottom-0">
           <svg class="app-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.3302 7.19995H3.66016C3.52209 7.19995 3.41016 7.31188 3.41016 7.44995V8.46995C3.41016 8.60802 3.52209 8.71995 3.66016 8.71995H20.3302C20.4682 8.71995 20.5802 8.60802 20.5802 8.46995V7.44995C20.5802 7.31188 20.4682 7.19995 20.3302 7.19995Z" />
             <path d="M17.6598 11.24H6.33984C6.20177 11.24 6.08984 11.3519 6.08984 11.49V12.51C6.08984 12.6481 6.20177 12.76 6.33984 12.76H17.6598C17.7979 12.76 17.9098 12.6481 17.9098 12.51V11.49C17.9098 11.3519 17.7979 11.24 17.6598 11.24Z" />
@@ -89,7 +89,7 @@ console.log(request.session.data);
         </a>
         {% if data['message-sender'] == "" and data['message-status'] == "" %}
           {% else %}
-          <form id="form-clear" method="post" action="/pages/messages/your-messages" novalidate="novalidate">
+          <form id="form-clear" method="post" action="/pages-u/messages/your-messages" novalidate="novalidate">
             <input type="hidden" name="message-sender" value="">
             <input type="hidden" name="message-status" value="">
             {% if data['message-sender'] | length + data['message-status'] | length > 1 %}
@@ -136,7 +136,7 @@ console.log(request.session.data);
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
-              <form id="message1" method="post" action="/pages/messages/message-1">
+              <form id="message1" method="post" action="/pages-u/messages/message-1">
                 {% if data['message1read'] === "false" %}
                 <input type="hidden" name="message1read" value="true">
                 <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
@@ -187,7 +187,7 @@ console.log(request.session.data);
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
-              <form id="message2" method="post" action="/pages/messages/message-2">
+              <form id="message2" method="post" action="/pages-u/messages/message-2">
                 {% if data['message2read'] === "false" %}
                 <input type="hidden" name="message2read" value="true">
                 <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
@@ -240,7 +240,7 @@ console.log(request.session.data);
                   4 Oct 2023
                 </span>
               </div>
-              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/messages/message-3">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages-u/messages/message-3">
                 <span class="nhsuk-u-visually-hidden">Read message from </span>
                 Hughenden Valley Surgery
                 <span class="nhsuk-u-visually-hidden"> received 4 October 2023 at 6:30pm</span> 
@@ -277,7 +277,7 @@ console.log(request.session.data);
                   18 Sep 2023
                 </span>
               </div>
-              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/messages/message-4">
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages-u/messages/message-4">
                 <span class="nhsuk-u-visually-hidden">Read message from </span>
                 NHS APP
                 <span class="nhsuk-u-visually-hidden"> received 18 September 2023 at 2:15pm </span> 
@@ -285,7 +285,7 @@ console.log(request.session.data);
               <div class="nhsapp-card__below">
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  Your next COVID-19 vaccination. I'd like to invite you to get your COVID-19 vaccination this spring.
+                  Getting started with your NHS App.
                 </p>
               </div>
             </div>
@@ -303,7 +303,7 @@ console.log(request.session.data);
       <div class="nhsapp-card">
         <div class="nhsapp-card__container">
           <div class="nhsapp-card__content">
-            <a href="/pages/messages/removed-messages" class="nhsapp-card__link nhsuk-link--no-visited-state">
+            <a href="/pages-u/messages/removed-messages" class="nhsapp-card__link nhsuk-link--no-visited-state">
               Removed messages
             </a>
           </div>

@@ -1,0 +1,85 @@
+{% extends 'layout-app-rnib.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages-rnib/messages" %}
+
+{% set pageHeading = "Get notifications for new messages?" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+      <!-- OPT-IN CONTAINER -->  
+      <div
+        style=
+          "width: 100vw;
+          position: fixed;
+          top: 0;
+          left: 0;"
+         >
+        <!-- BACKGROUND -->  
+        <div
+          aria-label="An image of a mobile phone with an example notification displayed, saying 'Your GP surgery, you have a new message"
+          role="img"
+          style=
+            "margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            min-height: 30vh;
+            background-color: #005EB8"
+          >
+          <!-- PHONE SVG -->
+          <img 
+            alt="phone"
+            src="/images/phone-icon.svg"
+            style=
+              "position: absolute;
+              height: 35vh;
+              width: auto;
+              left: 0;
+              bottom: 0;"
+            aria-hidden="true"
+          >
+          <!-- NOTIFICATION SVG -->
+          <img
+            alt="notification"
+            src="/images/notification.svg"
+            aria-hidden="true"
+            style=
+              "position: absolute;
+              top: 75%;
+              transform: translateY(-50%);"
+            >
+        </div>
+
+        <div class="nhsuk-grid-column-two-thirds">
+          <!-- DYNAMIC PAGE TITLE -->
+          {{ dynamicPageTitle({
+            title: pageHeading,
+            classes: "nhsuk-u-margin-bottom-5"
+          })}}
+
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>The NHS App is the most secure way to receive and manage messages.</li>
+            <li>Receive messages from your healthcare professionals instantly.</li>
+            <li>You can trust your message is always from the NHS.</li>
+          </ul>
+
+          <div class="nhsapp-button-group">
+          {{ button({
+            text: "Turn on notifications",
+            classes: "nhsapp-button",
+            href: "#"
+          }) }}
+          
+          <a href="#" class="nhsuk-link">Not now</a></div>
+      </div>
+
+      </div>
+
+  </div>
+
+  {% endblock %}
