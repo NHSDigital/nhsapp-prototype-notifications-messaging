@@ -1,0 +1,348 @@
+/* SMS Layout */
+
+  
+  /* App Container */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Android Styling */
+
+  #android-header {
+
+    .header-left {
+      display: flex;
+      flex-direction: row;
+      column-gap: 10px;
+      margin: 0;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .user-name {
+        padding: 0;
+      }
+
+      .sms-arrow {
+        width:100%;
+        padding-right:20px;
+      }
+    }
+  }
+
+   #android-container {
+    .incoming {
+      background-color: #fff;
+    }
+
+
+  
+    .message-caption {
+      max-width: 80%;
+      border-radius: 0 0 15px 15px;
+      border: 1px solid #b7b7b7;
+
+
+      .message-content {
+        padding: 10px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+
+    }
+
+    .message {
+      padding: 0;
+
+      .caption {
+        border-radius: 0 ;
+      }
+
+      .message-content {
+        padding: 10px;
+        background-color: #e5e5ea;
+        border-radius: 15px 15px 0 0 ;
+      }
+    }
+
+    .android-img {
+      width: 100%;
+      text-align: center;
+      background-color: #005eb8;
+      padding: 20px;
+
+      img {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+
+
+   .refresh {
+    .android-img {
+      width: 100%;
+      text-align: center;
+      background-color: #fff;
+      margin-top: 10px;
+      padding: 0;
+      border-radius: 15px;
+
+        img {
+          width: 30px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        p {
+          font-weight: normal;
+        }
+      }
+    }
+   }
+
+
+  /* Header Styling */
+
+  .header {
+    background-color: #EFEFEF;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .header-left img{
+    margin: 0 auto;
+  }
+  
+  .avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .user-name {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+  
+  .header-right {
+    font-size: 20px;
+  }
+  
+  .info-button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #007aff;
+    cursor: pointer;
+  }
+  
+  /* Message Container Styling */
+  .messages-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+  
+  .message-title p{
+    font-size: 12px;
+    text-align: center;
+    color: #757575;
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  
+  .message-preview {
+    max-width: 80%;
+    padding: 10px;
+  }
+  
+  .message-img {
+    background-color: #005eb8 !important;
+    border-radius: 15px 15px 0 0;
+    
+    .message-content{
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+    }
+
+    img {
+      width: 150px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
+  .message-caption {
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
+    
+    .message-content{
+      font-size: 12px;
+    }
+
+    span {
+      font-weight: normal;
+      color: #757575;
+    }
+  }
+  
+  .message p{
+    font-size: 14px;
+  }
+  
+  .incoming {
+    align-self: flex-start;
+    background-color: #e5e5ea;
+  }
+  
+  .outgoing {
+    align-self: flex-end;
+    background-color: #007aff;
+    color: white;
+  }
+  
+  /* Input Container Styling */
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+  }
+  
+  .message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .send-button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .message {
+      font-size: 14px;
+    }
+  
+    .message-input {
+      font-size: 14px;
+    }
+  
+    .send-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+
+
+.nhsuk-tabs {
+  background-color: #EFEFEF;
+}
+
+// .nhsuk-tabs__list-item {  
+//   background-color: #EFEFEF;
+//     float: none;
+//     margin: 0 auto;
+//     padding: 8px 24px;
+//     position: relative;
+//     text-align: center;
+//     display: table-cell;
+// }
+
+
+
+.nhsuk-tabs__list-item:before {
+  color: #212b32;
+  content: none;
+  /* margin-left: -32px; */
+  padding-right: 4px;
+}
+
+.nhsuk-tabs__list-item {
+    background-color: #EFEFEF;
+    float: none;
+    margin: 0 auto;
+    padding: 8px 24px;
+    position: relative;
+    text-align: center;
+    display: table-cell;
+
+    a {
+      text-decoration: none;
+    }
+}
+
+.nhsuk-tabs__list-item--selected {
+  background-color: #ffffff;
+  border: 1px solid #d8dde0;
+  border-bottom: 0;
+  margin-bottom: -1px;
+  margin-top: -4px;
+  padding-bottom: 13px;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 11px;
+  position: relative;
+}

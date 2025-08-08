@@ -1,0 +1,89 @@
+
+/* App promo */
+
+.login_nhs-app-mobile-show {
+    display: none;
+}
+
+@media (max-width: 769px) {
+    .login_nhs-app-mobile-hide {
+        display: none;
+    }
+}
+
+@media (max-width: 769px) {
+    .login_nhs-app-mobile-show {
+        display: block;
+        margin-bottom: 36px;
+    }
+}
+
+/* Custom buttons */
+
+.nhsuk-button--blue {
+    background-color: #005EB8;
+    box-shadow: 0 4px 0 rgb(0, 47, 92);
+}
+
+/* Error Messaging */
+
+.error {
+    display: none;
+}
+
+#email-error {
+    display: none;
+}
+
+#password-error {
+    display: none;
+}
+
+#password-error2 {
+    display: none;
+}
+
+.notify-button {
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+
+    .nhsapp-button {
+        margin: 0;
+    }
+}
+
+.login-manual {
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    bottom: 50px;
+
+    .nhsuk-button:visited {
+        color: #212b32;
+    }
+}
+
+
+.app-login-wrapper .nhsuk-main-wrapper {
+    height: 90vh;
+    margin: auto 0;
+    position: relative;
+}
+
+.nhsapp-badge-small--absolute .nhsapp-badge-small__indicator {
+    left: -24px;
+    background-color: #d5281b;
+}
+
+
+
+
+
+
+

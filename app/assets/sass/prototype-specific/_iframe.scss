@@ -1,0 +1,269 @@
+$phone-width: 450px;
+$phone-height: 952px;
+$phone-border-width: 12px;
+$phone-border-radius: 54px;
+$notch-height: 31px;
+$header-height: 44px;
+$phone-background-color: $color_nhsuk-grey-5;
+$bottom-nav-height: 80px; // Adjust this value to match your bottom navigation height
+$phone-inner-radius: $phone-border-radius - $phone-border-width;
+$page-background: #fff; // a bit lighter than normal to stand out against phone page background.
+
+html:has(.app-iframe__page){
+  background-color: $page-background;
+}
+
+.iframe {
+  @include mq($from: tablet) {
+    position: relative;
+    background-color: $phone-background-color;
+    margin: 60px auto !important;
+    display: flex;
+    align-items: center;
+    height: $phone-height;
+    width: $phone-width;
+    border: $phone-border-width solid black;
+    border-radius: $phone-border-radius;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: 0px 2px 8px rgba(2, 8, 20, 0.2), 0px 8px 16px rgba(2, 8, 20, 0.2);
+    
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    .nhsuk-tabs__list-item {
+      float: none;
+  }
+
+    .nhsuk-header__navigation-list {
+      justify-content: flex-start;
+      gap: 0;
+      margin: 0 16px;
+    }
+
+      nav div > ul li[data-v-13bcd11a] {
+        flex-grow: 0;
+      }
+
+      header .WebHeader_header-content_pzc7e a.WebHeader_mini-menu-toggler_iFxcZ[data-v-2907a3a6] {
+        float: right;
+        margin-top: .8em;
+        display: inline-block;
+        font-family: FrutigerLTW01-55Roman,sans-serif,Arial;
+        font-weight: 700;
+        line-height: 2em;
+        color: #fff;
+        font-size: 1.125em;
+        border: 1px solid #fff;
+        border-radius: .5em;
+        padding: .125em .8em;
+        margin-left: 1em;
+        cursor: pointer
+    }
+
+    header .WebHeader_header-content_pzc7e a.WebHeader_mini-menu-toggler_iFxcZ[data-v-2907a3a6]:focus {
+      box-shadow: 0 0 0 4px #ffeb3b
+  }
+
+  header .WebHeader_header-content_pzc7e a.WebHeader_mini-menu-toggler_iFxcZ[data-v-2907a3a6]:hover {
+      background: #003d78;
+      box-shadow: 0 0 0 4px #ffeb3b;
+      text-decoration: none
+  }
+
+  header .WebHeader_menuButton_DYQ_7[data-v-2907a3a6] {
+    margin-right:0
+}
+nav[data-v-13bcd11a] {
+  background:#fff
+}
+
+nav hr[data-v-13bcd11a] {
+  display: none
+}
+
+nav .HeaderMenu_menu-nojs-caption_GZHaZ[data-v-13bcd11a] {
+  padding: 1em .8em 1em 1em;
+  display: block;
+  border-bottom: 1px solid #f0f4f5;
+  color: #212b32;
+  cursor: pointer;
+  cursor: default
+}
+
+
+
+
+
+
+
+      .nhsuk-header {
+        width: 100%;
+      }
+
+      .nhsuk-header__container {
+        margin: 0 20px;
+      }
+
+      .nhsuk-mobile-menu-container--visible {
+        display: block;
+      }
+
+      .nhsuk-width-container {
+        margin: 0 32px;
+        height: auto;
+      }
+
+      .message-container {
+        height: 100%;
+      }
+
+      .HeaderLinks_header-links_Sx73j[data-v-3e6c377a] {
+        float: right;
+        display: none;
+     }
+      .app-global-navigation-native {
+        position: relative;
+      }
+       
+      .app-bottom-navigation {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .app-card-link--full-width {
+        display: block;
+      }
+
+      .app-main-wrapper {
+        padding: 0;
+    }
+
+    .app-login-wrapper {
+      width: 100%;
+      height: 110vh;
+      min-height: 740px;
+  }
+
+    // .message-padding {
+    //   // height: 60vh;
+    //   // position: relative;
+    // }
+    
+      footer {
+        width: 100%;
+        
+        .nhsuk-footer-container {
+          
+          position: absolute;
+          width: 100%;
+        }
+        
+        .nhsuk-footer {
+          flex-direction: column;
+    
+          .nhsuk-footer__list {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      
+      .password {
+        height: 60vh;
+      }
+
+
+    }
+  }
+  
+
+.app-iframe__page {
+  background-color: $page-background;
+}
+
+.app-iframe__header {
+  // background-color: $phone-background-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  z-index: 1;
+  
+}
+
+.app-iframe__container {
+  position: relative;
+  background-color: $phone-background-color;
+  margin: 60px auto !important;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  height: $phone-height;
+  width: $phone-width;
+  border: $phone-border-width solid black;
+  border-radius: $phone-border-radius;
+  background-size: contain;
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 8px rgba(2, 8, 20, 0.2), 0px 8px 16px rgba(2, 8, 20, 0.2);
+  
+  flex-direction: column;
+  overflow-x: auto;
+  overflow-y: auto;
+
+
+  
+
+  .nhsuk-header {
+    width: 100%;
+  }
+
+  iframe {
+    height: calc(100% - #{$notch-height});
+    width: 100%;
+    border: none;
+    // border-radius: $phone-inner-radius;
+    border-radius: 0;
+    position: absolute;
+    top: $notch-height;
+    left: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    &::-webkit-scrollbar {
+      display: none;  /* Chrome, Safari and Opera */
+    }
+  }
+
+  .ios-notch {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 219px;
+    height: $notch-height;
+    z-index: 10;
+    fill: black;
+  }
+
+  .nhsuk-header__container {
+    margin: 20px 0 0 32px;
+  }
+
+  footer {
+    width: 100%;
+    
+    .nhsuk-footer {
+      flex-direction: column;
+
+      .nhsuk-footer__list {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+}
