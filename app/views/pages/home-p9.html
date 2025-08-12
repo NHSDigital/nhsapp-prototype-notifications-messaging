@@ -16,6 +16,23 @@
         nhsNumber: data['nhsNumber']
       })}}
 
+      {{ nhsappSectionHeading({
+        headingText: "Prototype admin",
+        linkText: "View all",
+        linkUrl: "#",
+        linkAriaLabel: "Blank link"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Return to prototype menu",
+            href: "/research-192/index"
+          }
+        ]
+      }) }}
+
       <!-- SECTION - SERVICES -->
       {{ nhsappSectionHeading({
         headingText: "Services",

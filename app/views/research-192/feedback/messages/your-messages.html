@@ -81,6 +81,38 @@ console.log(request.session.data);
 
       <ul class="nhsapp-cards nhsapp-cards--stacked">
 
+        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
+        {% if "The Range Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+
+        {% if is3Removed %}
+        {% else %}
+        <!-- MESSAGE 3 -->
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
+                  10 Aug 2025
+                </span>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="message-3">
+                <span class="nhsuk-u-visually-hidden">Read message from </span>
+                The Range Surgery
+                <span class="nhsuk-u-visually-hidden"> received 10 Aug 2025 at 6:30pm</span> 
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
+                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  Dear Kyle, The surgery car park is closed for the next couple of days due to flooding. We will reopen our car park on 15 August 2025.
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
         {% if "Unread" in data['message-status'] and data['message1read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message1read'] === "true" %}
         {% if "Wilburton Surgery" in data['message-sender'] or data['message-sender'] == "" %}
         
@@ -167,38 +199,6 @@ console.log(request.session.data);
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
                   The pharmacy has updated the progress of your prescription. This means that one or more of your prescriptions are ready to collect.
-                </p>
-              </div>
-            </div>
-          </div>
-        </li>
-        {% endif %}
-        {% endif %}
-        {% endif %}
-
-        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
-        {% if "The Range Surgery" in data['message-sender'] or data['message-sender'] == "" %}
-
-        {% if is3Removed %}
-        {% else %}
-        <!-- MESSAGE 3 -->
-        <li class="nhsapp-card">
-          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
-            <div class="nhsapp-card__content">
-              <div class="nhsapp-card__above">
-                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
-                  4 Jul 2025
-                </span>
-              </div>
-              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="message-3">
-                <span class="nhsuk-u-visually-hidden">Read message from </span>
-                The Range Surgery
-                <span class="nhsuk-u-visually-hidden"> received 4 July 2025 at 6:30pm</span> 
-              </a>
-              <div class="nhsapp-card__below">
-                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
-                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  Your NHS Health Check results are ready.
                 </p>
               </div>
             </div>

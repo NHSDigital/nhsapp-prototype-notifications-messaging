@@ -201,5 +201,11 @@ router.post('/pages-rnib/services/gp-appointment-invite-answer', function (req, 
   }
 })
 
+// Clear all data in session if you open /examples/passing-data/clear-data
+app.post('/return-clear-data', (req, res) => {
+  req.session.data = {};
+  res.render('clear-data-success');
+});
+
 
 module.exports = router;
