@@ -7,8 +7,8 @@ console.log(request.session.data);
 {% set backLink = true %}
 {% set backLinkURL = "your-messages" %}
 
-{% set pageHeading = "Boots Pharmacy" %}
-{% set pageDescription = "Sent 28 July 2025 at 09:41am" %}
+{% set pageHeading = "Wilburton Surgery" %}
+{% set pageDescription = "Sent 5 August 2025 at 09:41am" %}
 
 {% block content %}
 
@@ -25,8 +25,13 @@ console.log(request.session.data);
       })}}
 
       <div class="nhsuk-u-margin-bottom-7">
-        <p>The pharmacy has updated the progress of your prescription. This means that one or more of your prescriptions are ready to collect.</p>
-        <a href="#" class="nhsuk-link">Find out which medicines are ready.</a>
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li><strong>Date:</strong> 17th August 2025</li>
+          <li><strong>Time:</strong> 9:45am</li>
+          <li><strong>Location:</strong> Orange Clinic, Wilburton<br>Surgery, Leeds, AB1 CD2</li>
+        </ul>
+        <p>You must arrive 15 minutes before your appointment to allow your heart rate to stabilise before your test.</p>
       </div>
 
       <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
