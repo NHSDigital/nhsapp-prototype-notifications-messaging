@@ -79,8 +79,50 @@ console.log(request.session.data);
 
       {% else %}
 
-      <ul class="nhsapp-cards nhsapp-cards--stacked">
+      <!-- Opt-In Banner -->
+      <div class="nhsapp-card" style="background-color: #330072; color: white;">
 
+        <div class="nhsapp-card__container nhsuk-u-padding-bottom-4" style="align-items: start !important;">
+
+          <div style="width: auto;">
+            <img src="/images/bell-icon.svg" alt="bell icon" style="width: 32px; display: block; margin-left: 16px; margin-right: 16px; margin-top: 2px;" />
+          </div>
+
+          <div class="nhsapp-card__content">
+            <div class="nhsapp-card__above">
+              <h2 class="nhsuk-heading-s">Turn on app notifications</h2>
+              <p>To get alerted for new messages</p>
+            </div>
+          </div>
+
+          <div style="width: auto;">
+            <a href="your-messages">
+              <img src="/images/close-icon.svg" alt="close icon" style="width: 16px; display: block; margin-left: 16px; margin-right: 16px; margin-top: 4px;" />
+            </a>
+          </div>
+
+        </div>
+
+        <div class="nhsapp-card__container" style="padding-top: 0px;">
+
+          <!-- Space to align items -->
+          <div style="width: 64px;"></div>
+
+          <!-- Bottom section of banner -->
+          <div class="nhsapp-card__content">
+
+            <div class="nhsapp-card__below">
+              <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+              <a href="notification-settings" class="nhsuk-link nhsuk-link--reverse" style="color: white;">Go to notification settings</a>
+            </div>
+              
+          </div>
+        
+        </div>
+
+      </div>
+
+      <ul class="nhsapp-cards nhsapp-cards--stacked">
         {% if "Unread" in data['message-status'] and data['message1read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message1read'] === "true" %}
         {% if "Wilburton Surgery" in data['message-sender'] or data['message-sender'] == "" %}
         
