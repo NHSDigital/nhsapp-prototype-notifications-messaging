@@ -7,8 +7,8 @@ console.log(request.session.data);
 {% set backLink = true %}
 {% set backLinkURL = "your-messages" %}
 
-{% set pageHeading = "Boots Pharmacy" %}
-{% set pageDescription = "Sent 28 July 2025 at 09:41am" %}
+{% set pageHeading = "Liverpool Dock Surgery" %}
+{% set pageDescription = "Received 18 June 2025 at 2:15pm" %}
 
 {% block content %}
 
@@ -25,9 +25,10 @@ console.log(request.session.data);
       })}}
 
       <div class="nhsuk-u-margin-bottom-7">
-        <p>The pharmacy has updated the progress of your prescription. This means that one or more of your prescriptions are ready to collect.</p>
-        <a href="#" class="nhsuk-link">Find out which medicines are ready.</a>
-      </div>
+        <p>You are invited to take part in research to improve the lives of those living with diabetes.</p>
+        <p>You can <a class="nhsuk-link">register to be part of health research</a> or find more information at <a class="nhsuk-link">NHS DigiTrials</a>.</p>
+        <p>Yours sincerely,<br>NHS DigiTrials</p>
+      </div>  
 
       <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 
@@ -40,6 +41,13 @@ console.log(request.session.data);
       <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
         Remove message
       </a>
+
+      <div class="nhsuk-u-margin-bottom-7" id="feedback-section">
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2 nhsuk-u-margin-bottom-5">
+        <h2 class="nhsuk-heading-xs">Thank you for your feedback</h2>
+        <p>You may still get messages like this in the future.</p>
+        <p>To help us improve the NHS App, we'd like to know more about why you did not find your message useful. <a href="#" class="nhsuk-link">Please fill in this survey (opens in a new tab).</a></p>
+      </div>
 
     </div>
   </div>

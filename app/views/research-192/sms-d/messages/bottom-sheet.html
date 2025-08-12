@@ -208,55 +208,52 @@ console.log(request.session.data);
         {% endif %}
         {% endif %}
 
-        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
-        {% if "Liverpool Dock Surgery" in data['message-sender'] or data['message-sender'] == "" %}
-
-        {% if is4Removed %}
-        {% else %}
-        <!-- MESSAGE 4 -->
-        <li class="nhsapp-card">
-          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
-            <div class="nhsapp-card__content">
-              <div class="nhsapp-card__above">
-                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
-                  18 Jun 2025
-                </span>
-              </div>
-              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="message-4">
-                <span class="nhsuk-u-visually-hidden">Read message from </span>
-                Liverpool Dock Surgery
-                <span class="nhsuk-u-visually-hidden"> received 18 June 2025 at 2:15pm </span> 
-              </a>
-              <div class="nhsapp-card__below">
-                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
-                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  You are invited to take part in research to improve the lives of those living with diabetes.
-                </p>
-              </div>
-            </div>
-          </div>
-        </li>
-        {% endif %}
-        {% endif %}
-        {% endif %}
-
       </ul>
       {% endif %}
 
-      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
-
-      <div class="nhsapp-card">
-        <div class="nhsapp-card__container">
-          <div class="nhsapp-card__content">
-            <a href="removed-messages" class="nhsapp-card__link nhsuk-link--no-visited-state">
-              Removed messages
-            </a>
-          </div>
-          <svg class="nhsapp-icon nhsapp-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" height="2rem" width="2rem" viewBox="0 0 24 24" > <path d="M8.82 19.11a.97.97 0 0 1-.72-.31.996.996 0 0 1 .03-1.41l5.61-5.38-5.6-5.25c-.4-.38-.42-1.01-.05-1.41.38-.4 1.01-.42 1.41-.05l6.37 5.97c.2.19.31.45.32.72s-.11.54-.31.73l-6.37 6.11c-.19.19-.44.28-.69.28Z" /> </svg>
-        </div>
-      </div>
-
     </div>
   </div>
+
+  <!-- Bottom sheet overlay -->
+<div style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+"></div>
+
+<!-- Bottom sheet -->
+<div style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #F0F4F5;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 9999;">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state nhsuk-u-padding-bottom-5" style="text-decoration: none;">Close</a>
+        <img src="/images/notification-graphic.svg" class="nhsuk-u-padding-bottom-5" alt="Graphic showing a mobile phone and a notification from the NHS App." style="width: 162px; display: block; margin: 16px auto; height: auto;" />
+        <h1 class="nhsuk-heading-l" style="margin-left: 14px; margin-right: 14px;">Get new message alerts</h1>
+        <p class="nhsuk-body nhsuk-u-padding-bottom-5" style="margin-left: 14px; margin-right: 14px;">Turn on notifications to see messages faster.</p>
+        <!-- Button Group-->
+        <div class="nhsapp-button-group" style="margin-left: 14px; margin-right: 14px;">
+          <a href="notification-settings" class="nhsuk-button nhsapp-button" data-module="nhsuk-button" type="submit">Go to notification settings</a>
+          <a href="your-messages" class="nhsuk-link">Not now</a>
+        </div>
+      </div>
+    </div>
+</div>
 
   {% endblock %}

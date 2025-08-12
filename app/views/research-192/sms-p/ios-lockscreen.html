@@ -1,0 +1,19 @@
+{% extends 'layout-ios-locked-screen.html' %}
+
+{% block content %}
+    
+  <a id="ios-notification" class="ios-notification" href="sms-1">
+    <img class="ios-notification-icon" src='/images/message_logo.png' alt="">
+    <div class="ios-notification-message">
+      <div class="ios-notification-app">NHSApp</div>
+      <div class="ios-notification-content">
+        <p class="nhsuk-body-s">You have new message.</p>
+      </div>
+    </div>
+    <div class="ios-notification-time">now</div>
+  </a>
+
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
