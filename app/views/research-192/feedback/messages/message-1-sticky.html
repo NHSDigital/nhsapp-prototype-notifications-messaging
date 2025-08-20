@@ -1,0 +1,62 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "The Range Surgery" %}
+{% set pageDescription = "Sent 10 August 2025 at 11:22am" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>Dear Kyle,</p>
+        <p>The Surgery car park is closed for the next couple of days due to flooding. We will reopen our car park on 15 August 2025.</p>
+        <p>Please use other forms of transport if your appointment is before the 15 August 2025.</p>
+        <p>If you are unable to attend your appointment contact us to rearrange.</p>
+        <p>The Range Surgery</p>
+        
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+  </div>
+  <div style="position: fixed; left: 0; right: 0; bottom: 90px; width: 100%; z-index: 999; background: #fff; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+    <div style="padding: 16px;">
+      <h2 class="nhsuk-heading-xs">Was this message useful?</h2>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div style="display: flex; gap: 12px;">
+            <a href="message-1-feedback-yes-sticky#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">Yes</a>
+            <a href="message-1-feedback-no-sticky#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
