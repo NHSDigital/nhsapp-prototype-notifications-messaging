@@ -1,0 +1,35 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Access Accurx Services" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading
+    })}}
+
+    <div class="nhsuk-u-margin-bottom-7">
+      <p>Your GP surgery has chosen <strong>Accurx</strong> to provide this service. Use it to: </p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>Make changes to your appointment</li>
+        <li>Cancel your appointment</li>
+      </ul>
+    </div>
+
+    <button class="nhsuk-button nhsapp-button" data-module="nhsuk-button" type="submit">Start in Accurx</button>
+    <a href="#" class="nhsuk-link">Read the NHS App privacy policy for messaging services</a>
+
+  </div>
+</div>
+
+{% endblock %}

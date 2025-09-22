@@ -1,0 +1,60 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set pageHeading = "Your medicines have been requested" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ nhsappPanel({
+        titleText: pageHeading
+      }) }}
+
+      <p>Your request has been sent to your GP surgery for approval.</p>
+
+      <h2>What happens next</h2>
+
+      <p>Once approved, it can take 3 to 5 working days for a pharmacy to prepare your prescription.</p>
+
+      <!-- Opt-In Banner -->
+      <div class="nhsapp-card nhsuk-u-margin-top-6" style="background-color: #330072; color: white;">
+        <div class="nhsapp-card__container nhsuk-u-padding-bottom-4" style="align-items: start !important;">
+          <div style="width: auto;">
+            <img src="/images/bell-icon.svg" alt="bell icon" style="width: 24px; display: block; margin-left: 12px; margin-right: 12px; margin-top: 2px;" />
+          </div>
+          <div class="nhsapp-card__content">
+            <div class="nhsapp-card__above">
+              <h2 class="nhsuk-heading-s" style="margin-bottom: 4px;">Turn on app notifications</h2>
+              <p style="margin-bottom: 0px;">To get alerts for new messages</p>
+            </div>
+          </div>
+          <div style="width: auto;">
+            <a href="#">
+              <img src="/images/close-icon.svg" alt="close icon" style="width: 16px; display: block; margin-left: 12px; margin-right: 12px; margin-top: 6px;" />
+            </a>
+          </div>
+        </div>
+        <div class="nhsapp-card__container" style="padding-top: 0px;">
+
+          <!-- Space to align items -->
+          <div style="width: 48px;"></div>
+
+          <!-- Bottom section of banner -->
+          <div class="nhsapp-card__content">
+            <div class="nhsapp-card__below">
+              <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2" style="margin-top: 0px; margin-bottom: 12px">
+              <a href="notification-settings" class="nhsuk-link nhsuk-link--reverse" style="color: white;">Go to notification settings</a>
+            </div>
+          </div>
+        
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Beetwood Surgery" %}
+{% set pageDescription = "Sent today at 12:05pm" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
+
+    <div class="nhsuk-u-margin-bottom-7">
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li><strong>Date:</strong> 27th September 2025</li>
+          <li><strong>Time:</strong> 9:45am</li>
+          <li><strong>Location:</strong> Orange Clinic, Beetwood<br>Surgery, Leeds, AB1 CD2</li>
+        </ul>
+        <p>You must arrive 15 minutes before your appointment to allow your heart rate to stabilise before your test.</p>
+        <p>Manage your appointment through our trusted supplier, Accurx:</p>
+        <a href="https://www.accurx.com/" class="nhsuk-link">https://accurx.nhs.net/1234 (opens in a new tab)</a>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+    <div style="position: fixed; left: 0; right: 0; bottom: 90px; width: 100%; z-index: 999; background: #fff; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+      <div style="padding: 16px;">
+        <h2 class="nhsuk-heading-xs">Thank you for your feedback</h2>
+        <p>You may still get messages like this in the future.</p>
+        <p>To help us improve the NHS App, we'd like to know more about why you did not find your message useful. <a href="qualtrics-yes" class="nhsuk-link">Please fill in this survey (opens in a new tab).</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
