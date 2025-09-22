@@ -7,7 +7,7 @@ console.log(request.session.data);
 {% set backLink = true %}
 {% set backLinkURL = "your-messages" %}
 
-{% set pageHeading = "Access Accurx Services" %}
+{% set pageHeading = "Link to Accurx" %}
 
 {% block content %}
 
@@ -18,18 +18,76 @@ console.log(request.session.data);
       title: pageHeading
     })}}
 
-    <div class="nhsuk-u-margin-bottom-7">
-      <p>Your GP surgery has chosen <strong>Accurx</strong> to provide this service. Use it to: </p>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>Make changes to your appointment</li>
-        <li>Cancel your appointment</li>
-      </ul>
+    <div class="nhsuk-u-margin-bottom-9">
+      <p>Your GP surgery has chosen <strong>Accurx</strong> to provide this service.</p>
+      <p>We’ll need to pass on your data to Accurx if you want to open this link and use their services.</p>
     </div>
 
-    <button class="nhsuk-button nhsapp-button" data-module="nhsuk-button" type="submit">Start in Accurx</button>
-    <a href="#" class="nhsuk-link">Read the NHS App privacy policy for messaging services</a>
+    <button class="nhsuk-button nhsapp-button" data-module="nhsuk-button" type="submit">Continue in Accurx</button>
+    <a href="https://www.accurx.com/" class="nhsuk-link">Read the NHS App privacy policy for messaging services</a>
 
   </div>
 </div>
+
+{% endblock %}
+
+{% block footer %}
+
+<nav class="app-bottom-navigation" id="bottomNav" style="display:block">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <ul class="app-bottom-navigation__list">
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="home">
+            {% if hub === "Home" %}
+              {{ nhsappIcon('homeFilled') }}
+            {% else %}
+              {{ nhsappIcon('home') }}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Home' %}app-bottom-navigation__label--active{% endif %}">Home</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Services" %}
+              {{ nhsappIcon('crossFilled') }}
+            {% else %}
+              {{ nhsappIcon('cross') }}
+            {% endif %}        
+            <span class="app-bottom-navigation__label {% if hub === 'Services' %}app-bottom-navigation__label--active{% endif %}">Services</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Your health" %}
+              {{ nhsappIcon('heartFilled') }}
+            {% else %}
+              {{ nhsappIcon('heart') }}
+            {% endif %} 
+            <span class="app-bottom-navigation__label {% if hub === 'Your health' %}app-bottom-navigation__label--active{% endif %}">Your health</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="your-messages">
+            {% if hub === "Messages" %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnreadFilled') }}
+              {% else %}
+                {{ nhsappIcon('messagesFilled') }}
+              {% endif %}
+            {% else %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnread') }}
+              {% else %}
+                {{ nhsappIcon('messages') }}
+              {% endif %}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Messages' %}app-bottom-navigation__label--active{% endif %}">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 {% endblock %}
