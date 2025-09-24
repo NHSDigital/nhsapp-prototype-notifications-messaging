@@ -80,42 +80,36 @@ console.log(request.session.data);
       {% else %}
 
       <!-- Opt-In Banner -->
-      <div class="nhsapp-card" style="background-color: #330072; color: white;">
-
+      <div class="nhsapp-card nhsuk-u-margin-top-6" style="background-color: #330072; color: white;">
         <div class="nhsapp-card__container nhsuk-u-padding-bottom-4" style="align-items: start !important;">
-
+          <!-- Bell icon -->
           <div style="width: auto;">
-            <img src="/images/bell-icon.svg" alt="bell icon" style="width: 32px; display: block; margin-left: 16px; margin-right: 16px; margin-top: 2px;" />
+            <img src="/images/bell-icon.svg" alt="bell icon" class="nhsuk-u-margin-left-3 nhsuk-u-margin-right-3 nhsuk-u-margin-top-3" style="width: 24px; display: block;" />
           </div>
-
+          <!-- Top section text -->
           <div class="nhsapp-card__content">
             <div class="nhsapp-card__above">
-              <h2 class="nhsuk-heading-s">Turn on app notifications</h2>
-              <p>To get alerted for new messages</p>
+              <h2 class="nhsuk-heading-s" style="margin-bottom: 0px;">Turn on app notifications</h2>
+              <p style="margin-bottom: 0px;">To get prescription updates</p>
             </div>
           </div>
-
+          <!-- Close icon -->
           <div style="width: auto;">
-            <a href="your-messages">
-              <img src="/images/close-icon.svg" alt="close icon" style="width: 16px; display: block; margin-left: 16px; margin-right: 16px; margin-top: 4px;" />
+            <a href="#"> <!-- change href to dismiss on prototype -->
+              <img src="/images/close-icon.svg" alt="close icon" class="nhsuk-u-margin-left-3 nhsuk-u-margin-right-3 nhsuk-u-margin-top-1"style="width: 16px; display: block;" />
             </a>
           </div>
-
         </div>
-
+        
         <div class="nhsapp-card__container" style="padding-top: 0px;">
-
           <!-- Space to align items -->
-          <div style="width: 64px;"></div>
-
+          <div style="width: 40px;"></div>
           <!-- Bottom section of banner -->
           <div class="nhsapp-card__content">
-
             <div class="nhsapp-card__below">
-              <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
-              <a href="notification-settings" class="nhsuk-link nhsuk-link--reverse" style="color: white;">Go to notification settings</a>
+              <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2 nhsuk-u-margin-bottom-3" style="margin-top: 0px;">
+              <a href="#" class="nhsuk-link nhsuk-link--reverse" style="color: white;">Go to notification settings</a>
             </div>
-              
           </div>
         
         </div>
