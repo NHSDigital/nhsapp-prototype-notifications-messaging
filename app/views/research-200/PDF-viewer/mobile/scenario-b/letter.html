@@ -1,0 +1,26 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = false %}
+{% set backLinkURL = "/research-200/PDF-viewer/your-messages" %}
+
+{% set pageHeading = "Royal Berkshire NHS Foundation Trust" %}
+{% set pageDescription = "Sent 30 November 2025 at 12:05pm" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+      
+    <img src="/images/pdf-viewer.png" alt="Description of your image goes here " width="100%" height="auto">
+    
+    <img src="/public/images/pdf-viewer.png" alt="Description of your image goes here " width="130%" height="auto">  
+      <img src="/public/images/pdf-viewer.png" alt="Description of your image goes here " width="130%" height="auto">
+      </div>
+      </div>
+
+{% endblock %}
