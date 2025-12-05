@@ -1,0 +1,198 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+     <!-- DYNAMIC PAGE TITLE -->
+     {{ dynamicPageTitle({
+      logo: data['web'] !== "yes",
+      greetingName: data['userFirstName'] + " " + data['userLastName'],
+      nhsNumber: data['nhsNumber']
+    })}}
+
+      <!-- SECTION - SERVICES -->
+      {{ nhsappSectionHeading({
+        headingText: "Services",
+        linkText: "View all",
+        linkUrl: "services",
+        linkAriaLabel: "View all services"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Request repeat prescriptions",
+            href: "check-the-pharmacy"
+          },
+          {
+            title: "Check if you need urgent medical help using 111 online",
+            href: "check-the-pharmacy"
+          }
+        ]
+      }) }}
+
+      <!-- SECTION - YOUR HEALTH -->
+      {{ nhsappSectionHeading({
+        headingText: "Your health",
+        linkText: "View all",
+        linkUrl: "#",
+        linkAriaLabel: "View all your health"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "GP health record",
+            href: "#"
+          },
+          {
+            title: "View and manage prescriptions",
+            href: "#"
+          },
+          {
+            title: "Upcoming and past appointments",
+            href: "#"
+          }
+        ]
+      }) }}
+
+      <!-- SECTION - MESSAGES -->
+      {{ nhsappSectionHeading({
+        headingText: "Messages"
+      }) }}
+
+     
+{% from 'nhsapp/components/card/macro.njk' import nhsappCard %}
+
+{{ nhsappCard({
+  title: 'View your messages',
+  href: '/research-200/PDF-viewer/messages-P9',
+  linkAriaLabel: 'View your messages, you have 1 new notification',
+  badgeLarge: {
+    count: 1,
+    attributes: { 
+      'aria-hidden': 'true' 
+    }
+  }
+}) }}
+
+      <!-- SECTION - SWITCH PROFILES -->
+      {{ nhsappSectionHeading({
+        headingText: "Account"
+      }) }}
+
+      {{ nhsappCard({
+        title: 'Manage services for another person',
+        href: '#',
+        prefixIcon: 'switchProfile'
+      }) }}
+
+      <!-- CAMPAIGN CARD -->
+      <div class="nhsapp-card app-card-link--dark-blue app-card-link--full-width nhsuk-u-margin-top-7">
+        <div class="app-card-link__media">
+          <img class="app-card-link__img" src="/images/campaigns/campaign-card-image-3.jpg" alt="">
+        </div>
+        <div class="nhsapp-card__container">
+          <div class="nhsapp-card__content">
+            <a href="#" class="nhsapp-card__link nhsuk-u-font-size-32">
+              Help change the NHS
+            </a>
+            <div class="nhsapp-card__below">
+              <p class="nhsuk-u-margin-top-2">Have your say on making the NHS fit for the future</p>
+            </div>
+          </div>
+          {{ nhsappIcon('chevronRight') }}
+        </div>
+      </div>
+
+            {{ nhsappSectionHeading({
+        headingText: "Prototype admin",
+        linkText: "",
+        linkUrl: "#",
+        linkAriaLabel: "Blank link"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Return to prototype menu",
+            href: "/research-200/index"
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+
+<nav class="app-bottom-navigation" id="bottomNav" style="display:block">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <ul class="app-bottom-navigation__list">
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="home">
+            {% if hub === "Home" %}
+              {{ nhsappIcon('homeFilled') }}
+            {% else %}
+              {{ nhsappIcon('home') }}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Home' %}app-bottom-navigation__label--active{% endif %}">Home</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="services">
+            {% if hub === "Services" %}
+              {{ nhsappIcon('crossFilled') }}
+            {% else %}
+              {{ nhsappIcon('cross') }}
+            {% endif %}        
+            <span class="app-bottom-navigation__label {% if hub === 'Services' %}app-bottom-navigation__label--active{% endif %}">Services</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Your health" %}
+              {{ nhsappIcon('heartFilled') }}
+            {% else %}
+              {{ nhsappIcon('heart') }}
+            {% endif %} 
+            <span class="app-bottom-navigation__label {% if hub === 'Your health' %}app-bottom-navigation__label--active{% endif %}">Your health</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Messages" %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnreadFilled') }}
+              {% else %}
+                {{ nhsappIcon('messagesFilled') }}
+              {% endif %}
+            {% else %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnread') }}
+              {% else %}
+                {{ nhsappIcon('messages') }}
+              {% endif %}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Messages' %}app-bottom-navigation__label--active{% endif %}">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}

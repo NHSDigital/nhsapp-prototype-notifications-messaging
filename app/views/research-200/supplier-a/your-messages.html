@@ -1,0 +1,323 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "home"%}
+
+{% set pageHeading = "Your messages" %}
+
+
+{% if data['messages'] > 1 %}
+  {% set pageDescription = "You have " + data['messages'] + " unread messages" %} 
+{% elif data['messages'] == 1 %}
+  {% set pageDescription = "You have " + data['messages'] + " unread message" %}
+{% else %}
+  {% set pageDescription = "" %}
+{% endif %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <div class="nhsapp-section-heading nhsuk-u-margin-bottom-5" style="align-items: center;">
+        <a href="message-filters" class="app-link app-link--with-icon nhsuk-link--no-visited-state nhsuk-u-margin-bottom-0">
+          <svg class="app-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.3302 7.19995H3.66016C3.52209 7.19995 3.41016 7.31188 3.41016 7.44995V8.46995C3.41016 8.60802 3.52209 8.71995 3.66016 8.71995H20.3302C20.4682 8.71995 20.5802 8.60802 20.5802 8.46995V7.44995C20.5802 7.31188 20.4682 7.19995 20.3302 7.19995Z" />
+            <path d="M17.6598 11.24H6.33984C6.20177 11.24 6.08984 11.3519 6.08984 11.49V12.51C6.08984 12.6481 6.20177 12.76 6.33984 12.76H17.6598C17.7979 12.76 17.9098 12.6481 17.9098 12.51V11.49C17.9098 11.3519 17.7979 11.24 17.6598 11.24Z" />
+            <path d="M15.0397 15.24H8.96973C8.83166 15.24 8.71973 15.3519 8.71973 15.49V16.51C8.71973 16.6481 8.83166 16.76 8.96973 16.76H15.0397C15.1778 16.76 15.2897 16.6481 15.2897 16.51V15.49C15.2897 15.3519 15.1778 15.24 15.0397 15.24Z" />
+          </svg>
+          <span class="app-u-gap-0">
+            Filter <span class="nhsuk-u-visually-hidden"> messages </span>
+            {% if data['message-sender'] == "" and data['message-status'] == "" %}
+            {% else %}
+              ({{ data['message-sender'] | length + data['message-status'] | length }})
+              <span class="nhsuk-u-visually-hidden"> 
+                {% if data['message-sender'] | length + data['message-status'] | length > 1 %}
+                filters 
+                {% else %}
+                filter
+                {% endif %}
+                currently selected</span>
+            {% endif %}
+          </span>
+        </a>
+        {% if data['message-sender'] == "" and data['message-status'] == "" %}
+          {% else %}
+          <form id="form-clear" method="post" action="your-messages" novalidate="novalidate">
+            <input type="hidden" name="message-sender" value="">
+            <input type="hidden" name="message-status" value="">
+            {% if data['message-sender'] | length + data['message-status'] | length > 1 %}
+              {{ button({
+                text: "Clear filters",
+                classes: "app-button--link nhsuk-u-margin-bottom-0"
+              }) }} 
+            {% else %}
+              {{ button({
+                text: "Clear filter",
+                classes: "app-button--link nhsuk-u-margin-bottom-0"
+              }) }}
+            {% endif %}
+          </form>
+        {% endif %}
+      </div>
+      
+
+      {% if "Unread" in data['message-status'] and "Read" not in data['message-status'] and data['message1read'] === "true" and data['message2read'] === "true" %}
+
+      <p>There are no results matching this filter.</p>
+
+      {% else %}
+
+      <ul class="nhsapp-cards nhsapp-cards--stacked">
+
+        {% if "Unread" in data['message-status'] and data['message1read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message1read'] === "true" %}
+        {% if "Wilburton Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+        
+        {% if is1Removed %}
+        {% else %}
+        <!-- MESSAGE 1 -->
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
+                  23 Sep 2025
+                </span>
+              </div>
+              <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
+              <form id="message1" method="post" action="message-1">
+                {% if data['message1read'] === "false" %}
+                <input type="hidden" name="message1read" value="true">
+                <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
+                {% endif %}
+                <a href="#1" onclick="document.getElementById('message1').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
+                  {% if data['message1read'] === "true" %}
+                  <span class="nhsuk-u-visually-hidden">Read message from </span>
+                  Balham Park Surgery
+                  {% else %}
+                    <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
+                      <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
+                      <span class="nhsuk-u-visually-hidden">Unread message from </span>
+                    </span>Balham Park Surgery
+                  {% endif %}
+                  <span class="nhsuk-u-visually-hidden"> Sent today at 12:05pm </span> 
+                </a>
+              </form>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
+                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  This is a reminder about your upcoming blood test appointment. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+        {% if "Unread" in data['message-status'] and data['message2read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message2read'] === "true" %}
+        {% if "Boots Pharmacy" in data['message-sender'] or data['message-sender'] == "" %}
+
+        {% if is2Removed %}
+        {% else %}
+        <!-- MESSAGE 2 -->
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
+                  28 Jul 2025
+                </span>
+              </div>
+              <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
+              <form id="message2" method="post" action="#">
+                {% if data['message2read'] === "false" %}
+                <input type="hidden" name="message2read" value="true">
+                <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
+                {% endif %}
+                {% if data['replySent'] === "true" %}
+                <input type="hidden" name="replySentFocus" value="flase">
+                {% endif %}
+                <a href="#" onclick="document.getElementById('message2').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
+                  {% if data['message2read'] === "true" %}
+                  <span class="nhsuk-u-visually-hidden">Read message from </span>
+                  Boots Pharmacy
+                  {% else %}
+                    <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
+                      <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
+                      <span class="nhsuk-u-visually-hidden">Unread message from </span>
+                    </span>Boots Pharmacy
+                  {% endif %}
+                  <span class="nhsuk-u-visually-hidden"> Sent 28 July 2025 at 09:41am </span> 
+                </a>
+              </form>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
+                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  The pharmacy has updated the progress of your prescription. This means that one or more of your prescriptions are ready to collect.
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
+        {% if "The Range Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+
+        {% if is3Removed %}
+        {% else %}
+        <!-- MESSAGE 3 -->
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
+                  4 Jul 2025
+                </span>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#">
+                <span class="nhsuk-u-visually-hidden">Read message from </span>
+                The Range Surgery
+                <span class="nhsuk-u-visually-hidden"> received 4 July 2025 at 6:30pm</span> 
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
+                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  Your NHS Health Check results are ready.
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
+        {% if "Liverpool Dock Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+
+        {% if is4Removed %}
+        {% else %}
+        <!-- MESSAGE 4 -->
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container nhsuk-u-margin-left-6">
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
+                  18 Jun 2025
+                </span>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#">
+                <span class="nhsuk-u-visually-hidden">Read message from </span>
+                Liverpool Dock Surgery
+                <span class="nhsuk-u-visually-hidden"> received 18 June 2025 at 2:15pm </span> 
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
+                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  You are invited to take part in research to improve the lives of those living with diabetes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+      </ul>
+      {% endif %}
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <div class="nhsapp-card">
+        <div class="nhsapp-card__container">
+          <div class="nhsapp-card__content">
+            <a href="#" class="nhsapp-card__link nhsuk-link--no-visited-state">
+              Removed messages
+            </a>
+          </div>
+          <svg class="nhsapp-icon nhsapp-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" height="2rem" width="2rem" viewBox="0 0 24 24" > <path d="M8.82 19.11a.97.97 0 0 1-.72-.31.996.996 0 0 1 .03-1.41l5.61-5.38-5.6-5.25c-.4-.38-.42-1.01-.05-1.41.38-.4 1.01-.42 1.41-.05l6.37 5.97c.2.19.31.45.32.72s-.11.54-.31.73l-6.37 6.11c-.19.19-.44.28-.69.28Z" /> </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+{% block footer %}
+
+<nav class="app-bottom-navigation" id="bottomNav" style="display:block">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <ul class="app-bottom-navigation__list">
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="home">
+            {% if hub === "Home" %}
+              {{ nhsappIcon('homeFilled') }}
+            {% else %}
+              {{ nhsappIcon('home') }}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Home' %}app-bottom-navigation__label--active{% endif %}">Home</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Services" %}
+              {{ nhsappIcon('crossFilled') }}
+            {% else %}
+              {{ nhsappIcon('cross') }}
+            {% endif %}        
+            <span class="app-bottom-navigation__label {% if hub === 'Services' %}app-bottom-navigation__label--active{% endif %}">Services</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Your health" %}
+              {{ nhsappIcon('heartFilled') }}
+            {% else %}
+              {{ nhsappIcon('heart') }}
+            {% endif %} 
+            <span class="app-bottom-navigation__label {% if hub === 'Your health' %}app-bottom-navigation__label--active{% endif %}">Your health</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="your-messages">
+            {% if hub === "Messages" %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnreadFilled') }}
+              {% else %}
+                {{ nhsappIcon('messagesFilled') }}
+              {% endif %}
+            {% else %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnread') }}
+              {% else %}
+                {{ nhsappIcon('messages') }}
+              {% endif %}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Messages' %}app-bottom-navigation__label--active{% endif %}">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}

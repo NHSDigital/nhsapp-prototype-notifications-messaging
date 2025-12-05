@@ -1,0 +1,80 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/research-200/PDF-viewer/message-read" %}
+
+{% set pageHeading = "Do you need a paper letter?" %}
+
+{% block content %}
+
+{% from "nhsapp/components/tag/macro.njk" import nhsappTag %}
+
+{% set flaggedTag = {
+  nhsappTag: {
+  text: "Flagged",
+  classes: "nhsapp-tag--orange"
+  }
+} %}
+
+{% set noTag = {
+  nhsappTag: null
+} %}
+
+{% if is1Flagged %}
+  {% set tagToUse = flaggedTag %}
+{% else %}
+  {% set tagToUse = noTag %}
+{% endif %}
+
+<tr class="nhsuk-table__row">
+  <td class="nhsuk-table__cell"></td>
+  <td class="nhsuk-table__cell">
+    {% if tagToUse.nhsappTag %}
+      <span class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
+        {{ tagToUse.nhsappTag.text }}
+      </span> 
+    {% endif %}
+    <div class="nhsuk-u-padding-bottom-3"></div>
+  </td>
+</tr>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
+
+    <div class="nhsuk-u-margin-bottom-7">
+      <p>Confirm if you do not need a paper letter. If you do not confirm we will send a physical letter to your registered home address.</p>
+    </div>
+
+
+    {% from 'button/macro.njk' import button %}
+
+    {{ button({
+      text: 'I do not need a paper letter',
+      classes: 'nhsapp-button'
+    }) }}
+
+
+{% from 'button/macro.njk' import button %}
+
+{{ button({
+  text: 'Send me a paper letter in the post',
+  classes: 'nhsuk-button--secondary nhsapp-button'
+}) }}
+
+
+  </div>
+</div>
+
+{% endblock %}
