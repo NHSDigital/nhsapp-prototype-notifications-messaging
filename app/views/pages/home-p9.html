@@ -12,119 +12,59 @@
       <!-- DYNAMIC PAGE TITLE -->
       {{ dynamicPageTitle({
         logo: data['web'] !== "yes",
-        greetingName: data['userFirstName'] + " " + data['userLastName'],
-        nhsNumber: data['nhsNumber']
+        title: pageHeading
       })}}
 
-      {{ nhsappSectionHeading({
-        headingText: "Prototype admin",
-        linkText: "View all",
-        linkUrl: "#",
-        linkAriaLabel: "Blank link"
-      }) }}
-
       {{ nhsappCardGroup({
         stacked: true,
         cards: [
           {
-            title: "Return to prototype menu",
-            href: "/research-195/index"
-          }
-        ]
-      }) }}
-
-      <!-- SECTION - SERVICES -->
-      {{ nhsappSectionHeading({
-        headingText: "Services",
-        linkText: "View all",
-        linkUrl: "/pages/services-p9",
-        linkAriaLabel: "View all services"
-      }) }}
-
-      {{ nhsappCardGroup({
-        stacked: true,
-        cards: [
-          {
-            title: "Request medicines",
-            href: "/pages/your-health/repeat-prescription/select-medicines"
-          },
-          {
-            title: "Check if you need urgent medical help using 111 online",
-            href: "#"
-          }
-        ]
-      }) }}
-
-      <!-- SECTION - YOUR HEALTH -->
-      {{ nhsappSectionHeading({
-        headingText: "Your health",
-        linkText: "View all",
-        linkUrl: "/pages/your-health-p9",
-        linkAriaLabel: "View all your health"
-      }) }}
-
-      {{ nhsappCardGroup({
-        stacked: true,
-        cards: [
-          {
-            title: "GP health record",
+            title: "Prescriptions",
             href: "#"
           },
           {
-            title: "View and manage prescriptions",
-            href: "/pages/your-health/prescriptions-p9"
+            title: "Appointments",
+            href: "#"
           },
           {
-            title: "Upcoming and past appointments",
-            href: "/pages/your-health/upcoming-and-past-appointments-p9"
+            title: "Test results",
+            href: "#"
+          },
+          {
+            title: "Vaccinations",
+            href: "#"
+          },
+          {
+            title: "Health conditions",
+            href: "#"
+          },
+          {
+            title: "Documents",
+            href: "documents/document-store"
           }
         ]
       }) }}
 
-      <!-- SECTION - MESSAGES -->
       {{ nhsappSectionHeading({
-        headingText: "Messages"
+        headingText: "NHS information and support"
       }) }}
 
-      {% if data['messages'] > 0 %}
-        {{ nhsappCardGroup({
-          stacked: true,
-          cards: [
-            {
-              title: 'View your messages',
-              href: '/pages/messages-p9',
-              prefixIcon: 'messagesUnread',
-              linkAriaLabel: 'Messages, you have ' + data['messages'] + ' unread messages',
-              badgeLarge: {
-                count: data['messages'],
-                label: 'unread messages',
-                ariaHidden: true
-              }
-            }
-          ]
-        }) }}
-      {% else %}
-        {{ nhsappCardGroup({
-          stacked: true,
-          cards: [
-            {
-              title: 'View your messages',
-              href: '/pages/messages-p9',
-              prefixIcon: 'messages'
-            }
-          ]
-        }) }}
-      {% endif %}
-
-      <!-- SECTION - SWITCH PROFILES -->
-      {{ nhsappSectionHeading({
-        headingText: "Account"
-      }) }}
-
-      {{ nhsappCard({
-        title: 'Manage services for another person',
-        href: '/pages/account-and-settings/linked-profiles',
-        prefixIcon: 'switchProfile'
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Check your symptoms using 111 online",
+            href: "#"
+          },
+          {
+            title: "Health A to Z",
+            href: "#"
+          },
+          {
+            title: "Find services near you",
+            href: "#"
+          }
+        ]
       }) }}
 
       <!-- CAMPAIGN CARD -->
@@ -144,6 +84,21 @@
           {{ nhsappIcon('chevronRight') }}
         </div>
       </div>
+
+
+      {{ nhsappSectionHeading({
+        headingText: "Prototype admin"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Return to prototype menu",
+            href: "/research-195/index"
+          }
+        ]
+      }) }}
 
     </div>
   </div>

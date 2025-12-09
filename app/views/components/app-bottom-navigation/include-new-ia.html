@@ -1,0 +1,49 @@
+<nav class="app-bottom-navigation" id="bottomNav" style="display:block">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <ul class="app-bottom-navigation__list" style="display: flex; justify-content: space-between; padding: 0; margin: 0;">
+        <li class="app-bottom-navigation__item" style="flex: 1; text-align: center;">
+          <a class="app-bottom-navigation__link" href="/pages/home-{{ data['accountType'] }}">
+            {% if hub === "Home" %}
+              {{ nhsappIcon('homeFilled') }}
+            {% else %}
+              {{ nhsappIcon('home') }}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Home' %}app-bottom-navigation__label--active{% endif %}">Home</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item" style="flex: 1; text-align: center;">
+          <a class="app-bottom-navigation__link" href="/pages/messages/your-messages">
+            {% if hub === "Messages" %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnreadFilled') }}
+              {% else %}
+                {{ nhsappIcon('messagesFilled') }}
+              {% endif %}
+            {% else %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnread') }}
+              {% else %}
+                {{ nhsappIcon('messages') }}
+              {% endif %}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Messages' %}app-bottom-navigation__label--active{% endif %}">Messages</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item" style="flex: 1; text-align: center;">
+          <a class="app-bottom-navigation__link" href="/pages/profile-p9">
+            {% if hub === "Profile" %}
+              {{ nhsappIcon('account') }}
+            {% else %}
+              {{ nhsappIcon('account') }}
+            {% endif %} 
+            <span class="app-bottom-navigation__label {% if hub === 'Profile' %}app-bottom-navigation__label--active{% endif %}">Profile</span>
+          </a>
+        </li>
+        
+
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -31,121 +31,121 @@ router.use('/', (req, res, next) => {
 // Flagging a message
 router.post('/flag1', function(request, response) {
     request.session.data['message1-flagged'] = true;
-    response.redirect('/pages-rnib/messages/message-1');
+    response.redirect('/pages/messages/message-1');
 })
 
 router.post('/flag2', function(request, response) {
     request.session.data['message2-flagged'] = true;
-    response.redirect('/pages-rnib/messages/message-2');
+    response.redirect('/pages/messages/message-2');
 })
 
 router.post('/flag3', function(request, response) {
     request.session.data['message3-flagged'] = true;
-    response.redirect('/pages-rnib/messages/message-3');
+    response.redirect('/pages/messages/message-3');
 })
 
 router.post('/flag4', function(request, response) {
     request.session.data['message4-flagged'] = true;
-    response.redirect('/pages-rnib/messages/message-4');
+    response.redirect('/pages/messages/message-4');
 })
 
 // Unflagging a message
 router.post('/unflag1', function(request, response) {
     request.session.data['message1-flagged'] = false;
-    response.redirect('/pages-rnib/messages/message-1');
+    response.redirect('/pages/messages/message-1');
 })
 
 router.post('/unflag2', function(request, response) {
     request.session.data['message2-flagged'] = false;
-    response.redirect('/pages-rnib/messages/message-2');
+    response.redirect('/pages/messages/message-2');
 })
 
 router.post('/unflag3', function(request, response) {
     request.session.data['message3-flagged'] = false;
-    response.redirect('/pages-rnib/messages/message-3');
+    response.redirect('/pages/messages/message-3');
 })
 
 router.post('/unflag4', function(request, response) {
     request.session.data['message4-flagged'] = false;
-    response.redirect('/pages-rnib/messages/message-4');
+    response.redirect('/pages/messages/message-4');
 })
 
 // Removing a message
 router.post('/remove1', function(request, response) {
     request.session.data['message1-removed'] = true;
     request.session.data['message1-flagged'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/remove2', function(request, response) {
     request.session.data['message2-removed'] = true;
     request.session.data['message2-flagged'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/remove3', function(request, response) {
     request.session.data['message3-removed'] = true;
     request.session.data['message3-flagged'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/remove4', function(request, response) {
     request.session.data['message4-removed'] = true;
     request.session.data['message4-flagged'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 // Restoring a message
 router.post('/restore1', function(request, response) {
     request.session.data['message1-removed'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/restore2', function(request, response) {
     request.session.data['message2-removed'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/restore3', function(request, response) {
     request.session.data['message3-removed'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 router.post('/restore4', function(request, response) {
     request.session.data['message4-removed'] = false;
-    response.redirect('/pages-rnib/messages/your-messages');
+    response.redirect('/pages/messages/your-messages');
 });
 
 // Message-1 gets
-router.get('/pages-rnib/messages/message-1', function(request, response, next) {
+router.get('/pages/messages/message-1', function(request, response, next) {
     response.locals.is1Removed = request.session.data['message1-removed'];
     response.locals.is1Flagged = request.session.data['message1-flagged'];
     next();
 });
 
 // Message-2 gets
-router.get('/pages-rnib/messages/message-2', function(request, response, next) {
+router.get('/pages/messages/message-2', function(request, response, next) {
     response.locals.is2Removed = request.session.data['message2-removed'];
     response.locals.is2Flagged = request.session.data['message2-flagged'];
     next();
 });
 
 // Message-3 gets
-router.get('/pages-rnib/messages/message-3', function(request, response, next) {
+router.get('/pages/messages/message-3', function(request, response, next) {
     response.locals.is3Removed = request.session.data['message3-removed'];
     response.locals.is3Flagged = request.session.data['message3-flagged'];
     next();
 });
 
 // Message-4 gets
-router.get('/pages-rnib/messages/message-4', function(request, response, next) {
+router.get('/pages/messages/message-4', function(request, response, next) {
     response.locals.is4Removed = request.session.data['message4-removed'];
     response.locals.is4Flagged = request.session.data['message4-flagged'];
     next();
 });
 
 // Your-messages gets
-router.get('/pages-rnib/messages/your-messages', function(request, response, next) {
+router.get('/pages/messages/your-messages', function(request, response, next) {
     response.locals.is1Removed = request.session.data['message1-removed'];
     response.locals.is2Removed = request.session.data['message2-removed'];
     response.locals.is3Removed = request.session.data['message3-removed'];
@@ -158,8 +158,8 @@ router.get('/pages-rnib/messages/your-messages', function(request, response, nex
 });
 
 // Removed-messages gets
-router.get('/pages-rnib/messages/removed-messages', function(req, res) {
-    res.render('pages-rnib/messages/removed-messages', {
+router.get('/pages/messages/removed-messages', function(req, res) {
+    res.render('pages/messages/removed-messages', {
         is1Removed: req.session.data['message1-removed'],
         is1Flagged: req.session.data['message1-flagged'],
         is2Removed: req.session.data['message2-removed'],
@@ -176,28 +176,28 @@ router.get('/pages-rnib/messages/removed-messages', function(req, res) {
 // end of NandM accessibility testing work
 
 // GP Appointments - Appointment type
-router.post('/pages-rnib/services/gp-appointment-type-answer', function (req, res) {
+router.post('/pages/services/gp-appointment-type-answer', function (req, res) {
 
   var install = req.session.data['gp-appointment-type']
 
   if (install == "Routine GP"){
-    res.redirect('/pages-rnib/services/gp-appointment-select-appointment-v4')
+    res.redirect('/pages/services/gp-appointment-select-appointment-v4')
   } else if (install == "none") {
-    res.redirect('/pages-rnib/services/gp-appointment-type')
+    res.redirect('/pages/services/gp-appointment-type')
   } else {
-    res.redirect('/pages-rnib/services/gp-appointment-invite')
+    res.redirect('/pages/services/gp-appointment-invite')
   }
 })
 
 // GP Appointments - Invited to this appointment?
-router.post('/pages-rnib/services/gp-appointment-invite-answer', function (req, res) {
+router.post('/pages/services/gp-appointment-invite-answer', function (req, res) {
 
   var install = req.session.data['gp-appointment-invite']
 
   if (install == "No"){
-    res.redirect('/pages-rnib/services/gp-appointment-type-not-available')
+    res.redirect('/pages/services/gp-appointment-type-not-available')
   } else {
-    res.redirect('/pages-rnib/services/gp-appointment-select-appointment-v4')
+    res.redirect('/pages/services/gp-appointment-select-appointment-v4')
   }
 })
 

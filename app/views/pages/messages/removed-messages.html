@@ -48,12 +48,12 @@ console.log(request.session.data);
               <a href="#1" onclick="document.getElementById('message1').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
                 {% if data['message1read'] === "true" %}
                 <span class="nhsuk-u-visually-hidden">Read message from </span>
-                Wilburton Surgery
+                Royal Berkshire NHS Foundation Trust
                 {% else %}
                   <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
                     <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
                     <span class="nhsuk-u-visually-hidden">Unread message from </span>
-                  </span>Wilburton Surgery
+                  </span>Royal Berkshire NHS Foundation Trust
                 {% endif %}
                 <span class="nhsuk-u-visually-hidden"> received today at 1:02pm</span> 
               </a>
@@ -61,7 +61,7 @@ console.log(request.session.data);
             <div class="nhsapp-card__below">
               <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
                 <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                This is a reminder about your upcoming blood test appointment.
+                You have a letter from Royal Berkshire NHS Foundation Trust.
               </p>
             </div>
           </div>

@@ -1,0 +1,54 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Documents" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ dynamicPageTitle({
+        title: pageHeading
+      })}}
+
+    {{ nhsappSectionHeading({
+        headingText: "GP surgery"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Your documents",
+            href: "#"
+          }
+        ]
+      }) }}
+
+      {{ nhsappSectionHeading({
+        headingText: "Hospital"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Hospital and specialist documents and questionnaires",
+            href: "dqm"
+          },
+          {
+            title: "Useful links from your health team",
+            href: "#"
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+  {% endblock %}
+

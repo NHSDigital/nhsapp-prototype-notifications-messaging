@@ -1,0 +1,113 @@
+{% extends 'layout-ios-sms.html' %}
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ dynamicPageTitle({
+        title: pageHeading
+      })}}
+
+      <!-- OVERLAY CONTENT -->
+      <div class="nhsapp-pdf-overlay__content" style="position:relative;">
+
+        <!-- Top toolbar SVG (replaces previous header). Pinned to top, full-width -->
+        <div class="ios-top-toolbar">
+          <img class="ios-top-toolbar-img" src="/images/top-toolbar.svg" alt="Top toolbar" />
+        </div>
+
+        <!-- Main content area below header (uses #808080 background) -->
+        <div class="pdf-main">
+          <!-- Embedded PDF (static asset) -->
+          <iframe
+            id="pdfViewer"
+            class="pdf-iframe"
+            src=""
+            title="NHS Appointment Letter Example"
+            sandbox="allow-same-origin allow-scripts allow-forms"
+            aria-label="Appointment letter PDF"
+          ></iframe>
+
+          <!-- iOS button group image overlaid above the PDF (now full-width at bottom) -->
+          <img class="ios-toolbar" src="/images/bottom-toolbar.svg" alt="iOS button groups" />
+        </div>
+
+      </div> 
+    </div>
+  </div> 
+
+  <style>
+    /* Page background for remainder of page */
+    html, body { background-color: #808080 !important; }
+
+    /* Top toolbar wrapper (solid bg) with 10px padding above the SVG */
+    .ios-top-toolbar {
+      position: fixed;
+      top: env(safe-area-inset-top, 0px);
+      left: 0;
+      right: 0;
+      background: #0C0C0C; 
+      padding-top: 10px; 
+      padding-bottom: 10px; 
+      height: calc(64px + 20px); 
+      z-index: 10002;
+      display: block;
+      pointer-events: auto;
+      -webkit-user-select: none;
+      user-select: none;
+      box-sizing: border-box;
+    }
+    /* inner image retains original visual height (64px) */
+    .ios-top-toolbar-img {
+      width: 100vw;
+      height: 64px;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 420px) {
+      .ios-top-toolbar { height: calc(64px + 20px); }
+      .ios-top-toolbar-img { height: 64px; }
+    }
+
+    /* Main area sits below fixed header and supports overlays; account for 10px padding above toolbar */
+    .pdf-main {
+      position: relative; /* enable absolutely positioned overlays above iframe */
+      background: transparent;
+      padding-top: calc(64px + 20px); /* ensure content starts below the taller header (84px) */
+      padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+      min-height: calc(100vh - (64px + 20px));
+    }
+
+    /* PDF iframe: fill the viewport below the 64px header */
+    .pdf-iframe {
+      width: 100%;
+      height: calc(100vh - 84px); /* subtract new header total (84px) */
+      border: 0;
+      display: block;
+      background: #ffffff;
+    }
+
+    /* full-width iOS toolbar pinned to bottom of viewport */
+    .ios-toolbar{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: env(safe-area-inset-bottom, 0px); /* respect safe area */
+      width: 100vw;
+      height: auto; /* toolbar height */
+      z-index: 10001; /* above header */
+      display: block;
+      pointer-events: auto;
+      -webkit-user-select: none;
+      user-select: none;
+      object-fit: cover;
+      /* optional subtle glass background if SVG has transparency */
+      background: rgba(255,255,255,0.02);
+    }
+    @media (max-width: 420px) {
+      .ios-toolbar { height: 48px; max-height: 48px; }
+    }
+
+  </style>
+
+{% endblock %}

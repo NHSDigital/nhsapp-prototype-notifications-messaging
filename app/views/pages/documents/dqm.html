@@ -1,0 +1,72 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Hospital and specialist documents and questionnaires" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ dynamicPageTitle({
+        title: pageHeading
+      })}}
+
+      <!-- SECTION -->
+      {{ nhsappSectionHeading({
+        subheadingText: "Showing 2 of 2"
+      })}}
+
+      <!-- CARDS -->
+      <ul class="nhsapp-cards">
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+                {{ nhsappTag({
+                  text: 'To read',
+                  classes: 'nhsapp-tag--red'
+                }) }}
+              <br>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Rheumatology appointment on Tuesday 18 February 2024 at 3:20pm">
+                Letter
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Received 28 November 2025
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">
+            <div class="nhsapp-card__content">
+                {{ nhsappTag({
+                  text: 'Done',
+                  classes: 'nhsapp-tag--green'
+                }) }}
+              <br>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#" aria-label="Rheumatology appointment on Tuesday 18 February 2024 at 3:20pm">
+                Rheumatology appointment
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                  Received 12 November 2025
+                </p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+
+  {% endblock %}
+

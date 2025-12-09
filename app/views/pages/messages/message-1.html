@@ -5,10 +5,10 @@ console.log(request.session.data);
 {% set hub = "Messages" %}
 
 {% set backLink = true %}
-{% set backLinkURL = "/pages-u/messages/your-messages" %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
 
-{% set pageHeading = "Portland Street Great Westood Surgery" %}
-{% set pageDescription = "Sent 29 April 2025 at 11:22am" %}
+{% set pageHeading = "Royal Berkshire NHS Foundation Trust" %}
+{% set pageDescription = "Sent 29 November 2025 at 11:22am" %}
 
 {% block content %}
 
@@ -55,8 +55,14 @@ console.log(request.session.data);
     })}}
 
     <div class="nhsuk-u-margin-bottom-7">
-      <p>Patient survey reminder. The Patient feedback survey is about to close. Have your say about Portland Street Great Westood Surgery by providing us with your thoughts.</p>
+      <p>You have a letter from Royal Berkshire NHS Foundation Trust.</p>
     </div>
+
+    {{ button({
+      text: 'View letter',
+      classes: 'nhsapp-button',
+      href: 'pdf-overlay'
+    }) }}
 
     <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 

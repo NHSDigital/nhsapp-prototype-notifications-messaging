@@ -33,7 +33,7 @@
 {% endblock %}
 
 <!-- CHANGES HTML BACKGROUND COLOUR IF VARIABLE 'WEB' ON PAGE IS TRUE -->
-{% block customStyles %}
+{% block head %}
   {% if data['web'] === "yes" %}
 
   <style>
@@ -55,16 +55,12 @@
   {% endif %}
 {% endblock %}
 
-{% block head %}
-  <meta name="theme-color" content="#f0f4f5">
-{% endblock %}
-
 <!-- HEADER -->
 {% block header %}
 
   <!-- WEB AND NATIVE - VARIABLE 'WEB' ON PAGE DECLARES WHAT TO DISPLAY -->
   {% if data['web'] === "yes" %}
-    {% include "components/global-navigation-web/include-updated.html" %}
+    {% include "components/global-navigation-web/include.html" %}
   {% else %}
     {% include "components/global-navigation-native/include.html" %}
   {% endif %}
@@ -72,10 +68,10 @@
 {% endblock %}
 
 
-{% block beforeContent %}
+{% block outerContent %}
   <!-- SWITCH PROFILE BANNER -->
   {% if linkedProfile === true %}
-    {% include "components/switch-profile-banner/include.html" %}
+    {% include "components/switch-profile-banner/include-u.html" %}
   {% endif %}
   <!-- BACK LINK -->
   {% if backLink === true %}
