@@ -64,6 +64,13 @@ console.log(request.session.data);
       href: 'pdf-overlay'
     }) }}
 
+    {{ button({
+      text: "Download letter",
+      classes: "nhsuk-button--secondary"
+    }) }}
+
+    <p>If you download this letter you become responsible for keeping it confidential.</p>
+
     <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
 
     {% if is1Flagged and is1Removed %}
