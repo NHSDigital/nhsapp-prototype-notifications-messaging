@@ -1,0 +1,159 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/your-health/view-or-manage-appointment" %}
+
+{% set pageHeading = "Orthopaedics appointment" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {% include "components/provider-banner/include.html" %}
+
+      <!--<strong class="nhsapp-tag nhsapp-tag--red nhsuk-u-static-margin-bottom-2">Action needed</strong>-->
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true
+      })}}
+
+      {{ summaryList({
+        classes: "nhsuk-u-margin-bottom-4",
+        rows: [
+        {
+          key: {
+            text: "Date"
+          },
+          value: {
+            html: "Wednesday 1 May 2024"
+          }
+        },
+        {
+          key: {
+            text: "Time"
+          },
+          value: {
+            html: "9:40am"
+          }
+        },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              html: "Croydon University Hospital, The Willows, Croydon, RJ6"
+            }
+          },
+          {
+            key: {
+              text: "Clinician"
+            },
+            value: {
+              text: "Dr Donald Glover"
+            }
+          }
+        ]
+      }) }}
+
+      <p class="nhsuk-u-margin-bottom-7"><a href="#" class="nhsuk-link nhsuk-link--no-visited-state">Map and directions</a></p>
+
+      <div class="nhsapp-button-group nhsuk-u-margin-bottom-0">
+        <a class="nhsuk-button nhsapp-button--secondary nhsapp-button">
+          Ask to reschedule appointment
+        </a>
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">Ask to cancel appointment</a>
+      </div>
+
+      <hr>
+
+      <h2 class="nhsuk-heading-m">Things to do</h2>
+
+    {% if data['appointment-letter'] != "read" %}
+      <h3 class="nhsuk-heading-s">To do</h3>
+
+      <div class="nhsapp-card"> 
+        <form id="appointmentForm1" method="post" action="/pages/your-health/appointment-letter">
+          <input type="hidden" name="appointment-letter" value="read">
+          <div class="nhsapp-card__container">   
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <strong class="nhsapp-tag nhsapp-tag--red nhsuk-u-static-margin-bottom-3">Not read</strong>
+              </div>
+              <a  href="javascript:{}" onclick="document.getElementById('appointmentForm1').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state" href="">
+                Appointment letter
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">Received 29 March 2024</p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </form>
+      </div>
+      {% endif %}
+
+      <h3 class="nhsuk-heading-s">Finished</h3>
+
+      <ul class="nhsapp-cards">
+        {% if data['appointment-letter'] == "read" %}
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">   
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <strong class="nhsapp-tag nhsapp-tag--green nhsuk-u-static-margin-bottom-3">Finished</strong>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/your-health/appointment-letter">
+                Appointment letter
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">Received 29 March 2024</p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+        {% endif %}
+        <li class="nhsapp-card">
+          <div class="nhsapp-card__container">   
+            <div class="nhsapp-card__content">
+              <div class="nhsapp-card__above">
+                <strong class="nhsapp-tag nhsapp-tag--green nhsuk-u-static-margin-bottom-3">Finished</strong>
+              </div>
+              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="#">
+                Pre-appointment questionnaire
+              </a>
+              <div class="nhsapp-card__below">
+                <p class="nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">Received 29 March 2024</p>
+              </div>
+            </div>
+            {{ nhsappIcon('chevronRight') }}
+          </div>
+        </li>
+      </ul>
+
+      {{ card({
+        "type": "non-urgent",
+        "heading": "Contact your care provider if:",
+        "descriptionHtml": "
+        <ul>
+          <li>your condition has changed</li>
+          <li>you think you have a different condition</li>
+        </ul>
+        "
+      }) }}
+
+      <!-- SECTION -->
+      {{ nhsappSectionHeading({
+        headingText: "Get help with this task",
+        subheadingText: "Contact the booking team on 01234 567 891"
+      }) }}
+
+    </div>
+  </div>
+
+  {% endblock %}

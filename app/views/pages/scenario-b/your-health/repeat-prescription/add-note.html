@@ -1,0 +1,41 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Add notes for your GP surgery (optional)" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form id="form" method="post" action="/pages/your-health/repeat-prescription/check-the-pharmacy" novalidate="novalidate">
+
+        {{ characterCount({
+          "name": "prescription-request-note",
+          "id": "prescription-request-note",
+          "maxlength": 450,
+          value: data['prescription-request-note'],
+          "label": {
+            "text": pageHeading,
+            "classes": "nhsuk-label--xl nhsuk-u-margin-bottom-2",
+            isPageHeading: true
+          },
+          "hint": {
+            "text": "If you want to, add a note about your request. Your note may not be seen or replied to. If it's urgent, contact your GP surgery."
+          }
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsapp-button"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

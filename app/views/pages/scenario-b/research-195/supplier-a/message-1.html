@@ -1,0 +1,131 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Balham Park Surgery" %}
+{% set pageDescription = "Sent today at 12:05pm" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
+
+    <div class="nhsuk-u-margin-bottom-7">
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li><strong>Date:</strong> 27th September 2025</li>
+          <li><strong>Time:</strong> 9:45am</li>
+          <li><strong>Location:</strong> Balham Park Surgery<br>London, SW17 7AW </li>
+        </ul>
+        <p>You must arrive 15 minutes before your appointment to allow your heart rate to stabilise before your test.</p>
+        <p>Manage your appointment through our trusted supplier, Accurx:</p>
+        <a href="https://accurx.nhs.uk/a/egsrf8jtxh" class="nhsuk-link" target="_blank">https://accurx.nhs.uk/a/egsrf8jtxh (opens in a new tab)</a>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+      <span style="display: block; width: 100%; background: none; height: 400px;">
+      </span>
+
+    <div style="position: fixed; left: 0; right: 0; bottom: 90px; width: 100%; z-index: 999; background: #fff; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+      <div style="padding: 16px;">
+        <h2 class="nhsuk-heading-xs">Was this message useful?</h2>
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <div style="display: flex; gap: 12px;">
+              <a href="message-1-feedback-yes#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">Yes</a>
+              <a href="message-1-feedback-no#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">No</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+<nav class="app-bottom-navigation" id="bottomNav" style="display:block">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <ul class="app-bottom-navigation__list">
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="home">
+            {% if hub === "Home" %}
+              {{ nhsappIcon('homeFilled') }}
+            {% else %}
+              {{ nhsappIcon('home') }}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Home' %}app-bottom-navigation__label--active{% endif %}">Home</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Services" %}
+              {{ nhsappIcon('crossFilled') }}
+            {% else %}
+              {{ nhsappIcon('cross') }}
+            {% endif %}        
+            <span class="app-bottom-navigation__label {% if hub === 'Services' %}app-bottom-navigation__label--active{% endif %}">Services</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="#">
+            {% if hub === "Your health" %}
+              {{ nhsappIcon('heartFilled') }}
+            {% else %}
+              {{ nhsappIcon('heart') }}
+            {% endif %} 
+            <span class="app-bottom-navigation__label {% if hub === 'Your health' %}app-bottom-navigation__label--active{% endif %}">Your health</span>
+          </a>
+        </li>
+        <li class="app-bottom-navigation__item">
+          <a class="app-bottom-navigation__link" href="your-messages">
+            {% if hub === "Messages" %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnreadFilled') }}
+              {% else %}
+                {{ nhsappIcon('messagesFilled') }}
+              {% endif %}
+            {% else %}
+              {% if data['messages'] > 0 %}
+                {{ nhsappIcon('messagesUnread') }}
+              {% else %}
+                {{ nhsappIcon('messages') }}
+              {% endif %}
+            {% endif %}
+            <span class="app-bottom-navigation__label {% if hub === 'Messages' %}app-bottom-navigation__label--active{% endif %}">Messages</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}

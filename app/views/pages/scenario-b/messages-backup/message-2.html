@@ -1,0 +1,180 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Range Surgery" %}
+{% set pageDescription = "Received on Thursday at 2:45pm" %}
+
+{% block content %}
+
+{% from "nhsapp/components/tag/macro.njk" import nhsappTag %}
+
+{% set flaggedTag = {
+  nhsappTag: {
+  text: "Flagged",
+  classes: "nhsapp-tag--orange"
+  }
+} %}
+
+{% set noTag = {
+  nhsappTag: null
+} %}
+
+{% if is2Flagged %}
+  {% set tagToUse = flaggedTag %}
+{% else %}
+  {% set tagToUse = noTag %}
+{% endif %}
+
+<tr class="nhsuk-table__row">
+  <td class="nhsuk-table__cell"></td>
+  <td class="nhsuk-table__cell">
+    {% if tagToUse.nhsappTag %}
+      <span class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
+        {{ tagToUse.nhsappTag.text }}
+      </span>
+    {% endif %}
+    <div class="nhsuk-u-padding-bottom-3"></div>
+  </td>
+</tr>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we would like to ask you a few questions about smoking. If you smoke, select SMOKE. If you're an ex smoker, select EX. If you have never smoked, select NEVER.</p>
+      </div>
+
+      {% if data['replySent'] === "true" %}
+
+      <hr>
+
+      <h2 id="messageSent" tabindex="-1" class="nhsuk-heading-m nhsuk-u-margin-bottom-2">Your reply has been sent</h2>
+      <p class="nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-5">Delivered today at 2:28pm</p>
+
+      <p class="nhsuk-u-margin-bottom-5">'{{ data['message-reply'] }}'</p>
+
+      <p class="nhsuk-u-secondary-text-color">If you need to change your reply, you'll need to contact Range Surgery.</p>
+
+      {% else %}
+
+      <!-- WHEN THE BUTTON IS CLICKED ON, THE HIDDEN CONTENT - SELECT YOUR REPLY WILL SHOW -->
+      <!-- THE JAVASCRIPT AT THE BOTTOM OF THIS PAGE MAKES THAT HAPPEN -->
+      <a id="showButton" class="nhsuk-button nhsapp-button" data-module="nhsuk-button" href="#" draggable="false" role="button">
+        Reply to this message
+      </a>
+
+      <!-- HIDDEN CONTENT - SELECT YOUR REPLY -->
+      <form id="hiddenDiv" tabindex="0" style="display:none" method="post" action="/pages/messages/message-sending">
+
+        <input type="hidden" name="replySent" value="true">
+        <input type="hidden" name="replySentFocus" value="true">
+
+        {{ radios({
+          "idPrefix": "message-reply",
+          "name": "message-reply",
+          "fieldset": {
+            "legend": {
+              "text": "Select your reply",
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+            {
+              "value": "SMOKE",
+              "text": "SMOKE"
+            },
+            {
+              "value": "EX",
+              "text": "EX"
+            },
+            {
+              "value": "NEVER",
+              "text": "NEVER"
+            }
+          ]
+        }) }}
+
+        <button class="nhsuk-button nhsapp-button" data-module="nhsuk-button" type="submit">
+          Send
+        </button>
+
+      </form>
+
+      {% endif %}
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      {% if is2Flagged and is2Removed %}
+        <a href="/pages/messages/message-2-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message2').submit(); return false;">
+          Restore message
+        </a>
+      {% elif is2Flagged %}
+        <form id="unflag-form2" action="/unflag2" method="POST" style="display: none;"></form>
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form2').submit(); return false;">
+          Unflag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-2-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message2').submit(); return false;">
+          Remove message
+        </a>
+      {% elif is2Removed %}
+        <a href="/pages/messages/message-2-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message2').submit(); return false;">
+          Restore message
+        </a>
+      {% else %}
+        <form id="flag-form2" action="/flag2" method="POST" style="display: none;"></form>
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form2').submit(); return false;">
+          Flag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-2-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message2').submit(); return false;">
+          Remove message
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block pageScripts %}
+    {% if data['replySentFocus'] === "true" %}
+      <script>
+        document.getElementById('messageSent').focus();
+      </script>
+    {% else %}
+      <!-- JAVASCRIPT TO SHOW THE HIDDEN CONTENT -->
+      <script>
+        document.getElementById('showButton').addEventListener('click', function() {
+          // Get a reference to the hidden div
+          var hiddenDiv = document.getElementById('hiddenDiv');
+    
+          // Check if the div is currently hidden
+          if (hiddenDiv.style.display === 'none') {
+            // If hidden, show the div
+            hiddenDiv.style.display = 'block';
+            hiddenDiv.focus()
+            showButton.style.display = 'none';
+          } else {
+            // If visible, hide the div
+            hiddenDiv.style.display = 'none';
+          }
+        });
+      </script>
+    {% endif %}
+  {% endblock %}

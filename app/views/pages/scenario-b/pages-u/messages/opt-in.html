@@ -1,0 +1,41 @@
+{% extends 'layout-app-splash-screen-optin.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages-u/messages" %}
+
+{% set pageHeading = "Get notifications for new messages?" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <img src="assets/images/apple-add-to-wallet-one-line.png" width="100%" height="300px">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        classes: "nhsuk-u-margin-bottom-5"
+      })}}
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>The NHS App is the most secure way to receive and manage messages.</li>
+        <li>Receive messages from your healthcare professionals instantly.</li>
+        <li>You can trust your message is always from the NHS.</li>
+      </ul>
+
+      <form method="post" action="/pages-u/messages/message-sending">
+        <input type="hidden" name="messageSendingError" value="false">
+        {{ button({
+          text: "Turn on notifications",
+          classes: "nhsapp-button--primary nhsapp-button"
+        }) }}
+      </form>
+      <a href="#">Not now</a>
+
+    </div>
+  </div>
+
+  {% endblock %}

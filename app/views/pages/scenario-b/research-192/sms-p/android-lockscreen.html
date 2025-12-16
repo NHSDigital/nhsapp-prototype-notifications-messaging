@@ -1,0 +1,31 @@
+{% extends 'layout-android-locked-screen.html' %}
+
+{% block content %}
+    
+  <a id="ios-notification" class="android-notification" href="sms">
+    <img class="android-notification-icon" src='/images/android-sms.png' alt="">
+    <div class="android-notification-message">
+      <div class="android-notification-app">NHSApp</div>
+      <div class="android-notification-content">
+        <p class="nhsuk-body-s">You have new message.</p>
+
+      </div>
+    </div>
+    <div class="android-notification-time" id="time">now</div>
+  </a>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+    <script>
+  const parameter = localStorage.getItem("parameter");
+
+if (parameter === 'online') {
+      document.body.classList.add('nhs-app-web');
+      document.body.classList.remove('nhs-app-native');  // Corrected 'temove' to 'remove'
+  }
+
+console.log(parameter);
+    </script>
+{% endblock %}

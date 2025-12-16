@@ -1,0 +1,47 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Wilburton Surgery" %}
+{% set pageDescription = "Sent 5 August 2025 at 09:41am" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li><strong>Date:</strong> 17th August 2025</li>
+          <li><strong>Time:</strong> 9:45am</li>
+          <li><strong>Location:</strong> Orange Clinic, Wilburton<br>Surgery, Leeds, AB1 CD2</li>
+        </ul>
+        <p>You must arrive 15 minutes before your appointment to allow your heart rate to stabilise before your test.</p>
+      </div>
+
+      <div class="nhsuk-u-margin-bottom-7" id="feedback-section">
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2 nhsuk-u-margin-bottom-5">
+        <h2 class="nhsuk-heading-xs">Thank you for your feedback</h2>
+        <p>You may still get messages like this in the future.</p>
+        <p>To help us improve the NHS App, we'd like to know more about why you did not find your message useful. <a href="#" class="nhsuk-link">Please fill in this survey (opens in a new tab).</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

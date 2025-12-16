@@ -1,0 +1,54 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "The Range Surgery" %}
+{% set pageDescription = "Sent 10 August 2025 at 11:22am" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>Dear Kyle,</p>
+        <p>The Surgery car park is closed for the next couple of days due to flooding. We will reopen our car park on 15 August 2025.</p>
+        <p>Please use other forms of transport if your appointment is before the 15 August 2025.</p>
+        <p>If you are unable to attend your appointment contact us to rearrange.</p>
+        <p>The Range Surgery</p>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+    <div class="nhsuk-u-margin-bottom-7" id="feedback-section">
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2 nhsuk-u-margin-bottom-5">
+      <h2 class="nhsuk-heading-xs">Thank you for your feedback</h2>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

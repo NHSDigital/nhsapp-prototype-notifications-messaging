@@ -1,0 +1,195 @@
+{% extends 'layout-ios-sms.html' %}
+
+{% block content %}
+<div class="app-container">
+    <!-- Header -->
+    <header class="header hidden" id="ios-header">
+      <div class="header-left">
+        <img src="/images/contact-photo.png" alt="User Avatar" class="avatar">
+        <span class="user-name">NHSApp</span>
+      </div>
+    </header>
+
+    <!-- Header -->
+    <header class="header hidden" id="android-header">
+      <div class="header-left">
+        <img src="/images/arrow.png" alt="User Avatar" class="sms-arrow">
+        <img src="/images/contact-photo.png" alt="User Avatar" class="avatar">
+        <span class="user-name">NHSApp</span>
+      </div>
+    </header>
+
+    <!-- Messages Container -->
+    <div id="ios-container" class="messages-container hidden" style="word-wrap: break-word;">
+      <div class="message-title">
+        <p>Text message<br> Today <span id="time"></span></p>
+      </div>
+      <!-- Incoming Message -->
+      <div class="message incoming">
+        <div class="message-content">
+          <p>Hi (First Name),</p>
+          <p>You have a new message from the NHS. Please open the NHS App to read it.</p>
+          Or view it online at:
+        </div>
+      </div>
+      <a href="pages/login">
+        <div class="message-preview incoming message-img">
+          <div class="message-content">
+            <img src="/images/nhs-logo.png">
+          </div>
+        </div>
+      </a>
+      <a href="pages/login">
+        <div class="message-preview incoming message-caption">
+          <div class="message-content">
+            NHS App inbox<br>
+              <span>www.nhs.uk</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+    <div id="android-container" class="messages-container hidden" style="word-wrap: break-word;">
+      <!-- <div class="message-title">
+        <p><span id="time"></span></p>
+      </div> -->
+
+      <!-- Incoming Message -->
+      <div class="message incoming">
+        <div class="message-content">
+          <p>Hi (First Name),</p>
+          <p>You have a new message from the NHS. Please open the NHS App to read it.</p>
+          Or view it online at: <a href="pages/login">https://www.nhsapp.service.nhs.uk/inbox</a>
+        </div>
+      </div>
+
+      <div class="message-caption">
+        <a href="pages/login">
+          <div class="android-img">
+            <img src="/images/nhs-logo.png">
+          </div>
+          <div class="message-content"><p>NHS App inbox</p>
+            <p><span>A new message is available in your NHS App inbox. Log in securely to read it.</span></p>
+            <span>www.nhs.uk</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+{% endblock %}
+
+{% block pageScripts %}
+    <script>
+      // Function to get the current date and time in "Sent DD Month YYYY at HH:MM" format
+      function getCurrentDateTime() {
+          let currentDateTime = new Date();
+          let hours = currentDateTime.getHours();
+          let minutes = currentDateTime.getMinutes();
+
+          // Determine AM or PM
+          let period = hours >= 12 ? 'pm' : 'am';
+
+          // Convert to 12-hour format
+          hours = hours % 12;
+          hours = hours ? hours : 12; // The hour '0' should be '12' (midnight)
+
+          // Ensure two digits for day, hours, and minutes
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+
+          // Format the date and time as "Sent DD Month YYYY at HH:MM AM/PM"
+          let formattedDateTime = hours + ':' + minutes + ' ' + period;
+          return formattedDateTime;
+        }
+
+      // Display the current date and time in the <p> tag with id "current-time"
+      document.getElementById("time").textContent = getCurrentDateTime();
+
+
+
+      // Function to detect the operating system
+      function detectOperatingSystem() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Check for iOS
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "iOS";
+        }
+        // Check for Android
+        else if (/android/i.test(userAgent)) {
+          return "Android";
+        }
+        // If neither, return Unknown
+        else {
+          return "Unknown OS";
+        }
+      }
+
+
+      // Function to update the link URLs based on OS
+      function updateLinks() {
+      const os = detectOperatingSystem();
+
+      const iosHeader = document.querySelector('#ios-header');
+      const androidHeader = document.querySelector('#android-header');
+      const iosContainer = document.querySelector('#ios-container');
+      const androidContainer = document.querySelector('#android-container');
+
+      // Modify the URLs based on the OS detected
+      if (os === "iOS") {
+        iosHeader.classList.remove('hidden');
+        iosHeader.classList.add('header');
+        
+        androidHeader.classList.add('hidden');
+        androidHeader.classList.remove('header');
+
+
+        iosContainer.classList.remove('hidden');
+        iosContainer.classList.add('message-container');
+        
+        androidContainer.classList.add('hidden');
+        androidContainer.classList.remove('message-container');
+
+      } else if (os === "Android") {
+        androidHeader.classList.remove('hidden');
+        androidHeader.classList.add('header');
+        
+        iosHeader.classList.add('hidden');
+        iosHeader.classList.remove('header');
+
+        androidContainer.classList.remove('hidden');
+        androidContainer.classList.add('message-container');
+        
+        iosContainer.classList.add('hidden');
+        iosContainer.classList.remove('message-container');
+        
+
+      } else {
+        iosHeader.classList.remove('hidden');
+        iosHeader.classList.add('header');
+        
+        androidHeader.classList.add('hidden');
+        androidHeader.classList.remove('header');
+
+
+        iosContainer.classList.remove('hidden');
+        iosContainer.classList.add('message-container');
+        
+        androidContainer.classList.add('hidden');
+        androidContainer.classList.remove('message-container');
+        
+        
+      }
+    }
+
+
+    // Call both functions when the page loads
+    window.addEventListener('load', function() {
+      updateLinks(); // Update OS-specific elements
+    });
+  </script>
+{% endblock %}
+

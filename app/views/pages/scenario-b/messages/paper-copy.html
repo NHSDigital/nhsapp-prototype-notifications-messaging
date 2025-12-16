@@ -1,0 +1,53 @@
+{% extends 'layout-app-scenario-b.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Do you need a paper letter?" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true
+    })}}
+
+    <div class="nhsuk-u-margin-bottom-7">
+      <p>Confirm if you need a paper letter. If you do not confirm we will send a physical letter to your registered address.</p>
+    </div>
+
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset nhsuk-u-padding-bottom-5" aria-describedby="">
+        <div class="nhsuk-radios" data-module="nhsuk-radios">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example" name="example" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="example">
+              I need a paper copy
+            </label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+              I do not need a paper copy
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    {{ button({
+      text: 'Confirm',
+      classes: 'nhsapp-button',
+      href: 'message-1'
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

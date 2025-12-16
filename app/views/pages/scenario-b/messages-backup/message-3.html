@@ -1,0 +1,95 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Hughenden Valley Surgery" %}
+{% set pageDescription = "Received 4 October 2023 at 6:30pm" %}
+
+{% block content %}
+
+{% from "nhsapp/components/tag/macro.njk" import nhsappTag %}
+
+{% set flaggedTag = {
+  nhsappTag: {
+  text: "Flagged",
+  classes: "nhsapp-tag--orange"
+  }
+} %}
+
+{% set noTag = {
+  nhsappTag: null
+} %}
+
+{% if is3Flagged %}
+  {% set tagToUse = flaggedTag %}
+{% else %}
+  {% set tagToUse = noTag %}
+{% endif %}
+
+<tr class="nhsuk-table__row">
+  <td class="nhsuk-table__cell"></td>
+  <td class="nhsuk-table__cell">
+    {% if tagToUse.nhsappTag %}
+      <span class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
+        {{ tagToUse.nhsappTag.text }}
+      </span>
+    {% endif %}
+    <div class="nhsuk-u-padding-bottom-3"></div>
+  </td>
+</tr>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>Reminder of your telephone appointment with your GP on Friday 23 October at 1:30pm.</p>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      {% if is3Flagged and is3Removed %}
+        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+          Restore message
+        </a>
+      {% elif is3Flagged %}
+        <form id="unflag-form3" action="/unflag3" method="POST" style="display: none;"></form>
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form3').submit(); return false;">
+          Unflag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+          Remove message
+        </a>
+      {% elif is3Removed %}
+        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+          Restore message
+        </a>
+      {% else %}
+        <form id="flag-form3" action="/flag3" method="POST" style="display: none;"></form>
+        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form3').submit(); return false;">
+          Flag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+          Remove message
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% endblock %}

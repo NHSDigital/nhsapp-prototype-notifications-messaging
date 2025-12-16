@@ -1,0 +1,53 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Wilburton Surgery" %}
+{% set pageDescription = "Sent 5 August 2025 at 09:41am" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li><strong>Date:</strong> 17th August 2025</li>
+          <li><strong>Time:</strong> 9:45am</li>
+          <li><strong>Location:</strong> Orange Clinic, Wilburton<br>Surgery, Leeds, AB1 CD2</li>
+        </ul>
+        <p>You must arrive 15 minutes before your appointment to allow your heart rate to stabilise before your test.</p>
+      </div>
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2 nhsuk-u-margin-bottom-5">
+        <h2 class="nhsuk-heading-xs">Was this message useful?</h2>
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <div style="display: flex; gap: 12px;">
+              <a href="message-2-feedback-yes#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">Yes</a>
+              <a href="message-2-feedback-no#feedback-section" class="nhsuk-button nhsuk-button--secondary nhsapp-button" style="background-color: #F0F4F5; color: #005EB8; border: 2px solid #005EB8; box-shadow: 0 4px 0 #005eb8; flex: 1; text-align: center; text-decoration: none; display: inline-block;">No</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

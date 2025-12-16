@@ -1,0 +1,92 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Account and settings" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Notifications" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+
+      <span class="nhsapp-tag nhsapp-tag--red nhsuk-u-margin-bottom-5">Your notifications are off</span>
+
+
+      <p>To change your notification preference, go to your device settings. This may take up to 24 hours to update.</p>
+      <p>You will need to turn on notifications for every device you use the NHS App on.</p>
+
+      <details class="nhsuk-details nhsuk-u-margin-bottom-7">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If this is a shared device
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+
+          <p>If this is a shared device, and you turn notifications on, everyone who uses the NHS App on this device will get notifications.</p>
+
+          <p>NHS App notifications will not display a preview of your message.</p>
+
+        </div>
+      </details>
+
+      <button
+        class="nhsuk-button nhsapp-button"
+        data-module="nhsuk-button"
+        type="submit"
+      >
+        Go to device settings
+      </button>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+      // Get a reference to the hidden div
+      var hiddenDiv = document.getElementById('logoutActionSheet');
+      var bottomNav = document.getElementById('bottomNav');
+
+      // Check if the div is currently hidden
+      if (hiddenDiv.style.display === 'none') {
+        // If hidden, show the div
+        hiddenDiv.style.display = 'block';
+        bottomNav.style.display = 'none';
+        hiddenDiv.focus()
+      } else {
+        // If visible, hide the div
+        hiddenDiv.style.display = 'none';
+      }
+    });
+
+    document.getElementById('cancelButton').addEventListener('click', function() {
+      // Get a reference to the hidden div
+      var hiddenDiv = document.getElementById('logoutActionSheet');
+      var bottomNav = document.getElementById('bottomNav');
+
+      // Check if the div is currently hidden
+      if (hiddenDiv.style.display === 'block') {
+        // If hidden, show the div
+        hiddenDiv.style.display = 'none';
+        bottomNav.style.display = 'block';
+        hiddenDiv.focus()
+      } else {
+        // If visible, hide the div
+        hiddenDiv.style.display = 'block';
+      }
+    });
+  </script>
+{% endblock %}

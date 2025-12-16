@@ -1,0 +1,842 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/services/gp-appointment-next-available" %}
+
+{% set pageHeading = "Select appointment date and time" %}
+{% set pageDescription = "The next available appointment is Monday 20 November." %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">November 2023</h2>
+
+      <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
+
+      <div class="app-date-picker nhsuk-u-margin-bottom-5">
+        <button class="app-date-picker__button app-date-picker__button--left" onclick="clickLeft()" aria-hidden="true">
+          <span class="nhsuk-u-visually-hidden">Previous days</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none">
+            <path d="M8.17917 14.9698C7.92917 14.9698 7.68917 14.8798 7.49917 14.6998L1.12917 8.72978C0.929174 8.53978 0.819174 8.27978 0.809174 8.00978C0.799174 7.73978 0.919173 7.46978 1.11917 7.27978L7.48917 1.16978C7.88917 0.789782 8.51917 0.799782 8.89917 1.19978C9.27917 1.59978 9.26917 2.22978 8.86917 2.60978L3.25917 7.98978L8.85917 13.2398C9.25917 13.6198 9.27917 14.2498 8.90917 14.6498C8.70917 14.8598 8.44917 14.9698 8.17917 14.9698Z" fill="#005EB8"/>
+          </svg>
+        </button>
+        <ul class="app-date-picker__container" id="app-date-picker__container">
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link app-date-picker__link--active" onclick="openAppointments(event, 'date-1')">
+              <span class="date-picker__day" aria-hidden="true">Mon</span>
+              <span class="date-picker__number" aria-hidden="true">20</span>
+              <span class="nhsuk-u-visually-hidden">Monday 20th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-2')">
+              <span class="date-picker__day" aria-hidden="true">Tue</span>
+              <span class="date-picker__number" aria-hidden="true">21</span>
+              <span class="nhsuk-u-visually-hidden">Tuesday 21st November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <span class="date-picker__day" aria-hidden="true">Wed</span>
+            <span class="date-picker__number" aria-hidden="true">22</span>
+            <span class="nhsuk-u-visually-hidden">Wednesday 22nd November 2023</span>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-3')">
+              <span class="date-picker__day" aria-hidden="true">Thu</span>
+              <span class="date-picker__number" aria-hidden="true">23</span>
+              <span class="nhsuk-u-visually-hidden">Thursday 23rd November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-4')">
+              <span class="date-picker__day" aria-hidden="true">Fri</span>
+              <span class="date-picker__number" aria-hidden="true">24</span>
+              <span class="nhsuk-u-visually-hidden">Friday 24th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+              <span class="date-picker__day" aria-hidden="true">Sat</span>
+              <span class="date-picker__number" aria-hidden="true">25</span>
+              <span class="nhsuk-u-visually-hidden">Saturday 25th November 2023</span>
+          </li>
+          <li class="app-date-picker__item">
+              <span class="date-picker__day" aria-hidden="true">Sun</span>
+              <span class="date-picker__number" aria-hidden="true">26</span>
+              <span class="nhsuk-u-visually-hidden">Sunday 26th November 2023</span>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-5')">
+              <span class="date-picker__day" aria-hidden="true">Mon</span>
+              <span class="date-picker__number" aria-hidden="true">27</span>
+              <span class="nhsuk-u-visually-hidden">Monday 27th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-6')">
+              <span class="date-picker__day" aria-hidden="true">Tue</span>
+              <span class="date-picker__number" aria-hidden="true">28</span>
+              <span class="nhsuk-u-visually-hidden">Tuesday 28th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-7')">
+              <span class="date-picker__day" aria-hidden="true">Wed</span>
+              <span class="date-picker__number" aria-hidden="true">29</span>
+              <span class="nhsuk-u-visually-hidden">Wednesday 29th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-8')">
+              <span class="date-picker__day" aria-hidden="true">Thu</span>
+              <span class="date-picker__number" aria-hidden="true">30</span>
+              <span class="nhsuk-u-visually-hidden">Thursday 30th November 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-9')">
+              <span class="date-picker__day" aria-hidden="true">Fri</span>
+              <span class="date-picker__number" aria-hidden="true">1</span>
+              <span class="nhsuk-u-visually-hidden">Friday 1st December 2023</span>
+            </a>
+          </li>
+          <li class="app-date-picker__item">
+              <span class="date-picker__day" aria-hidden="true">Sat</span>
+              <span class="date-picker__number" aria-hidden="true">2</span>
+              <span class="nhsuk-u-visually-hidden">Saturday 2nd December 2023</span>
+          </li>
+          <li class="app-date-picker__item">
+            <span class="date-picker__day" aria-hidden="true">Sun</span>
+            <span class="date-picker__number" aria-hidden="true">3</span>
+            <span class="nhsuk-u-visually-hidden">Sunday 3rd December 2023</span>
+          </li>
+          <li class="app-date-picker__item">
+            <a href="#0" class="app-date-picker__link" onclick="openAppointments(event, 'date-10')">
+              <span class="date-picker__day" aria-hidden="true">Mon</span>
+              <span class="date-picker__number" aria-hidden="true">4</span>
+              <span class="nhsuk-u-visually-hidden">Monday 4th December 2023</span>
+            </a>
+          </li>
+        </ul>
+        <button class="app-date-picker__button app-date-picker__button--right" onclick="clickRight()" aria-hidden="true">
+          <span class="nhsuk-u-visually-hidden">Next days</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M8.82191 19.11C8.56191 19.11 8.29191 19.01 8.10191 18.8C7.72191 18.4 7.73191 17.77 8.13191 17.39L13.7419 12.01L8.14191 6.75999C7.74191 6.37999 7.72191 5.74999 8.09191 5.34999C8.47191 4.94999 9.10191 4.92999 9.50191 5.29999L15.8719 11.27C16.0719 11.46 16.1819 11.72 16.1919 11.99C16.2019 12.26 16.0819 12.53 15.8819 12.72L9.51191 18.83C9.32191 19.02 9.07191 19.11 8.82191 19.11Z" fill="#005EB8"/>
+            </svg>
+        </button>
+      </div>
+
+      <form id="appointmentWrapper" tabindex="0" method="post" action="/pages/services/gp-appointment-confirm" novalidate="novalidate">
+
+        <!-- Tab content -->
+        <div id="date-1" class="appointments" style="display: block;">
+          
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% else %}
+              3 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-1" name="gp-appointment-time" type="radio" value="1">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-1">
+                    5:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician']or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-2" name="gp-appointment-time" type="radio" value="2">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-2">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-3" name="gp-appointment-time" type="radio" value="3">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-3">
+                      2pm
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-2" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              5 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-4" name="gp-appointment-time" type="radio" value="4">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-4">
+                    2:30pm
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-5" name="gp-appointment-time" type="radio" value="5">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-5">
+                    3pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician']or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-6" name="gp-appointment-time" type="radio" value="6">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-6">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-7" name="gp-appointment-time" type="radio" value="7">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-7">
+                      10am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-8" name="gp-appointment-time" type="radio" value="8">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-8">
+                      11am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-3" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              4 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-9" name="gp-appointment-time" type="radio" value="9">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-9">
+                    3:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-10" name="gp-appointment-time" type="radio" value="10">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-10">
+                      8am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-11" name="gp-appointment-time" type="radio" value="11">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-11">
+                      8:30am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-12" name="gp-appointment-time" type="radio" value="12">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-12">
+                      9am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+          
+        </div>
+
+        <div id="date-4" class="appointments" style="display: none;">
+          
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% else %}
+              3 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-13" name="gp-appointment-time" type="radio" value="13">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-13">
+                    5:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-14" name="gp-appointment-time" type="radio" value="14">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-14">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-15" name="gp-appointment-time" type="radio" value="15">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-15">
+                      2pm
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-5" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              5 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-16" name="gp-appointment-time" type="radio" value="16">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-16">
+                    2:30pm
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-17" name="gp-appointment-time" type="radio" value="17">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-17">
+                    3pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-18" name="gp-appointment-time" type="radio" value="18">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-18">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-19" name="gp-appointment-time" type="radio" value="19">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-19">
+                      10am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-20" name="gp-appointment-time" type="radio" value="20">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-20">
+                      11am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-6" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              4 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-21" name="gp-appointment-time" type="radio" value="21">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-21">
+                    3:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-22" name="gp-appointment-time" type="radio" value="22">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-22">
+                      8am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-23" name="gp-appointment-time" type="radio" value="23">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-23">
+                      8:30am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-24" name="gp-appointment-time" type="radio" value="24">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-24">
+                      9am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+          
+        </div>
+
+        <div id="date-7" class="appointments">
+          
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% else %}
+              3 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-25" name="gp-appointment-time" type="radio" value="25">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-25">
+                    5:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-26" name="gp-appointment-time" type="radio" value="26">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-26">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-27" name="gp-appointment-time" type="radio" value="27">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-27">
+                      2pm
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-8" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              5 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-28" name="gp-appointment-time" type="radio" value="28">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-28">
+                    2:30pm
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-29" name="gp-appointment-time" type="radio" value="29">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-29">
+                    3pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-30" name="gp-appointment-time" type="radio" value="30">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-30">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-31" name="gp-appointment-time" type="radio" value="31">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-31">
+                      10am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-32" name="gp-appointment-time" type="radio" value="32">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-32">
+                      11am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div id="date-9" class="appointments" style="display: none;">
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              3 appointments available
+            {% else %}
+              4 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-33" name="gp-appointment-time" type="radio" value="33">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-33">
+                    3:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician']or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-34" name="gp-appointment-time" type="radio" value="34">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-34">
+                      8am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-35" name="gp-appointment-time" type="radio" value="35">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-35">
+                      8:30am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-36" name="gp-appointment-time" type="radio" value="36">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-36">
+                      9am
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+          
+        </div>
+
+        <div id="date-10" class="appointments">
+          
+          <p class="nhsuk-u-margin-bottom-5">
+            {% if "Dr K Cooper" in data['gp-appointment-clinician'] and "Dr R Baines" not in data['gp-appointment-clinician'] %}
+              1 appointment available
+            {% elif "Dr K Cooper" not in data['gp-appointment-clinician'] and "Dr R Baines" in data['gp-appointment-clinician'] %}
+              2 appointments available
+            {% else %}
+              3 appointments available
+            {% endif %}
+          </p>
+
+          {% if "Dr K Cooper" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                Dr. K Cooper
+              </legend>
+              <div class="nhsuk-radios nhsuk-u-margin-bottom-4"> 
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="gp-appointment-time-37" name="gp-appointment-time" type="radio" value="37">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-37">
+                    5:30pm
+                  </label>
+                </div>
+              </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+          {% if "Dr R Baines" in data['gp-appointment-clinician'] or data['gp-appointment-clinician'] == "" or "none" in data['gp-appointment-clinician'] %}
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  Dr. R Baines
+                </legend>
+                <div class="nhsuk-radios nhsuk-u-margin-bottom-4">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-38" name="gp-appointment-time" type="radio" value="38">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-38">
+                      9am
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="gp-appointment-time-39" name="gp-appointment-time" type="radio" value="39">
+                    <label class="nhsuk-label nhsuk-radios__label" for="gp-appointment-time-39">
+                      2pm
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% if data['web'] === "yes" %}
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsapp-button"
+          }) }}
+
+        {% endif %}
+        
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block afterContent %}
+
+    {% if data['web'] === "no" %}
+
+      <div class="app-sticky-footer">
+        <div class="nhsuk-width-container">
+          <div class="nhsuk-grid-row">
+
+            <button class="nhsuk-button app-button nhsuk-u-margin-bottom-0" data-module="nhsuk-button" form="appointmentWrapper" type="submit">
+              Continue
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    {% endif %}
+
+  {% endblock %}
+
+  {% block pageScripts %}
+
+    <style>
+      /* Style the tab content */
+      .appointments {
+        display: none;
+      }
+    </style>
+
+    <script>
+
+      function clickLeft() {
+        let container = document.querySelector('#app-date-picker__container');
+        container.scrollTo({
+          left:container.scrollLeft - 276,
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+
+      function clickRight() {
+        let container = document.querySelector('#app-date-picker__container');
+        container.scrollTo({
+          left:container.scrollLeft + 276,
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+
+      // Show and hide appointments
+      function openAppointments(evt, date) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+
+      // Get all elements with class="appointments" and hide them
+      tabcontent = document.getElementsByClassName("appointments");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Get all elements with class="app-date-picker__link" and remove the class "app-date-picker__link--active"
+      tablinks = document.getElementsByClassName("app-date-picker__link");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" app-date-picker__link--active", "");
+      }
+
+      // Show the current tab, and add an "app-date-picker__link--active" class to the button that opened the tab
+      document.getElementById(date).style.display = "block";
+      evt.currentTarget.className += " app-date-picker__link--active";
+
+      var hiddenDiv = document.getElementById('appointmentWrapper');
+      hiddenDiv.focus();
+    }
+
+    </script>
+
+  {% endblock %}

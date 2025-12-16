@@ -1,0 +1,106 @@
+{% extends 'layout-app-scenario-b.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        logo: data['web'] !== "yes",
+        title: pageHeading
+      })}}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Prescriptions",
+            href: "#"
+          },
+          {
+            title: "Appointments",
+            href: "#"
+          },
+          {
+            title: "Test results",
+            href: "#"
+          },
+          {
+            title: "Vaccinations",
+            href: "#"
+          },
+          {
+            title: "Health conditions",
+            href: "#"
+          },
+          {
+            title: "Documents",
+            href: "documents/document-store"
+          }
+        ]
+      }) }}
+
+      {{ nhsappSectionHeading({
+        headingText: "NHS information and support"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Check your symptoms using 111 online",
+            href: "#"
+          },
+          {
+            title: "Health A to Z",
+            href: "#"
+          },
+          {
+            title: "Find services near you",
+            href: "#"
+          }
+        ]
+      }) }}
+
+      <!-- CAMPAIGN CARD -->
+      <div class="nhsapp-card app-card-link--dark-blue app-card-link--full-width nhsuk-u-margin-top-7">
+        <div class="app-card-link__media">
+          <img class="app-card-link__img" src="/images/campaigns/campaign-card-image-3.jpg" alt="">
+        </div>
+        <div class="nhsapp-card__container">
+          <div class="nhsapp-card__content">
+            <a href="#" class="nhsapp-card__link nhsuk-u-font-size-32">
+              Help change the NHS
+            </a>
+            <div class="nhsapp-card__below">
+              <p class="nhsuk-u-margin-top-2">Have your say on making the NHS fit for the future</p>
+            </div>
+          </div>
+          {{ nhsappIcon('chevronRight') }}
+        </div>
+      </div>
+
+
+      {{ nhsappSectionHeading({
+        headingText: "Prototype admin"
+      }) }}
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Return to prototype menu",
+            href: "/scenario-hub"
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

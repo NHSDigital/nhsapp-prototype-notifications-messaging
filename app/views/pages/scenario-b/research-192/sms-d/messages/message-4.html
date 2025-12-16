@@ -1,0 +1,48 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "Liverpool Dock Surgery" %}
+{% set pageDescription = "Received 18 June 2025 at 2:15pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>You are invited to take part in research to improve the lives of those living with diabetes.</p>
+        <p>You can <a class="nhsuk-link">register to be part of health research</a> or find more information at <a class="nhsuk-link">NHS DigiTrials</a>.</p>
+        <p>Yours sincerely,<br>NHS DigiTrials</p>
+      </div>  
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+    </div>
+  </div>
+
+  {% endblock %}

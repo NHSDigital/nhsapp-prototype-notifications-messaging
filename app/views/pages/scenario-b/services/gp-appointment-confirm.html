@@ -1,0 +1,119 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set backLink = true %}
+
+{% if data['appointment-location'] == "Phone"  %}
+  {% set backLinkURL = "/pages/services/gp-appointment-phone-number" %}
+{% else %}
+  {% set backLinkURL = "/pages/services/gp-appointment-reason" %}
+{% endif %}
+
+{% set pageHeading = "Check appointment details" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        titleSmall: true
+      })}}
+
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Appointment type
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['gp-appointment-type'] or 'General' }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link--no-visited-state" href="/pages/services/gp-appointment-type">
+              Change<span class="nhsuk-u-visually-hidden"> appointment type</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['appointment-location'] == "Phone"  %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value"> 
+            {% if data['appointment-phone-number'] == "Current"  %}
+              Phone ending with 3456
+            {% else %}
+              {{ data['appointment-phone-number-new'] or '07866767898' }}
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link--no-visited-state" href="/pages/services/gp-appointment-phone-number">
+              Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+            </a>
+          </dd>
+        </div>
+        {% else %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Clinician
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['appointment-clinician'] or 'Dr Max Smith (Male)' }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link--no-visited-state" href="/pages/services/gp-appointment-select-appointment-v4">
+              Change<span class="nhsuk-u-visually-hidden"> clinician</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Time and date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['appointment-time'] or '9:00am' }} on {{ data['appointment-date'] or 'Wednesday 29 May 2024' }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link--no-visited-state" href="/pages/services/gp-appointment-select-appointment-v4">
+              Change <span class="nhsuk-u-visually-hidden"> time and date of appointment</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Reason for appointment
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['gp-appointment-reason'] or 'Pain in my foot' }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link--no-visited-state" href="/pages/services/gp-appointment-reason">
+              Change<span class="nhsuk-u-visually-hidden"> reason for appointment</span>
+            </a>
+          </dd>
+        </div>
+   
+      </dl>
+
+      <form id="form" method="post" action="/pages/services/gp-appointment-confirmed" novalidate="novalidate">
+
+        {{ button({
+          text: "Confirm appointment",
+          classes: "nhsapp-button"
+        }) }}
+        
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

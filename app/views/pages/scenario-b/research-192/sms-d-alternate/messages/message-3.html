@@ -1,0 +1,56 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "your-messages" %}
+
+{% set pageHeading = "The Range Surgery" %}
+{% set pageDescription = "Received 4 July 2025 at 6:30pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>Your NHS Health Check results are ready.</p>
+        <p>You can now:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>view and find out more about your results</li>
+          <li>find out your risk of developing cardiovascular disease</li>
+          <li>explore personalised advice to maintain or improve your health</li>
+        </ul>
+        <h2 class="nhsuk-heading-xs">What happens next</h2>
+        <p>Your results have been added to your NHS health record. Your GP is able to view these results.</p>
+        <p>If you are concerned about any of your results, contact your GP surgery.</p>
+        <a href="#" class="nhsuk-link">Go to your results</a>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      <form style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Flag message
+      </a>
+      
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state">
+        Remove message
+      </a>
+
+    </div>
+  </div>
+
+  {% endblock %}

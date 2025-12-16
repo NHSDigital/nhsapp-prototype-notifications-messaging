@@ -1,0 +1,136 @@
+{% extends 'layout-app.html' %}
+
+console.log(request.session.data);
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages-u/messages/your-messages" %}
+
+{% set pageHeading = "Wilburton Surgery" %}
+{% set pageDescription = "Sent 28 February 2025 at 09:41am" %}
+
+{% block content %}
+
+{% from "nhsapp/components/tag/macro.njk" import nhsappTag %}
+
+{% set flaggedTag = {
+  nhsappTag: {
+  text: "Flagged",
+  classes: "nhsapp-tag--orange"
+  }
+} %}
+
+{% set noTag = {
+  nhsappTag: null
+} %}
+
+{% if is2Flagged %}
+  {% set tagToUse = flaggedTag %}
+{% else %}
+  {% set tagToUse = noTag %}
+{% endif %}
+
+<tr class="nhsuk-table__row">
+  <td class="nhsuk-table__cell"></td>
+  <td class="nhsuk-table__cell">
+    {% if tagToUse.nhsappTag %}
+      <span role="tooltip" class="nhsapp-tag {{ tagToUse.nhsappTag.classes }}">
+        {{ tagToUse.nhsappTag.text }}
+      </span>
+    {% endif %}
+    <div class="nhsuk-u-padding-bottom-3"></div>
+  </td>
+</tr>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>This is a reminder about your upcoming blood test appointment.</p>
+        <ul class="nhsuk-list">
+          <li>Date: 20th May 2025</li>
+          <li>Time: 9:45am</li>
+          <li>Orange Clinic, Wilburton<br>Surgery, Leeds, AB1 CD2</li>
+        </ul>
+        <h2 class="nhsuk-heading-xs">How to prepare for your blood test</h2>
+        <p>To ensure your results are accurate:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Drink plenty of water before and after your test.</li>
+          <li>Avoid heavy exercise</li>
+          <li>Eat small portions of food regularly for 24 hours before your test.</li>
+          <li>We recommend that you avoid alcohol before and after your test to maintain hydration levels.</li>
+        </ul>
+        <p>You can read more about <a href="#" class="nhsuk-link">preparing for your blood test.</a></p>
+      </div>
+
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+      {% if is2Flagged and is2Removed %}
+        <a role="button" href="/pages-u/messages/message-2-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message2').submit(); return false;">
+          Restore message
+        </a>
+      {% elif is2Flagged %}
+        <form id="unflag-form2" action="/unflag2" method="POST" style="display: none;"></form>
+        <a role="button" href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form2').submit(); return false;">
+          Unflag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a role="button" href="/pages-u/messages/message-2-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message2').submit(); return false;">
+          Remove message
+        </a>
+      {% elif is2Removed %}
+        <a role="button" href="/pages-u/messages/message-2-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message2').submit(); return false;">
+          Restore message
+        </a>
+      {% else %}
+        <form id="flag-form2" action="/flag2" method="POST" style="display: none;"></form>
+        <a role="button" href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form2').submit(); return false;">
+          Flag message
+        </a>
+        <div class="nhsuk-u-padding-bottom-5"></div>
+        <a role="button" href="/pages-u/messages/message-2-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message2').submit(); return false;">
+          Remove message
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block pageScripts %}
+    {% if data['replySentFocus'] === "true" %}
+      <script>
+        document.getElementById('messageSent').focus();
+      </script>
+    {% else %}
+      <!-- JAVASCRIPT TO SHOW THE HIDDEN CONTENT -->
+      <script>
+        document.getElementById('showButton').addEventListener('click', function() {
+          // Get a reference to the hidden div
+          var hiddenDiv = document.getElementById('hiddenDiv');
+    
+          // Check if the div is currently hidden
+          if (hiddenDiv.style.display === 'none') {
+            // If hidden, show the div
+            hiddenDiv.style.display = 'block';
+            hiddenDiv.focus()
+            showButton.style.display = 'none';
+          } else {
+            // If visible, hide the div
+            hiddenDiv.style.display = 'none';
+          }
+        });
+      </script>
+    {% endif %}
+  {% endblock %}

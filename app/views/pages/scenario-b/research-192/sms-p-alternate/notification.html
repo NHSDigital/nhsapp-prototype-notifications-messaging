@@ -1,0 +1,120 @@
+{% extends 'layout-locked-screen.html' %}
+
+{% block content %}
+
+      
+    <a id="notification" class="notification" href="sms">
+      <img class="notification-icon" src='/images/message_logo.png' alt="">
+      <div class="notification-message">
+        <div class="notification-app">NHSApp</div>
+        <div class="notification-content">
+          <p class="nhsuk-body-s">You have a new message.</p>
+        </div>
+      </div>
+      <div class="status-time">now</div>
+    </a>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  // Function to detect the operating system
+  function detectOperatingSystem() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Check for iOS
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      return "iOS";
+    }
+    // Check for Android
+    else if (/android/i.test(userAgent)) {
+      return "Android";
+    }
+    // If neither, return Unknown
+    else {
+      return "Unknown OS";
+    }
+  }
+
+  // Function to update the link URLs based on OS
+  function updateLinks() {
+    const os = detectOperatingSystem();
+
+    const notifyBar = document.querySelector('#notification');
+    const notifyImg = document.querySelector('#notification img');
+    const notifyTime = document.getElementById('time');
+    const notifyWallpaper = document.querySelector('.notification-body div');
+
+    // Modify the URLs based on the OS detected
+    if (os === "iOS") {
+      // Change the image source to a new one
+      notifyImg.src = '/images/message_logo.png'; 
+
+      // This clears all the classes
+      notifyBar.className = ''; 
+      notifyTime.className = ''; 
+      notifyWallpaper.className = ''; 
+
+      // Add the new classes
+      notifyTime.classList.add('ios-time');
+      notifyBar.classList.add('ios-notification');
+      notifyWallpaper.classList.add('ios-wallpaper');
+
+    } else if (os === "Android") {
+      // Change the image source to a new one
+      notifyImg.src = '/images/android-sms.png';
+
+      // This clears all the classes
+      notifyBar.className = ''; 
+      notifyTime.className = ''; 
+      notifyWallpaper.className = ''; 
+
+      // Add the new classes
+      notifyTime.classList.add('android-time');
+      notifyBar.classList.add('android-notification');
+      notifyWallpaper.classList.add('android-wallpaper');
+
+    } else {
+      // For unknown OS, set default classes
+      notifyImg.src = '/images/message_logo.png'; 
+      notifyBar.classList.add('default-notification');
+      notifyWallpaper.classList.add('ios-wallpaper');
+    }
+  }
+
+
+  // Function to get the value of a URL parameter by name
+  function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Function to update the link based on the URL parameter
+  function updateLinkBasedOnParameter() {
+    const smsId = getURLParameter('sms');  // Get the value of 'sms' parameter
+    const dynamicLink = document.getElementById('notification');  // Get the link element
+
+    // Change the link based on the URL parameter value
+    if (smsId === '1') {
+      dynamicLink.href = 'sms/sms-1';  // Redirect to sms-1 if sms=1
+    } else if (smsId === '2') {
+      dynamicLink.href = 'sms/sms-2';  // Redirect to sms-2 if sms=2
+    } else {
+      dynamicLink.href = '/';  // Default link if no valid parameter
+    }
+
+    console.log("URL Parameter:", smsId);
+  }
+
+  // Call both functions when the page loads
+  window.addEventListener('load', function() {
+    updateLinks(); // Update OS-specific elements
+    updateLinkBasedOnParameter(); // Update the link based on the URL parameter
+  });
+
+  // Optionally log operating system for debugging
+  console.log("Operating System:", detectOperatingSystem());
+</script>
+{% endblock %}
+
+

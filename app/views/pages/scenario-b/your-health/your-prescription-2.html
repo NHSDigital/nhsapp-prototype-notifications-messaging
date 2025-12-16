@@ -1,0 +1,132 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Your prescription" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true
+      })}}
+
+      {{ details({
+        "classes": "nhsuk-expander",
+        "text": "Your prescription barcode",
+        "HTML": "
+        <div style='text-align:center;'>
+          <img style='max-width:100%;' class='nhsuk-u-margin-bottom-4' src='/images/precsription-barcode.png' alt='barcode'>
+          <p class='nhsuk-u-font-weight-bold'>ID: 1234 5678 9102</p>
+          <p class='nhsuk-u-margin-bottom-0'>Only show this barcode if your pharmacist asks.</p>
+          <button class='apple-add-to-wallet__button'>
+            <img class='apple-add-to-wallet__image' src='/images/apple-add-to-wallet-one-line.png' alt=''>
+            <span class='nhsuk-u-visually-hidden'>Add to Apple Wallet</span>
+          </button>
+        </div>
+        "
+      }) }}
+
+      <h2>Medicines</h2>
+
+      <ul class="nhsuk-list nhsuk-list--border">
+
+        {% if "select-medicines-1" in data['select-medicines'] or data['select-medicines'] == "" %}
+        <li>
+          <strong class="nhsapp-tag nhsapp-tag--green nhsuk-u-margin-bottom-2">Ready to collect</strong>
+          <p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-0">{{ data['medicine1'] }}</p>
+          <p class="nhsuk-u-margin-bottom-0">Quantity: {{ data['medicine1quantity'] }}</p>
+        </li>
+        {% endif %}
+
+        {% if "select-medicines-2" in data['select-medicines'] or data['select-medicines'] == "" %}
+        <li>
+          <strong class="nhsapp-tag nhsapp-tag--green nhsuk-u-margin-bottom-2">Ready to collect</strong>
+          <p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-0">{{ data['medicine2'] }}</p>
+          <p class="nhsuk-u-margin-bottom-0">Quantity: {{ data['medicine2quantity'] }}</p>
+        </li>
+        {% endif %}
+
+        {% if "select-medicines-3" in data['select-medicines'] or data['select-medicines'] == "" %}
+        <li>
+          <strong class="nhsapp-tag nhsapp-tag--green nhsuk-u-margin-bottom-2">Ready to collect</strong>
+          <p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-0">{{ data['medicine3'] }}</p>
+          <p class="nhsuk-u-margin-bottom-0">Quantity: {{ data['medicine3quantity'] }}</p>
+        </li>
+        {% endif %}
+
+        {% if "select-medicines-4" in data['select-medicines'] or data['select-medicines'] == "" %}
+        <li>
+          <strong class="nhsapp-tag nhsapp-tag--blue nhsuk-u-margin-bottom-2">Part ready to collect</strong>
+          <p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-0">{{ data['medicine4'] }}</p>
+          <p class="nhsuk-u-margin-bottom-0">Quantity: {{ data['medicine4quantity'] }}</p>
+        </li>
+        {% endif %}
+
+      </ul>
+
+      <p>For instructions on how to take your medicine, read the label on the packet or container. </p>
+
+      <h2>Details</h2>
+
+      {{ summaryList({
+        classes: "app-summary-list--two-columns-on-mobile",
+        rows: [
+          {
+            key: {
+              text: "Pharmacy"
+            },
+            value: {
+              html: "<a href='#'>BOOTS</a><br />
+              Balham<br />
+              London<br />
+              SW12 73G<br />
+              080867766155"
+            }
+          },
+          {
+            key: {
+              text: "Date prescribed"
+            },
+            value: {
+              text: "19 July 2024"
+            }
+          },
+          {
+            key: {
+              text: "Prescription type"
+            },
+            value: {
+              html: "Repeat"
+            }
+          },
+          {
+            key: {
+              text: "Prescribed by"
+            },
+            value: {
+              html: "Dr. Smith"
+            }
+          },
+          {
+            key: {
+              text: "Organisation"
+            },
+            value: {
+              html: "<a href='#'>York Road Practice</a>"
+            }
+          }
+        ]
+      }) }}
+
+
+    </div>
+  </div>
+
+  {% endblock %}

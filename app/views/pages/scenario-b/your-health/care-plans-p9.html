@@ -1,0 +1,40 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Your health" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Care plans" %}
+{% set pageDescription = "Check plans you've agreed with your health team about how you want to be cared for" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSecondary: true,
+        description: pageDescription
+      })}}
+
+      <!-- PANEL LINK CARD -->
+      {{ nhsappCardGroup({
+        stacked: true,
+        cards: [
+          {
+            title: "Manage your health care plans",
+            href: "#"
+          },
+          {
+            title: "View your universal health care plan",
+            href: "#"
+          }
+        ]
+      })}}
+
+    </div>
+  </div>
+
+  {% endblock %}
