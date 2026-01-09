@@ -56,12 +56,13 @@ console.log(request.session.data);
 
     <div class="nhsuk-u-margin-bottom-7">
       <p>You have a letter from Royal Berkshire NHS Foundation Trust.</p>
+      <p>This letter is only in messages. You will not find it in any other area in the NHS App.</p>
     </div>
 
     {{ button({
       text: 'View letter',
       classes: 'nhsapp-button',
-      href: 'pdf-overlay'
+      href: 'https://pdfscreenreadertesting.blob.core.windows.net/pdfs/NHS%20Appointment%20Letter%20Example%20PDF%20(Accessible).pdf'
     }) }}
 
     {{ button({

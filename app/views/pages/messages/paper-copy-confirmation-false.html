@@ -1,0 +1,28 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set pageHeading = "Decision confirmed - false" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ nhsappPanel({
+        titleText: "Decision confirmed",
+        text: "You will not be sent a paper letter."
+      }) }}
+        
+      {{ button({
+        text: "Return to your message",
+        href: "/pages/messages/message-1",
+        classes: "nhsuk-u-margin-top-1 nhsapp-button nhsapp-button--secondary"
+      }) }}
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

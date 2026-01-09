@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
+router.use(express.urlencoded({ extended: true }));
+
 // So I can see what's logging in the terminal
 // This shows in the terminal what session data has been saved
 router.use((req, res, next) => {
@@ -200,5 +202,15 @@ router.post('/pages/services/gp-appointment-invite-answer', function (req, res) 
     res.redirect('/pages/services/gp-appointment-select-appointment-v4')
   }
 })
+
+// View Digital Letter - Paper letter confirmation
+router.post('/handle-paper-copy-choice', (req, res) => {
+  const choice = req.body.paperCopyChoice;
+  if (choice === 'true') {
+    res.redirect('/pages/messages/paper-copy-confirmation-true');
+  } else {
+    res.redirect('/pages/messages/paper-copy-confirmation-false');
+  }
+});
 
 module.exports = router;
