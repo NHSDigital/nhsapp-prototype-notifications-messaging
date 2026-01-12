@@ -8,7 +8,7 @@ console.log(request.session.data);
 {% set backLinkURL = "/pages/messages/your-messages" %}
 
 {% set pageHeading = "Royal Berkshire NHS Foundation Trust" %}
-{% set pageDescription = "Sent 29 November 2025 at 11:22am" %}
+{% set pageDescription = "Sent 13 January 2026 at 11:22am" %}
 
 {% block content %}
 
@@ -62,7 +62,7 @@ console.log(request.session.data);
     {{ button({
       text: 'View letter',
       classes: 'nhsapp-button',
-      href: 'https://pdfscreenreadertesting.blob.core.windows.net/pdfs/NHS%20Appointment%20Letter%20Example%20PDF%20(Accessible).pdf'
+      href: '/pages/messages/pdf-overlay'
     }) }}
 
     {{ button({
