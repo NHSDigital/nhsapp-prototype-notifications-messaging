@@ -1,0 +1,188 @@
+{% extends 'layout-ios-sms.html' %}
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ dynamicPageTitle({
+        title: pageHeading
+      })}}
+
+      <!-- OVERLAY CONTENT -->
+      <div class="nhsapp-pdf-overlay__content" style="position:relative;">
+
+        <!-- Header bar: 64px, background #0C0C0C, contains close link (left) and centered title -->
+        <div class="pdf-header" role="">
+          <a id="iosGlassClose" class="ios-glass-close" href="/pages/messages/paper-copy" aria-label="Close - button" title="Close preview">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Close">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </a>
+
+          <div class="pdf-domain-title" role="Address" aria-level="2">england.nhs.uk</div>
+        </div>
+
+        <!-- Main content area below header (uses #808080 background) -->
+        <div class="pdf-main">
+          <!-- Embedded PDF (static asset) -->
+          <iframe src="https://pdfscreenreadertesting.blob.core.windows.net/pdf/Royal-Berkshire-Dermatology-Letter.pdf" aria-hidden="true" title="Letter from Dermatology Service"></iframe>
+
+          <div class="visually-hidden">
+            <p>Private and confidential</p>
+            <p>Mary Swanson</p>
+            <p>Capitol Point</p>
+            <p>Temple Place</p>
+            <p>Reading</p>
+            <p>BERKSHIRE</p>
+            <p>RG1 6QL</p>
+            <p>Dermatology service</p>
+            <p>Royal Berkshire NHS Foundation Trust</p>
+            <p>London Road</p>
+            <p>Reading</p>
+            <p>RG1 5AN</p>
+            <p>Phone: 0118 322 5111</p>
+            <p>Email: dermatology@royalberkshire.nhs.uk</p>
+            <p>Web: www.royalberkshire.nhs.uk</p>
+            <p>Date: 13 January 2025</p>
+            <p>Client name: Mrs Swanson</p>
+            <p>DOB: 23/08/1989  NHS number: 733 040 3083</p>
+            <p>Dear Mrs Swanson</p>
+            <p>You recently attended an education session with the Dermatology service and we would now like to offer you a video or telephone appointment with one of our team. We will be able to let you know the different options available to you when you call in to book your appointment.</p>
+            <p>If you would like to accept an appointment, you need to get in touch with us in the next two weeks. You can:
+            <p>call us on 0118 322 5111 (Monday to Friday, 8am to 5pm), if we’re not available, please leave a message with your name, date of birth and contact number and we will call you back within two working days</p>
+            <p>email us at dermatology@royalberkshire.nhs.uk.</p>
+            <p> Before you contact us, please complete the Dermatology questionnaire. You can submit this online at https://www.royalberkshire.nhs.uk/services-and-departments/dermatology.</p>
+            <p>If you do not need an appointment, we will send a letter to you, your GP and / or referrer, letting them know you don’t need us right now and have been discharged. If this changes or isn’t right, please don’t worry – we would be happy to offer you a further appointment and our letter will explain the different ways to do this.</p>
+            <p>How can we help you?</p>
+            <p>We offer communication support in various formats. Please let us know, or ask someone to tell us on your behalf, before your appointment if you need:</p>
+            <p>an interpreter, including British Sign Language (BSL)</p>
+            <p>information in another language</p>
+            <p>large print, Braille, Easy Read, or audio formats.</p>
+            <p>For details on how we handle your information, visit https://www.royalberkshire.nhs.uk/services-and-departments or ask your healthcare professional for more information.</p>
+            <p>Once you have made an appointment, you can contact us using the details at the top of this letter if you need to cancel or rearrange. If you miss an appointment and don't contact us within two working days, or if you cancel two appointments in a row, you'll be discharged. This helps keep waiting times shorter and allows us to see patients sooner.</p>
+            <p>Yours sincerely</p>  
+            <p>Dermatology Service</p>
+              
+          </div>
+          <!-- iOS button group image overlaid above the PDF (now full-width at bottom) -->
+          <img class="ios-toolbar" src="/images/bottom-toolbar.svg" alt="iOS button groups" name="button" />
+        </div>
+
+      </div> 
+    </div>
+  </div> 
+
+  <style>
+    /* Page background for remainder of page */
+    html, body { background-color: #808080 !important; }
+
+    /* Header: 64px with dark page background, fixed to top of viewport */
+    .pdf-header {
+      height: 64px;
+      background: #0C0C0C;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* center the title horizontally */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding-left: calc(env(safe-area-inset-left, 0px) + 12px);
+      padding-right: calc(env(safe-area-inset-right, 0px) + 12px);
+      z-index: 9999;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* Centered SF Pro-style domain title inside header */
+    .pdf-domain-title {
+      font-family: -apple-system, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600; /* semibold */
+      font-size: 15px;
+      line-height: 1;
+      color: #FFFFFF;
+      text-align: center;
+      pointer-events: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Ensure the close control is vertically centered in the header and fixed at left */
+    .ios-glass-close {
+      position: absolute;
+      left: calc(env(safe-area-inset-left, 0px) + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.04);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 60;
+      transition: transform .16s cubic-bezier(0.34, 1.56, 0.64, 1), background-color .12s ease, box-shadow .12s ease;
+    }
+    .ios-glass-close svg { display:block; width:20px; height:20px; }
+    .ios-glass-close:focus { outline: none; box-shadow: 0 0 0 2px rgba(10,132,255,0.20), 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-50%) scale(0.96); }
+    .ios-glass-close:active { transform: translateY(-50%) scale(0.92); }
+    .ios-glass-close:hover { background: rgba(255,255,255,0.12); }
+    @media (prefers-color-scheme: dark) {
+      .ios-glass-close { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.02); }
+      .ios-glass-close:hover { background: rgba(255,255,255,0.10); }
+    }
+
+    /* Main area sits below fixed header and supports overlays; account for 10px padding above toolbar */
+    .pdf-main {
+      position: relative; /* enable absolutely positioned overlays above iframe */
+      background: transparent;
+      padding-top: 64px; /* ensure content starts below the fixed 64px header */
+      padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+      min-height: calc(100vh - 64px);
+    }
+
+    /* PDF iframe: fill the viewport below the 64px header */
+    .pdf-iframe {
+      width: 100%;
+      height: calc(100vh - 64px);
+      border: 0;
+      display: block;
+      background: #ffffff;
+    }
+
+    /* full-width iOS toolbar pinned to bottom of viewport */
+    .ios-toolbar{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: env(safe-area-inset-bottom, 0px); /* respect safe area */
+      width: 100vw;
+      height: auto; /* toolbar height */
+      z-index: 10001; /* above header */
+      display: block;
+      pointer-events: auto;
+      -webkit-user-select: none;
+      user-select: none;
+      object-fit: cover;
+      /* optional subtle glass background if SVG has transparency */
+      background: rgba(255,255,255,0.02);
+    }
+    @media (max-width: 420px) {
+      .ios-toolbar { height: 48px; max-height: 48px; }
+    }
+
+  </style>
+
+{% endblock %}
+<div 
+  class="ios-glass-close" 
+  role="button" 
+  aria-label="Close" 
+  tabindex="0">
+</div>
