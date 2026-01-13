@@ -156,7 +156,7 @@ console.log(request.session.data);
               </form>
               <div class="nhsapp-card__below">
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
-                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  <span class="nhsuk-u-visually-hidden"> message preview </span>
                   You have a letter from Royal Berkshire NHS Foundation Trust. 
                 </p>
               </div>
@@ -210,7 +210,7 @@ console.log(request.session.data);
               </form>
               <div class="nhsapp-card__below">
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
-                  <span class="nhsuk-u-visually-hidden"> with preview message of </span>
+                  <span class="nhsuk-u-visually-hidden"> message preview </span>
                   This is a reminder about your upcoming blood test appointment.
                 </p>
               </div>
@@ -315,5 +315,19 @@ console.log(request.session.data);
 
     </div>
   </div>
+
+  {{ nhsappSectionHeading({
+    headingText: "Prototype admin"
+  }) }}
+
+  {{ nhsappCardGroup({
+    stacked: true,
+    cards: [
+      {
+        title: "Return to prototype menu",
+        href: "/scenario-hub"
+      }
+    ]
+  }) }}
 
   {% endblock %}
