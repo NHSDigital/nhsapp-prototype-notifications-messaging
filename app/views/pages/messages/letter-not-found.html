@@ -1,0 +1,33 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Letter not found" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        classes: "nhsuk-u-margin-bottom-5"
+      })}}
+
+      <p>A paper letter will be sent to your registered address. You can also contact [sender name] </p>
+
+
+  <p> <strong> Urgent medical advice</strong> </p>
+      <p> Use <a href="https://111.nhs.uk" target="_blank" rel="noopener noreferrer" >111 online</a> or <a href= "tel:111">call 111</a> </p>
+
+<p> <strong> For technical support </strong> </p>
+      <p> Make a note of the error code <strong> 4cxxxx </strong> and then <a href="https://www.nhs.uk/contact-us/nhs-app-contact-us/" target="_blank" rel="noopener noreferrer" > contact the NHS app team. </a> </p>
+
+
+
+    </div>
+  </div>
+  {% endblock %}
