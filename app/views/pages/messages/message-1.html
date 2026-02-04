@@ -59,16 +59,19 @@ console.log(request.session.data);
       <p>This letter is only in messages. You will not find it in any other area in the NHS App.</p>
     </div>
 
-    {{ button({
-      text: 'View letter',
-      classes: 'nhsapp-button',
-      href: 'https://pdfscreenreadertesting.blob.core.windows.net/pdf/Royal-Berkshire-Dermatology-Letter.pdf'
-    }) }}
+{% from "button/macro.njk" import button %}
 
-    {{ button({
-      text: "Download letter",
-      classes: "nhsuk-button--secondary"
-    }) }}
+<div class="nhsuk-button-group">
+  {{ button({
+    text: "View letter",
+   href: 'https://pdfscreenreadertesting.blob.core.windows.net/pdf/Royal-Berkshire-Dermatology-Letter.pdf'
+  }) }}
+
+  {{ button({
+    text: "Download letter",
+    classes: "nhsuk-button--secondary"
+  }) }}
+</div>
 
     <p>If you download this letter you become responsible for keeping it confidential.</p>
 

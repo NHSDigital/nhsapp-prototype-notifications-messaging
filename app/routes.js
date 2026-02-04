@@ -203,6 +203,12 @@ router.post('/pages/services/gp-appointment-invite-answer', function (req, res) 
   }
 })
 
+
+//View Digital Letter - Paper Copy decision//
+router.get('/messages/paper-copy', function (req, res) {
+  res.render('pages/messages/paper-copy')
+})
+
 // View Digital Letter - Paper letter confirmation
 router.post('/handle-paper-copy-choice', (req, res) => {
   const choice = req.body.paperCopyChoice;
@@ -212,5 +218,8 @@ router.post('/handle-paper-copy-choice', (req, res) => {
     res.redirect('/pages/messages/paper-copy-confirmation-false');
   }
 });
+
+
+
 
 module.exports = router;
